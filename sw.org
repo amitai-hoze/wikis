@@ -309,7 +309,7 @@ In addition, [[http://stackoverflow.com/a/10641257/1346426][Difference between g
 2. Right click on the project, choose "New->Module", and enter the module name
 3. Move the module to "libs"
 4. Add this line to ~settings.gradle~
-#+begin_src groovy
+#+begin_src groovy :eval never-export
 project(':mymodel').projectDir = new File(settingsDir, 'libs/mymodel')
 #+end_src
 5. Add another module the same way
@@ -324,13 +324,13 @@ You can use [[http://stackoverflow.com/a/21027074/1346426][IntelliJ cannot find 
 #+end_example
 
 I wrote the script (tangle it for the script to work)
-#+begin_src groovy :tangle build.gradle
+#+begin_src groovy :tangle build.gradle :eval never-export
 task getHomeDir << {
     println gradle.gradleHomeDir
 }
 #+end_src
 and did
-#+begin_src sh
+#+begin_src sh :eval never-export
 ~/.gradle/wrapper/dists/gradle-1.12-bin/2qvnajdoo11hasdfkikjaci26k/gradle-1.12/bin/gradle getHomeDir
 #+end_src
 
@@ -476,7 +476,7 @@ Error:(14, 18) error: lambda expressions are not supported in -source 1.5
 (use -source 8 or higher to enable lambda expressions)
 #+end_example
 Put
-#+begin_src groovy
+#+begin_src groovy :eval never-export
 sourceCompatibility = 1.8
 #+end_src
 in the ~build.gradle~ file.
@@ -505,7 +505,7 @@ Error:The 'java' plugin has been applied, but it is not compatible with the Andr
 :END:
 [[http://stackoverflow.com/a/16628496/1346426][Android Studio: Add jar as library?'s answer]] has a solution.
 What I did is just add the jar to the ~libs~ directory and the line
-#+begin_src groovy
+#+begin_src groovy :eval never-export
 compile fileTree(dir: 'libs', include: ['*.jar'])
 #+end_src
 automatically handled it.
@@ -798,7 +798,7 @@ I got this error only when downloading from Google Play..
 [[http://stackoverflow.com/a/22611269/1346426][GSON fromJson returns null's answer]] led me to my solution.
 
 This was the code that caused it:
-#+begin_src java
+#+begin_src java :eval never-export
 String httpResponse = httpGet("http://some.webservice.com/json?param=value"));
 Gson gson = new GsonBuilder().create();
 VerifyResponse verifyResponse = gson.fromJson(httpResponse, VerifyResponse.class);
@@ -815,7 +815,7 @@ The ~[[String%20status%20=%20verifyResponse.getStatus();][status]]~ variable rec
 In [[http://stackoverflow.com/users/1346426/amitai-hoze][GSON fromJson returns null's comment]] I explained that I simply replaced this class supposed to be deserialized from json by GSON:
 
 # TODO: Need to replace these with the real classes
-#+begin_src java
+#+begin_src java :eval never-export
 package com.mycompany.app.Exceptions;
 
 /**
@@ -844,7 +844,7 @@ public class NexmoError extends Exception {
 }
 #+end_src
 to this:
-#+begin_src java
+#+begin_src java :eval never-export
 package com.mycompany.app.Exceptions;
 
 /**
@@ -941,7 +941,7 @@ Operator '-' cannot be applied to '<lambda parameter>', 'int'
 **** Troubleshooting
 ***** onClick event gets called only when there is no other listener
 I tried following [[http://robobinding.github.io/RoboBinding/getting_started.html#_hello_androidmvvm_presentation_model][Getting Started]] section "4.3. Event handling", but I had another listener attached to the button, like so:
-#+begin_src java
+#+begin_src java :eval never-export
 mPhoneButton.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
         Log.d(TAG, "Phone button clicked!");
@@ -995,13 +995,13 @@ Although AppObservable unsubscribes from the source sequence when necessary, it 
 [[https://github.com/ReactiveX/RxAndroid/issues/108][Make OnTextChangeEvent implement CharSequence · Issue #108 · ReactiveX/RxAndroid]] is a thread that talks about accessing the event's text in an easier way.
 There's a nice way of converting the event to the string, like so:
 Instead of this:
-#+begin_src java
+#+begin_src java :eval never-export
 WidgetObservable.text(codeTextField)
         .map(view -> view.text().toString())
         .subscribe(viewModel.setCode);
 #+end_src
 You can do this:
-#+begin_src java
+#+begin_src java :eval never-export
 WidgetObservable.text(codeTextField)
         .map(OnTextChangeEvent::text)
         .map(CharSequence::toString)
@@ -1116,7 +1116,7 @@ When using the same subscriber instance, I couldn't resubscribe for some reason.
 :END:
 [[http://stackoverflow.com/a/22941881/1346426][When do you use map vs flatMap in RxJava?'s answer]] has a solution. Look at [[http://stackoverflow.com/questions/22847105/when-do-you-use-map-vs-flatmap-in-rxjava#comment44273134_22941881][When do you use map vs flatMap in RxJava?'s comment]] for the more correct way.
 It should be like this:
-#+begin_src java
+#+begin_src java :eval never-export
 throw OnErrorThrowable.from(e);
 #+end_src
 <2015-02-04 Wed>
@@ -1303,7 +1303,7 @@ _Thread.sleep_
 ** Troubleshooting
 *** java.lang.NullPointerException: println needs a message
 The line that caused it was:
-#+begin_src java
+#+begin_src java :eval never-export
 Log.d(TAG, access_no);
 #+end_src
 
@@ -1345,7 +1345,7 @@ I cleaned the project and ran it agian and it succeeded.
 :ID:       ace3c191-5350-4f2c-b5a1-88d4fc907c15
 :END:
 I'm saving using the class in the attached file, and the preferences are not being save when closing the app using a long press in the home button on my HTC Desire. I tried following [[http://looksok.wordpress.com/2012/09/21/sharedpreferences-not-saved-after-app-restart/][Fix: SharedPreferences not saved after app restart | Looks OK!]], but it didn't fix the problem. [[http://stackoverflow.com/a/11938175/1346426][SharedPreferences being reset after force close's answer]] suggested the problem was saving the preferences using static functions, but I tried saving it not using a static function and it didn't solve the problem either. Finally, [[http://stackoverflow.com/q/11480871/1346426][SharedPreferences being reset after force close]]'s 4th comment said that "I have read that some devices don't work properly with getDefaultSharedPreferences()", so I tried using ~getSharedPreferences~ instead like so:
-#+begin_src java
+#+begin_src java :eval never-export
 mContext.getSharedPreferences("test",MODE_MULTI_PROCESS).edit().putString("test","test").commit();
 #+end_src
 and it worked.
@@ -1357,7 +1357,7 @@ First I needed to provide the full name of the service in the Android manifest f
 
 Second, I was setting the constructor incorrectly which is why the 
 InstantiationException is thrown. I had: 
-#+begin_src java
+#+begin_src java :eval never-export
 public _Constructor(String name) 
 { 
     super(name); 
@@ -1366,7 +1366,7 @@ public _Constructor(String name)
 which is incorrect.
 
 The proper way is to not include a String name argument, such as: 
-#+begin_src java
+#+begin_src java :eval never-export
 public _Constructor() 
 { 
     super(name); 
@@ -1433,7 +1433,7 @@ I tried [[http://stackoverflow.com/a/16411103/1346426][How to adjust layout when
 [[http://stackoverflow.com/a/11305435/1346426][Border for the layout's answer]] has a solution.
 <2014-08-11 Mon>
 **** Making a button aligned to the right
-#+begin_src xml
+#+begin_src xml :eval never-export
 <RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -1460,7 +1460,7 @@ I tried [[http://stackoverflow.com/a/16411103/1346426][How to adjust layout when
 :ID:       01fc4162-e445-47b3-b4d8-f47e608f79d0
 :END:
 Using =windowSoftInputMode= in ~AndroidManifest.xml~ like so:
-#+begin_src xml
+#+begin_src xml :eval never-export
 <activity
     android:name=".Example"
     android:label="Example"
@@ -1503,7 +1503,7 @@ I added a '+' at the beginning of the text in order to make the formatter recign
 <2014-11-24 Mon>
 **** Make it underline
 [[http://stackoverflow.com/a/4623602/1346426][How to set the font style to bold, italic and underlined in an Android TextView?'s answer]]'s comment has a solution:
-#+begin_src java
+#+begin_src java :eval never-export
 textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 #+end_src
 <2014-09-17 Wed>
@@ -1537,7 +1537,7 @@ Flow and Mortar are interesting, but according to [[https://github.com/square/fl
 [[http://www.slideshare.net/TimoTuominen1/rxjava-architectures-on-android-android-livecode-berlin?next_slideshow=1][RxJava Architectures on Android - Android LiveCode Berlin]] is a good slideshow on the subject. [[http://futurice.com/blog/top-7-tips-for-rxjava-on-android][Top 7 Tips for RxJava on Android — Futurice]] ia a nice article by the same guy (read the "Subscriptions leak memory" section, it has some important points). [[https://github.com/tehmou/rx-android-architecture][tehmou/rx-android-architecture]] is a sample project he made.
 
 [[https://github.com/RoboBinding/RoboBinding][RoboBinding/RoboBinding]] seems like a great library for implementing MVVM, and I started using it. However, in order to bridge RoboBinding and RxJava you have to write a subscriber to each property like so:
-#+begin_src java
+#+begin_src java :eval never-export
 public class ViewModel implements HasPresentationModelChangeSupport {
     private boolean buttonEnabled;
 
@@ -1620,19 +1620,19 @@ When you are designing an application, you can often decide whether something sh
 <2014-11-11 Tue>
 *** Using messages
 Getting the major mode:
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (message "The major mode is: %s" major-mode)
 #+end_src
 [[http://stackoverflow.com/a/16245593/1346426][Check if major mode is equal one of several emacs's answer]] says the canonical way of checking whether you are in a certain mode is:
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (when (derived-mode-p 'sr-mode 'org-mode) (message "we're in org-mode"))
 #+end_src
 Checking whther you are in a minor mode:
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (when (bound-and-true-p visual-line-mode) (message "We are in visual-line-mode"))
 #+end_src
 This code lists all the minor modes:
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (defun which-active-modes ()
   "Give a message of which minor modes are enabled in the current buffer."
   (interactive)
@@ -1681,7 +1681,7 @@ Continue research
 *** Getting text at line
 [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Buffer-Contents.html][Buffer Contents - GNU Emacs Lisp Reference Manual]] is a good guide.
 You could do:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (thing-at-point 'line)
 #+end_src
 
@@ -1689,7 +1689,7 @@ You could do:
 : #+begin_src emacs-lisp
 
 Or you can do that:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (let (p1 p2 myLine)
   (setq p1 (line-beginning-position) )
   (setq p2 (line-end-position) )
@@ -1709,7 +1709,7 @@ Or you can do that:
 *** Saving match data
 [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Saving-Match-Data.html][Saving Match Data - GNU Emacs Lisp Reference Manual]] is the documentation on it.
 basically you do:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (save-match-data (looking-at "[#].*"))
 #+end_src
 
@@ -1744,7 +1744,7 @@ I goto a few ideas from there:
 Symbol's function definition is void: flet
 **** Solution
 Following [[http://comments.gmane.org/gmane.emacs.orgmode/21837][Org-Mode for GNU Emacs]], I added:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (require 'cl)
 #+end_src
 to my code and it fixed it.
@@ -1756,7 +1756,7 @@ to my code and it fixed it.
 [[http://stackoverflow.com/a/1322978/1346426][Tracking down max-specpdl-size errors in emacs's answer]] has a discussion on it.
 I got it because I had a noweb recursion like so:
 #+name: recursion_example
-#+begin_src latex :noweb yes :exports none
+#+begin_src latex :noweb yes :exports none :eval never-export
 <<recursion_example>>
 #+end_src
 You can evaluate this code block and get the error in the minibuffer.
@@ -1782,7 +1782,7 @@ You can evaluate this code block and get the error in the minibuffer.
 :ID:       a996b733-56d9-4b69-b376-3c23d9db585c
 :END:
 Just do
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (print (font-family-list))
 #+end_src
 <2015-01-27 Tue>
@@ -1791,7 +1791,7 @@ Just do
 [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Current-Buffer.html][Current Buffer - GNU Emacs Lisp Reference Manual]] explains how to get the current buffer.
 
 So, overall you need to write:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (buffer-file-name (current-buffer))
 #+end_src
 <2014-09-11 Thu>
@@ -1836,7 +1836,7 @@ I removed the symlink ~man1~, and ran ~sudo make install~ again, and it worked.
 *** ~\C-i~ is ~TAB~
 ~\C-i~ is actually tab, so writing
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (global-set-key "\C-i" 'org-indent-code-block)
 #+end_src
 
