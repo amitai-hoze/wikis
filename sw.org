@@ -280,7 +280,7 @@ In addition, [[http://stackoverflow.com/a/10641257/1346426][Difference between g
 [[http://stackoverflow.com/a/5114361/1346426][Static Way to get Context on android?'s answer]] explains how.
 <2013-05-09 Thu>
 ** Gradle
-*** Learning Material
+*** References
 :PROPERTIES:
 :ID:       6e792179-73e6-41dd-b051-f3d2bd12a913
 :END:
@@ -915,7 +915,7 @@ Operator '-' cannot be applied to '<lambda parameter>', 'int'
 [[http://stackoverflow.com/a/20288140/1346426][Anonymous class replaced with lambda expressions's answer]] suggests a solution to something similar, but it didn't work for me.
 <2014-11-14 Fri>
 *** RoboBinding
-**** Learning Material
+**** References
 | Link          | Status  |
 |---------------+---------|
 | [[https://skillsmatter.com/skillscasts/3022-core-dev-talk-robobinding][Skills Matter]] | Watched |
@@ -965,7 +965,7 @@ In [[https://github.com/gueei/AndroidBinding/issues/9][Still alive? · Issue #9 
 In conclusion, the support is scarce so I'm not willing to take the risk, RoboBinding is good enough.
 <2015-01-14 Wed>
 *** RoboGuice
-**** Learning Material
+**** References
 :PROPERTIES:
 :ID:       2026a0bb-7c58-46b8-8132-e7874d488e2c
 :END:
@@ -1080,7 +1080,7 @@ According to [[http://stackoverflow.com/a/25664709/1346426][Re-subscribe to an o
 :END:
 [[https://github.com/ReactiveX/RxJava/issues/2564][onErrorResumeNext, refCount and retry · Issue #2564 · ReactiveX/RxJava]] is an issue I opened and seems to be solved.
 <2015-02-03 Tue>
-**** Learning Material
+**** References
 ***** Tuples
 :PROPERTIES:
 :ID:       da5bfe60-6d6f-473c-9b54-b30665254a8c
@@ -2587,7 +2587,7 @@ _Tutorials_
 
 [[https://discussions.apple.com/thread/3062588?tstart=0][Is wsdl2objc the best SOAP client generator for... | Apple Support Communities]] is a good question, but with no answers.
 ** Dependency Injection
-*** Learning Material
+*** References
 :PROPERTIES:
 :ID:       33deb80e-3729-49ae-8902-6492fa96a19d
 :END:
@@ -2900,7 +2900,7 @@ output:
 :END:
 According to [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/1480][iOS Dynamic Libraries deployed to iOS7 now causes linker error. · Issue #1480 · ReactiveCocoa/ReactiveCocoa]] there is a problem deploying dynamic libraries to iOS 7. It links to [[http://stackoverflow.com/q/25909870/1346426][XCode 6 and Embedded Frameworks only supported in iOS8]], which is asked by one of the discussion members. The conclusion is that you can use version ~2.3.1~ to support deployment to iOS 7. I asked if that also solves the iOS app store submission problem, and was answered that it does.
 <2014-12-19 Fri>
-**** Learning Material
+**** References
 ***** Video
 :PROPERTIES:
 :ID:       2c48d1a7-7f1c-4f10-a83e-0a7aea0ba829
@@ -3038,7 +3038,7 @@ like [[id:9a122be7-742a-4178-a9b9-d9c88f4c205e][~aggregateWithStart:reduce:~]], 
 [[http://spin.atomicobject.com/2014/06/29/replay-replaylast-replaylazily/][ReactiveCocoa's replay, replayLast, & replayLazily]] has a great tutorial on the subject.
 <2015-01-07 Wed>
 **** RAC 3.0
-***** Learning Material
+***** References
 [[http://www.tardis.ventures/2015/05/adventures-with-rac-30-and-swift-12.html][Adventures with RAC 3.0 and Swift 1.2 ~ TARDIS VENTURES]] has a summary of the currently available learning material.
 <2015-06-09 Tue>
 ***** Status
@@ -3166,7 +3166,7 @@ It seems that you only have to retain the ~connection~.
 :END:
 According to [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/1366][Issues with Swift · Issue #1366 · ReactiveCocoa/ReactiveCocoa]], the problem was resolved.
 <2015-01-26 Mon>
-***** Learning Material
+***** References
 ****** Video
 :PROPERTIES:
 :ID:       ef15fbc8-51bb-49fd-a3dd-9258ad225bb2
@@ -3779,7 +3779,7 @@ You don’t have permission to save the file “project.xcworkspace” in the fo
 Go to the attributes inspector of the ~UINavigationController~, and under the "Navigation Controller" section untick "Shows Navigation Bar".
 To do it programmatically follow [[http://stackoverflow.com/a/8464044/1346426][Storyboard - Hiding top bar of navigation controller programmatically's answer]].
 <2015-01-12 Mon>
-**** Learning Material
+**** References
 :PROPERTIES:
 :ID:       14772de8-2f37-4274-81e6-df42c5f4552f
 :END:
@@ -3827,7 +3827,7 @@ Look at these sections:
 [[http://stackoverflow.com/q/5994630/1346426][Why does Xcode 4 version editor sometimes say “no editor”]] and [[http://stackoverflow.com/q/5815427/1346426][How to “Turn On” Version Editor in Xcode 4?]] have a discussion over it with some proposed solutions, but none of them worked.
 <2015-05-17 Sun>
 ** Swift
-*** Learning Material
+*** References
 | Link                                           | Status |
 |------------------------------------------------+--------|
 | [[http://www.raywenderlich.com/74438/swift-tutorial-a-quick-start][Swift Tutorial: A Quick Start - Ray Wenderlich]] | Read   |
@@ -3968,7 +3968,7 @@ lambda expressions are not supported in -source 1.6 (use -source 8 or higher to 
 [[http://stackoverflow.com/a/542122/1346426][Interface naming in Java (closed)'s answer]] has a good explanation on the subject.
 <2015-02-06 Fri>
 ** Java 8 Functional programming
-*** Learning Material
+*** References
 :PROPERTIES:
 :ID:       afc37ea4-0fd1-4d35-b2ae-2313c3f3ecc8
 :END:
@@ -4068,7 +4068,7 @@ It links to [[https://docs.oracle.com/javase/8/docs/api/java/util/function/packa
 <2014-11-19 Wed>
 ** Repositories
 *** GSON
-**** Learning Material
+**** References
 :PROPERTIES:
 :ID:       8981f404-219f-4e01-a93c-4a8dfb8ee7c0
 :END:
@@ -4101,7 +4101,7 @@ You need to implement ~equals~, as shown in [[http://www.javapractices.com/topic
 *** Deserializing JSON object
 [[http://stackoverflow.com/a/19352866/1346426][What is the best json pojo converter's answer]] lists a few options, but recommends the =gson= library for Android apps.
 
-**** Learning Material 
+**** References 
 | Link                                   | Description    | Status                                          |
 |----------------------------------------+----------------+-------------------------------------------------|
 | [[https://sites.google.com/site/gson/gson-user-guide][Gson User Guide - gson]]                 | Official guide | Didn't read                                     |
@@ -5428,7 +5428,7 @@ echo "nice"
 [[http://eschulte.github.io/org-scraps/scraps/2011-01-13-noweb-then-variables.html][*temp*]] has an example
 <2014-09-07 Sun>
 *** Octave
-**** Learning Material
+**** References
 :PROPERTIES:
 :ID:       c97b3ec1-9d5b-47f8-a37f-05c029ec4db8
 :END:
@@ -6441,7 +6441,7 @@ Attached is a file that can be imported by template.
 [[http://pymotw.com/2/string/#templates][string – Working with text - Python Module of the Week]] has an explanation.
 <2014-09-14 Sun>
 * Rx
-** Learning Material
+** References
 *** Connections
 :PROPERTIES:
 :ID:       ae555e62-2ca6-421b-96b8-febf8068cc7f
@@ -7112,7 +7112,7 @@ export JAVA_HOME=/usr/lib/jvm/java-6-oracle/
 #+end_src
 <2014-11-17 Mon>
 *** lame
-**** Learning Material
+**** References
 :PROPERTIES:
 :ID:       f93f64de-c3a7-423f-936b-8a39783b8147
 :END:
