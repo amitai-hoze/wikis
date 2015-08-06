@@ -1917,7 +1917,7 @@ I installed it following [[https://github.com/haskell/haskell-mode#melpa][haskel
 <2014-11-08 Sat>
 *** Selecting a mode
 Just call the function of the mode:
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (org-mode)
 #+end_src
 <2014-11-08 Sat>
@@ -1934,7 +1934,7 @@ Just call the function of the mode:
 [[http://www.emacswiki.org/PrettyLambda][EmacsWiki: Pretty Lambda]]
 :end:
 According to =pretty-lambdada.el= (attached), do this:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (let ((o (make-overlay begin end)))
   (overlay-put o 'evaporate t)
   (overlay-put o 'display "}"))
@@ -1979,7 +1979,7 @@ I believe this is [[https://github.com/vitoshka/polymode/issues/22][indentation 
 :ID:       11e4e284-733a-428c-bf60-2da04127568d
 :END:
 Whenever opening a new file, all the entries are closed when you hit the first head or tail of a source block chunk. The problem was with the head and tail modes being ~org-mode~. When the head mode is set to ~variable-pitch-mode~ it doesn't jump. This innermode (taken from ~poly-org~) jumps:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (defcustom  pm-inner/org
   (pm-hbtchunkmode-auto "org"
                      :head-reg "^[ \t]*#\\+begin_src .*$"
@@ -1994,7 +1994,7 @@ Whenever opening a new file, all the entries are closed when you hit the first h
   :type 'object)
 #+end_src
 So, I cloned it overriding the ~head-mode~ and the ~tail-mode~ to ~variable-pitch-mode~ (so it won't crash with the ~variable-pitch-mode~ I'm using:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (defcustom  pm-inner/custom-org
   (clone pm-inner/org 
 	 :head-adjust-face 'org-meta-line
@@ -2027,7 +2027,7 @@ explanation on the subject
 *** Case sensitivity
 According to [[http://stackoverflow.com/a/2945321/1346426][emacs: is there a way to specify a case-insensitive search in a regexp?'s answer]], you can't do it from within the regular expression.
 In order to turn on case sensitivity you write
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (setq case-fold-search nil)
 #+end_src
 <2014-10-31 Fri>
@@ -2036,7 +2036,7 @@ In order to turn on case sensitivity you write
 <2014-11-04 Tue>
 *** OR between two strings
 According to [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Regexp-Backslash.html][Regexp Backslash - GNU Emacs Manual]], do this:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (search-forward-regexp "to find \\(this\\|that\\)")
 #+end_src
 It's supposed to find this.
@@ -2073,7 +2073,7 @@ It's supposed to find this.
 :ID:       21366e4b-0e63-490c-8a1d-dc35b8e02bcd
 :END:
 Tangle this to test a minimal configuration of emacs and org-mode.
-#+begin_src emacs-lisp :tangle elisp/init.el :comments org
+#+begin_src emacs-lisp :tangle elisp/init.el :comments org :eval never-export
 (setq load-path (cons "~/build/emacs/org-mode/lisp" load-path))
 (setq load-path (cons "~/build/emacs/org-mode/contrib/lisp"
                       load-path))
@@ -2416,6 +2416,13 @@ rmaddy's comment in [[http://stackoverflow.com/a/15097914/1346426][changing the 
 [[http://stackoverflow.com/a/2337601/1346426][How to link to apps on the app store's answer]] has a method to link straight to the App Store on the iPhone.
 [[https://linkmaker.itunes.apple.com/us/][iTunes Link Maker]] can create links according to Apple's [[https://developer.apple.com/app-store/marketing/guidelines/#downloadOnAppstore][App Store Marketing Guidelines - Apple Developer]].
 <2014-08-28 Thu>
+*** Troubleshooting
+**** iTunes connect won't add existing users
+[[http://stackoverflow.com/a/19737906/1346426][iTunes connect will not let me add myself as a user's answer]] has an explanation on the subject.
+<2015-08-04 Tue>
+*** Signing problems on Xcode 6
+[[http://stackoverflow.com/q/25873498/1346426][Cannot sign applications in XCode 6]] has a discussion on the matter.
+<2015-08-06 Thu>
 ** Asynchronuous dispatching
 *** dispatch_async
 [[http://stackoverflow.com/a/16283719/1346426][Understanding dispatch_async's answer]] has a great explanation on dispatch_async
@@ -2498,6 +2505,9 @@ I followed [[http://stackoverflow.com/a/18730481/1346426][The target … overrid
 <2014-12-31 Wed>
 ** Carthage
 *** Troubleshooting
+**** Carthage asking for a username and password
+[[https://github.com/Carthage/Carthage/issues/447][Carthage 0.7.1 asking for GitHub username/pass for public repos · Issue #447 · Carthage/Carthage]] has a discussion on the problem. I upgraded to Xcode 6.4 and it solved it.
+<2015-08-04 Tue>
 **** File not found
 #+begin_example
 --- Fetching ReactiveCocoa
@@ -2529,6 +2539,15 @@ The following build commands failed:
 I think it has to do with the iPhone simulator. I did this google search
 [[https://www.google.co.il/search?q=carthage+The+file+couldn’t+be+opened+because+there+is+no+such+file.+iphoneSimulator&oq=carthage+The+file+couldn’t+be+opened+because+there+is+no+such+file.+iphoneSimulator&aqs=chrome..69i57.317j0j7&client=ubuntu&sourceid=chrome&es_sm=93&ie=UTF-8][carthage The file couldn’t be opened because there is no such file. iphoneSimulator - Google Search]]
 
+**** Not finding a framework
+Full error message:
+#+begin_example
+Failed to write to /Users/jkally123/Library/Developer/Xcode/DerivedData/Personality_Profiling_Dialer-bgtwlndtxybvunbgokzcopjdnmqk/Build/Products/Debug-iphoneos/HR-Dialer.app/Frameworks/Realm.framework: Error Domain=NSCocoaErrorDomain Code=260 "The file “Realm.framework” couldn’t be opened because there is no such file." UserInfo=0x7ff4ebdacbd0 {NSFilePath=/Users/jkally123/Developer/Personality Profiling Dialer/Carthage/Build/iOS/RealmSwift.framework/Frameworks/Realm.framework, NSUnderlyingError=0x7ff4ebdacb00 "The operation couldn’t be completed. No such file or directory"}
+Command /bin/sh failed with exit code 1
+#+end_example
+
+[[https://github.com/realm/realm-cocoa/issues/1864][0.92 Swift examples don't run on iOS Device out of the box · Issue #1864 · realm/realm-cocoa]] leads me to believe it might have something to do with the sigining. Needs further investigation.
+<2015-08-06 Thu>
 **** Project has no shared schemes
 Full error message:
 #+begin_example
@@ -2555,6 +2574,7 @@ Command /usr/bin/codesign failed with exit code 1
 #+end_example
 According to [[http://www.cocoabuilder.com/archive/xcode/268464-running-xcodebuild-via-ssh.html][Running xcodebuild via ssh | Cocoabuilder]] it's because I did it from ssh.
 <2015-05-10 Sun>
+
 ** Consuming SOAP web services
 These are the different options sorted by the last change date:
 
@@ -2644,7 +2664,7 @@ _Tutorials_
 | formatNationalNumberWithPreferredCarrierCode:fallbackCarrierCode:error:         |
 | formattingRuleHasFirstGroupOnly:                                                |
 
-#+begin_src python :var table=functions :results output
+#+begin_src python :var table=functions :results output :eval never-export
 for line in table:
     function = line[0]
     splitted = function.split(":")
@@ -2707,7 +2727,7 @@ NSLog(@"formattingRuleHasFirstGroupOnly: - %@", [phoneUtil formattingRuleHasFirs
 :ID:       4bb6d232-683d-49c7-8437-e5e13f7e7b09
 :END:
 I left only the functions that handle ~NSString~ and not ~NBPhoneNumber~.
-#+begin_src objc
+#+begin_src objc :eval never-export
 [self.phoneNumberTextField.rac_textSignal
  subscribeNext:^(NSString *phoneNumber) {
      NBPhoneNumberUtil *phoneUtil = [NBPhoneNumberUtil sharedInstance];
@@ -2780,7 +2800,7 @@ I left only the functions that handle ~NSString~ and not ~NBPhoneNumber~.
 :ID:       7a839474-8407-498e-88ff-b1de4e419b3c
 :END:
 
-#+begin_src objc
+#+begin_src objc :eval never-export
 [[self.phoneNumberTextField.rac_textSignal
   distinctUntilChanged]
  subscribeNext:^(NSString *phoneNumber) {
@@ -2797,7 +2817,7 @@ The ~formattedPhoneNumber~ variable gets updated only the next two signals.
 Changing ~phoneNumber.rac_sequence.signal~ to ~phoneNumber.rac_sequence.eagerSequence.signal~ doesn't help either.
 
 But using ~flattenMap~ to do it gets it right:
-#+begin_src objc
+#+begin_src objc :eval never-export
 [[[[self.phoneNumberTextField.rac_textSignal
     distinctUntilChanged]
    doNext:^(id x) {
@@ -2818,7 +2838,7 @@ But using ~flattenMap~ to do it gets it right:
 :ID:       45f28af4-c3fa-46e0-b4b7-d5836f55c1d0
 :END:
 You can do it like this:
-#+begin_src objc
+#+begin_src objc :eval never-export
 [[[someSignal materialize] filter:^BOOL(RACEvent *event) {
     return event.eventType == RACEventTypeCompleted;
 }] map:^id(id value) {
@@ -2826,7 +2846,7 @@ You can do it like this:
 }];
 #+end_src
 But this is a nicer way to do it:
-#+begin_src objc
+#+begin_src objc :eval never-export
 [someSignal then:^RACSignal *{
     return [RACSignal return:@(TRUE)];
 }];
@@ -2836,7 +2856,7 @@ But this is a nicer way to do it:
 :PROPERTIES:
 :ID:       0069f856-0892-4644-ac8e-5326d10dfddc
 :END:
-#+begin_src objc
+#+begin_src objc :eval never-export
 NSString *maxSubstring =
 [[someString.rac_sequence
 scanWithStart:@"" reduce:^NSString*(NSString *running, NSString *next) {
@@ -2849,7 +2869,7 @@ scanWithStart:@"" reduce:^NSString*(NSString *running, NSString *next) {
 #+end_src
 The ~scanWithStart:reduce:~ sends a signal of all the substrings, and the ~foldLeftWithStart:reduce:~ returns the one with the max ~someFunction~ value.
 However, this can be replaced by this imperative code:
-#+begin_src objc
+#+begin_src objc :eval never-export
 NSString *maxSubstring;
 for (int i=0; i < someString.length; i++) {
   if (someFunction([someString substringToIndex:i]) > someFunction(maxSubstring))
@@ -2867,7 +2887,7 @@ for (int i=0; i < someString.length; i++) {
 :PROPERTIES:
 :ID:       c9bd63b2-6689-40e3-9bde-07fedef40591
 :END:
-#+begin_src objc
+#+begin_src objc :eval never-export
 [[self.phoneNumberTextField.rac_textSignal
   flattenMap:^RACStream *(NSString *phoneNumber) {
       return phoneNumber.rac_sequence.signal;
@@ -2883,7 +2903,7 @@ Note that you will get the entire string for each text change.
 :PROPERTIES:
 :ID:       ea640553-8465-4dbf-a99f-3d2be9e0863e
 :END:
-#+begin_src objc
+#+begin_src objc :eval never-export
 NSLog(@"%@", [[@"+1 (646) 342-0052".rac_sequence
   filter:^BOOL(NSString *phoneNumberChar) {
       return isdigit([phoneNumberChar characterAtIndex:0]);
@@ -2946,7 +2966,7 @@ According to [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/1480][iOS D
 :END:
 like [[id:711f30bf-f466-4bd9-a28b-ba5dc74b30e8][~foldLeftWithStart~]], but sends a signal instead of the final value.
 For instance
-#+begin_src objc
+#+begin_src objc :eval never-export
 NSLog(@"region code: %@",
       [[[[@"16463420522".rac_sequence.signal take:3]
          aggregateWithStart:@"" reduce:^NSString*(NSString *running, NSString *next) {
@@ -2974,7 +2994,7 @@ http://spin.atomicobject.com/2014/04/03/combinelatest-and-zip-in-reactivecocoa/ 
 :PROPERTIES:
 :ID:       711f30bf-f466-4bd9-a28b-ba5dc74b30e8
 :END:
-#+begin_src objc
+#+begin_src objc :eval never-export
 NSLog(@"region code: %@",
       [[@"972526762450".rac_sequence
           take:3]
@@ -3003,7 +3023,7 @@ According to [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/628][Rename
 :END:
 [[http://stackoverflow.com/a/22204188/1346426][How to make RACSignal to become hot?'s answer]] has a nice example.
 Also, this code for example:
-#+begin_src objc
+#+begin_src objc :eval never-export
 RACMulticastConnection *connection;
 connection = [[RACSignal return:@"wow"] publish];
 [connection.signal subscribeNext:^(NSString *x) {
@@ -3079,7 +3099,7 @@ $(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework
 Note that The enabled signal has to be subscribed to in order to know the first initial enabled status.
 So if you do this:
 
-#+begin_src objc
+#+begin_src objc :eval never-export
 RACSignal *someColdSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
     // Do some work
     [subscriber sendNext:nil];
@@ -3109,7 +3129,7 @@ When the ~RACCommand~ is initialized it will call the ~someColdSignal~'s block, 
 :ID:       41e4629d-7c52-4d19-8b81-483f578ff296
 :END:
 According to [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/691][createSignal dispoables · Issue #691 · ReactiveCocoa/ReactiveCocoa]], you can return nil in the block if the operation you're doing cannot be cancelled. So this is a template for it:
-#+begin_src objc
+#+begin_src objc :eval never-export
 [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
     if (errorCondition)
       [subscriber sendError:error];
@@ -3133,7 +3153,7 @@ According to [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/691][create
 :ID:       a6acfbc3-bb29-4038-826a-4b8653f9fae1
 :END:
 I tried to do it like so:
-#+begin_src objc
+#+begin_src objc :eval never-export
 RAC(self.someButton, enabled) = [commandCompletedSuccessfullySignal not];
 #+end_src
 but got this error:
@@ -3241,7 +3261,7 @@ dyld: Library not loaded: @rpath/RealmSwift.framework/Frameworks/Realm.framework
 [[https://github.com/realm/realm-cocoa/issues/1864#issuecomment-101856312][0.92 Swift examples don't run on iOS Device out of the box · Issue #1864 · realm/realm-cocoa]] has a solution, and you also need to drag the ~Realm.framework~ to "Linked Frameworks and Libraries".
 <2015-05-15 Fri>
 ***** RealmSwift not getting built
-[[https://github.com/realm/realm-cocoa/issues/1790][Support Carthage for RealmSwift · Issue #1790 · realm/realm-cocoa]] duscusses it, so I just have to do:
+[[https://github.com/realm/realm-cocoa/issues/1790][Support Carthage for RealmSwift · Issue #1790 · realm/realm-cocoa]] discusses it, so I just have to do:
 #+begin_src sh :eval never
 carthage update --platform iOS
 carthage build --platform iOS
@@ -3255,7 +3275,7 @@ Sometimes the update gets stuck, so run ~top~ to see if ~carthage~ is sleeping, 
 :ID:       f512745e-2f04-47a7-b265-a1b412cf3116
 :END:
 When I try to write:
-#+begin_src swift
+#+begin_src swift :eval never-export
 class RecentCall: Object {
     dynamic var phoneNumberID: Int32? = 0
 }
@@ -3350,7 +3370,7 @@ and successfully referenced images.
 <2015-01-01 Thu>
 *** Declaring instance variables
 [[http://stackoverflow.com/a/13263345/1346426][Objective C instance variables's answer]] says it should be like:
-#+begin_src objc
+#+begin_src objc :eval never-export
 @implementation MyClass {
     NSString *testVar;
 }
@@ -3396,7 +3416,7 @@ and successfully referenced images.
 :END:
 [[http://stackoverflow.com/a/6752130/1346426][Is there a format specifier that works with Boolean values?'s answer]] has a solution.
 As written in one of the comments:
-#+begin_src objc
+#+begin_src objc :eval never-export
 NSLog(@"You got: %d", booleanValue);
 #+end_src
 will do it.
@@ -3413,7 +3433,7 @@ will do it.
 :END:
 [[http://stackoverflow.com/a/10703179/1346426][In Objective-C, how to print out N spaces? (using stringWithCharacters)'s answer]] has a great solution.
 This for instance:
-#+begin_src objc
+#+begin_src objc :eval never-export
 NSLog(@"%@", [NSString stringWithFormat:@"%@%*s", @"the answer is...", 12, "1"]);
 #+end_src
 will output:
@@ -3499,7 +3519,7 @@ must reset all location and privacy settings on your iPhone
 This code works on iOS 7 and below 
 (taken from [[http://stackoverflow.com/a/19027204/1346426][Fetch Contacts in iOS 7]] or [[http://stackoverflow.com/a/12838224/1346426][Programmatically Request Access to Contacts]]):  
      
-#+begin_src C :includes <stdio.h>
+#+begin_src C :includes <stdio.h> :eval never-export
        ABAddressBookRef addressBook = ABAddressBookCreate();
 
        __block BOOL accessGranted = NO;
@@ -3529,7 +3549,7 @@ question's code but I didn't understand what's his problem.
 One of the comments refer to [[https://developer.apple.com/library/ios/samplecode/QuickContacts/Listings/Classes_QuickContactsViewController_m.html][Classes/QuickContactsViewController.m]] that
 has this code instead:
 
-#+begin_src C :includes <stdio.h>
+#+begin_src C :includes <stdio.h> :eval never-export
 
        // Prompt the user for access to their Address Book data
        -(void)requestAddressBookAccess
@@ -3557,7 +3577,7 @@ requests access on its own.
 Also, [[http://stackoverflow.com/a/24520296/1346426][Wait for completion block of writeImageToSavedPhotosAlbum by semaphore]] says the whole
 point of it being asynchronous is that you don't wait.. I finally used this:
 
-#+begin_src C :includes <stdio.h>
+#+begin_src C :includes <stdio.h> :eval never-export
 
        - (BOOL)accessGranted
        {
@@ -3606,7 +3626,7 @@ I tried
 [[http://stackoverflow.com/a/17574618/1346426][UIScrollView's origin changes after popping back to the UIViewController's answer]]
 
 with a little change:
-#+begin_src C
+#+begin_src C :eval never-export
        @implementation PhoneKeypadController
        {
        	 CGRect frame;
@@ -3628,7 +3648,7 @@ didn't work as well. I noticed that the button moves 50 pixels up, so I searched
 [[https://www.google.co.il/search?q=ios+shifts+50+pixels&oq=ios+shifts+50+pixels&aqs=chrome..69i57.7244j0j7&sourceid=chrome&es_sm=93&ie=UTF-8#q=uibutton+position+moves+50+pixels+up+when+app+returns+to+foreground][uibutton position moves 50 pixels up when app returns to foreground - Google Search]]
 but nothing came up.
 I also tried doing:
-#+begin_src C
+#+begin_src C :eval never-export
        self.button.translatesAutoresizingMaskIntoConstraints = NO;
 #+end_src
 but it didn't work.
@@ -3680,7 +3700,7 @@ Full error message:
 Incompatible block pointer types sending 'BOOL (^)(NSString *__strong)' to parameter of type 'id (^)(__strong id)'
 #+end_example
 This code sample causes it
-#+begin_src objc
+#+begin_src objc :eval never-export
 [validPhoneNumberSignal map:^BOOL(NSString *phoneNumber) {
     if ([phoneNumber isEqualToString:@"NO"])
         return FALSE;
@@ -3690,7 +3710,7 @@ This code sample causes it
 #+end_src
 
 It seems that you have to wrap ~BOOL~ type variables like so:
-#+begin_src objc
+#+begin_src objc :eval never-export
 [validPhoneNumberSignal map:^id(NSString *phoneNumber) {
     if ([phoneNumber isEqualToString:@"NO"])
         return @(FALSE);
@@ -3722,7 +3742,7 @@ Terminating app due to uncaught exception 'NSUnknownKeyException', reason: '[<Ph
 According to the [[https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Protocols/NSKeyValueCoding_Protocol/index.html][NSKeyValueCoding Protocol Reference]], the ~NSKeyValueCoding~ is an informal protocol, which means you can't inherit it. According to [[https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/Compliant.html#//apple_ref/doc/uid/20002172-BAJEAIEE][Key-Value Coding Programming Guide: Ensuring KVC Compliance]], to comply with it you need to implement the [[https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Protocols/NSKeyValueCoding_Protocol/index.html#//apple_ref/occ/instm/NSObject/valueForKey:][valueForKey: - NSKeyValueCoding Protocol Reference]] and the [[https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Protocols/NSKeyValueCoding_Protocol/index.html#//apple_ref/occ/instm/NSObject/setValue:forKey:][setValue:forKey: - NSKeyValueCoding Protocol Reference]] functions.
 
 This is an example of implementing those methods:
-#+begin_src objc
+#+begin_src objc :eval never-export
 - (id)valueForKey:(NSString *)key
 {
     if ([key isEqualToString:@"someProperty"]) {
@@ -3864,7 +3884,7 @@ Look at these sections:
 *** Initializing an array
 [[http://stackoverflow.com/a/6980319/1346426][How to initialize a static array?'s answer]] has an explanation on the subject.
 This is an example for it:
-#+begin_src java
+#+begin_src java :eval never-export
 String[][] mPhoneFormats = {
     {"972", "0", "(0|\\+?972)(5[0-9]{8})"},
     {"972", "0", "(0|\\+?972)([0-9]{8})"},
@@ -3989,7 +4009,7 @@ lambda expressions are not supported in -source 1.6 (use -source 8 or higher to 
 :END:
 [[http://stackoverflow.com/a/20572135/1346426][Java 8: Chain Consumer<Y> to Function<X,Y>'s answer]] has a solution.
 You could use this class:
-#+begin_src java
+#+begin_src java :eval never-export
 public final class Converter {
 
     public static <T> Function<T, T> function(Consumer<T> consumer) {
@@ -4005,17 +4025,17 @@ public final class Converter {
 }
 #+end_src
 like this:
-#+begin_src java
+#+begin_src java :eval never-export
 static Function<Throwable, String> getMessage = Throwable::getMessage;
 static Consumer<String> log = System.out::println;
 static Consumer<Throwable> logMessage = Converter.consumer(getMessage.andThen(Converter.function(log)));
 #+end_src
 And if you import the Class then:
-#+begin_src java
+#+begin_src java :eval never-export
 static Consumer<Throwable> logMessage = consumer(getMessage.andThen(function(log)));
 #+end_src
 Which is slightly better than:
-#+begin_src java
+#+begin_src java :eval never-export
 static Consumer<Throwable> logMessage = throwable -> {log.accept(getMessage.apply(throwable));};
 #+end_src
 But I offered a better solution in [[http://stackoverflow.com/a/28475522/1346426][Java 8: Chain Consumer<Y> to Function<X,Y>'s answer]].
@@ -4161,7 +4181,7 @@ java.lang.NoSuchMethodError: main Exception in thread "main"
 :END:
 :answer:
 Maybe answer [[http://stackoverflow.com/q/5417454/1346426][Use enums for array indexes in Java]] with this:
-#+begin_src java
+#+begin_src java :eval never-export
 public enum ArrayIndices {
         COL_NAME(0), COL_SURNAME(1);
         private int index;
@@ -4180,7 +4200,7 @@ public enum ArrayIndices {
 [[http://stackoverflow.com/a/27095147/1346426][Use enums for array indexes in Java's answer]] is my answer.
 This is for testing it:
 #+name: get_dialed_number
-#+begin_src java :noweb yes :classname TestPhoneAdjust
+#+begin_src java :noweb yes :classname TestPhoneAdjust :eval never-export
 public class TestPhoneAdjust {
 
     public enum ArrayIndex {
@@ -4429,6 +4449,24 @@ I decided to use [[http://physics.unm.edu/CQuIC/Qcircuit/][physics.unm.edu/CQuIC
 :END:
 **** Positioning
 The [[id:635e1f94-ac0e-4501-8bc9-620653412e0f][Tutorial]] in appendix A suggests to use \centerline{} among other things.
+** Solutions
+*** Typesetting math symbols with constant spacing
+[[http://tex.stackexchange.com/a/129434][Multiple letters without spacing in Math (duplicate)'s answer]] offers a solution using ~mathit~ but it didn't work for me.
+
+[[http://fangjinghk.blogspot.co.il/2011/04/how-to-produce-asterisk-in-latex.html][Fang Jing: How to produce an asterisk in LaTeX]] offers to type ~\**~.
+[[http://www.rpi.edu/dept/arc/training/latex/LaTeX_symbols.pdf][www.rpi.edu/dept/arc/training/latex/LaTeX_symbols.pdf]] lists the ~\textasteriskcentered~ command, however, it produced a ~\Delta~ rather than an asterisk.
+[[http://tex.stackexchange.com/a/127965][Problem with listings package using stix fonts's answer]] offers to use ~\ensuremath~ to make a new ~\textasteriskcentered~.
+
+Here are all the results:
+#+begin_src latex
+\text{\ensuremath{p}\ensuremath{*}\ensuremath{p}} \\
+\text{\ensuremath{p}\ensuremath{p}\ensuremath{*}} \\
+\mathit{p}\mathit{*}\mathit{p}\\
+\mathit{p}\mathit{p}\mathit{*}\\
+p*p\\
+pp*
+#+end_src
+<2015-08-03 Mon>
 ** Spacing around align
 [[http://tex.stackexchange.com/a/47403/56669][Remove vertical space around align's answer]] has a solution.
 <2014-09-07 Sun>
@@ -4509,7 +4547,7 @@ l.48 ק
 !  ==> Fatal error occurred, no output PDF file produced!
 #+end_example
 I encountered the bug when using ~\underline~ and ~\underset~
-#+begin_src latex
+#+begin_src latex :eval never-export
 \begin{align*}
     {\underline{x}}_{0}={\left(\mathrm{1,0.5}\right)}^{T} \\
     \mathit{error}\left(\underline{x},{\underline{x}}^{}\right)=\underset{i}{\mathit{\max }}\left(\left\vert \frac{{x}_{i}\minus {x}_{i}^{}}{{x}_{i}}\right\vert \right)
@@ -4528,7 +4566,7 @@ According to [[http://tex.stackexchange.com/questions/32466/hyperref-links-break
 <2015-07-23 Thu>
 **** OR between expressions
 Do this:
-#+begin_src sh
+#+begin_src sh :eval never-export
 grep -e exp1 -e exp2 file.txt
 #+end_src
 <2014-11-14 Fri>
@@ -4715,7 +4753,7 @@ QuickTime has an option of recording a screen, and does a pretty good job
 ** Solutions
 *** Disabling statup applications
 [[http://apple.stackexchange.com/questions/108902/how-can-i-turn-off-the-gamed-service-or-more-generally-any-service#comment171979_128913][mavericks - How can I turn off the gamed service or more generally, any service? - Ask Different's comment]] works. This is what I did:
-#+begin_src sh
+#+begin_src sh :eval never-export
 launchctl unload -w /System/Library/LaunchAgents/com.apple.photolibraryd.plist
 launchctl unload -w /System/Library/LaunchAgents/com.apple.cloudd.plist
 launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
@@ -4874,7 +4912,7 @@ I tried Boot Camp Assistant, it's pretty straight forward, but it didn't work.
 :PROPERTIES:
 :ID:       30547b65-c900-4f9b-9dee-e797a7df1ab9
 :END:
-#+begin_src octave :exports results
+#+begin_src octave :exports results :eval never-export
 %%format longEng
 x = 10^16
 ans = x;
@@ -4982,12 +5020,12 @@ _Summary_
 :ID:       34cefa02-177a-47cd-9ce1-2e726cc37c7e
 :END:
 This is the batch file:
-#+begin_src dos :tangle windows/switch_language.bat
+#+begin_src dos :tangle windows/switch_language.bat :eval never-export
 C:\Applications\plink.exe -X -pw $pass -ssh username@ip ~/scripts/switch_language.sh
 cscript C:\Users\username\path\to\script\switch_window.vbs
 #+end_src
 This is the vbs script
-#+begin_src vbscript :tangle windows/switch_window.vbs
+#+begin_src vbscript :tangle windows/switch_window.vbs :eval never-export
 set shell = CreateObject("WScript.Shell")
 'Wscript.Sleep 5000
 shell.SendKeys "%+{Esc}"
@@ -5069,7 +5107,7 @@ Full error message:
 :PROPERTIES:
 :ID:       d870fdc2-d422-49bb-87f5-365cca9ed4c1
 :END:
-#+begin_src nix :tangle lib/emacs/org-mode/default.nix
+#+begin_src nix :tangle lib/emacs/org-mode/default.nix :eval never-export
 with import <nixpkgs> {}; {
      orgModeBuildEnv = stdenv.mkDerivation {
        name = "orgmodebuild";
@@ -5152,7 +5190,7 @@ was wrong, it should have been ~/dev/sda1~.
 I finally went with [[http://superuser.com/questions/783110/how-to-properly-specify-boot-extra-entries-for-nixos/789352#789352][linux - How to properly specify boot extra entries for nixos - Super User's answer]]. I tried doing it manually (see [[id:c5598f6a-97a4-4e60-9a9a-54bc2fd73116][Adding a custom entry to grub]]), but finally used [[id:f74bcbe1-823c-4a20-86ec-664b0c687b5e][Grub Customizer]] successfully.
 The exact syntax for the menu entry is:
 
-#+begin_src cfg
+#+begin_src cfg :eval never-export
 configfile (hd0,4)/boot/grub/grub.cfg
 #+end_src
 <2015-07-13 Mon>
@@ -5234,20 +5272,20 @@ configfile (hd0,4)/boot/grub/grub.cfg
 *** Autocompletion
 [[http://stackoverflow.com/q/14704077/1346426][How to enable auto-complete in Emacs Org-babel?]] has a discussion on the subject.
 <2014-10-28 Tue>
-*** Babel Library
+*** COMMENT Babel Library
 In [[http://orgmode.org/worg/org-contrib/babel/intro.html#library-of-babel][Babel: Introduction]] (under "The Library of Babel") there is a short explanation.
 I had trouble operating it but it turns out that [[~/build/emacs/org-mode/doc/library-of-babel.org]] is not loaded by default, so that's why the functions were not available. At the beginning I added my [[~/org-mode/babel-lib.org]] to babel library like so:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never
 (org-babel-lob-ingest "~/org-mode/babel-lib.org")
 #+end_src
-
+<<current-stage>>
 And it produced an error. It has to be done like so:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never
 (org-babel-lob-ingest "/home/username/org-mode/babel-lib.org")
 #+end_src
 
 Now it's loaded and I can call this function (be careful, it replaces a regular expression for all the buffer..)
-#+call: clear-table-errors() :results silent
+# +call: clear-table-errors() :results silent
 
 
 |   | 0.00 |
@@ -5267,7 +5305,7 @@ do..
 
 :explanation:
 The following source blocks pass table (a table) and prefooter (some text) from the latex source block to ~q-circuit~ and then to ~org-table-to-latex-matrix~. The best way I found is to not specify it in the noweb call like
-#+begin_src emacs-lisp :noweb yes :exports none
+#+begin_src emacs-lisp :noweb yes :exports none :eval never-export
 <<org-table-to-latex-matrix(table)>>
 #+end_src
 but rather rely on the noweb expansion mechanism that passes it to the nested ~org-table-to-latex-matrix~ function.
@@ -5275,7 +5313,7 @@ Export this subtree to see the result. If you remove the ~:exports none~ from th
 :end:
 
 #+name: org-table-to-latex-matrix
-#+begin_src emacs-lisp :var table='((:head) hline (:body)) :var header="" :var footer="" :var prefooter="" :exports none
+#+begin_src emacs-lisp :var table='((:head) hline (:body)) :var header="" :var footer="" :var prefooter="" :exports none :eval never-export
 (require 'cl)
 (flet ((to-tab (tab)
                (orgtbl-to-generic
@@ -5306,7 +5344,7 @@ Export this subtree to see the result. If you remove the ~:exports none~ from th
 #+name: q-circuit
 #+header: :var header="\\\\\\\\\\centerline{\\Qcircuit @C=1em @R=.7em {"
 #+header: :var footer="}}\\\\\\\\\\"
-#+begin_src emacs-lisp :noweb yes :var table=default-table :var prefooter="" :exports none
+#+begin_src emacs-lisp :noweb yes :var table=default-table :var prefooter="" :exports none :eval never-export
 <<org-table-to-latex-matrix>>
 #+end_src
 
@@ -5318,7 +5356,7 @@ Export this subtree to see the result. If you remove the ~:exports none~ from th
 | \ket{0}                                  |   | \targ    | \targ    | \qw      | \qw      | \gate{M} \cwx[1]             |     |
 | \ket{0}                                  |   | \qw      | \qw      | \targ    | \targ    | \gate{M}                     |     |
 :end:
-#+begin_src latex :noweb yes
+#+begin_src latex :noweb yes :eval never-export
 <<q-circuit(3qubit-correction-circuit,"\\gategroup{1}{2}{3}{2}{1.5em}{\\{}")>>
 #+end_src
 
@@ -5333,7 +5371,7 @@ Export this subtree to see the result. If you remove the ~:exports none~ from th
 [[http://lists.gnu.org/archive/html/emacs-orgmode/2011-07/msg00194.html][(O) How-to evaluate Java-snippets in org-mode/org-babel?]] is a nice thread on the subject, and it seens that the current =ob-java.el= was built according to it.
 
 This is a hello world example
-#+begin_src java :classname HelloWorld
+#+begin_src java :classname HelloWorld :eval never-export
 public class HelloWorld {
 	public static void main (String args[]) {
 	    System.out.println ("Hello World!");
@@ -5348,7 +5386,7 @@ public class HelloWorld {
 :PROPERTIES:
 :ID:       f7e02b8e-69ca-42d3-bebd-89fa0914adaf
 :END:
-#+begin_src java :classname NonStatic :tangle NonStatic.java
+#+begin_src java :classname NonStatic :tangle NonStatic.java :eval never-export
 public class NonStatic {
   public int mVar;
   
@@ -5357,7 +5395,7 @@ public class NonStatic {
   }
 }
 #+end_src
-#+begin_src java :classname HelloWorld
+#+begin_src java :classname HelloWorld :eval never-export
 public class HelloWorld {
 	public static void main (String args[]) {
 	    NonStatic ns = new NonStatic(8);
@@ -5374,7 +5412,7 @@ public class HelloWorld {
 <2015-07-07 Tue>
 **** Examples
 ***** Simplify rational expression
-#+begin_src maxima :results raw
+#+begin_src maxima :results raw :eval never-export
 programmode: false;
 tex(fullratsimp(e^x/(e^x - cos(x))+cos(x)*(sin(x)+e^x)/((sin(x)+cos(x))*(e^x-cos(x)))+sin(x)/(sin(x)+cos(x))));
 #+end_src
@@ -5386,12 +5424,18 @@ $$-{{2\,e^{x}}\over{\cos x-e^{x}}}$$
 [[https://stackoverflow.com/questions/6315732/how-to-prevent-maxima-tex1-from-wrapping-its-output/7382111#7382111][How to prevent Maxima tex1 from wrapping its output? - Stack Overflow]] has a solution.
 <2015-07-07 Tue>
 *** =noweb=
-**** Experiments
+**** COMMENT Experiments
+
+#+name: haskell-c :eval never-export
+#+begin_src haskell
+"example"
+#+end_src
+
 #+name: test_comment
 #+header: :var haskell_code=haskell-c
 #+header: :var shell_output=shell-output
 #+header: :var haskell_example_block=haskell-example-block
-#+begin_src latex :noweb yes
+#+begin_src latex :noweb yes :eval never-export
 \begin{diagram}
     haskell_code
     shell_output
@@ -5406,11 +5450,11 @@ $$-{{2\,e^{x}}\over{\cos x-e^{x}}}$$
 | 3 |
 | 4 |
 
-#+begin_src latex :noweb yes
+#+begin_src latex :noweb yes :eval never-export
 <<test(haskell-c)>>
 #+end_src
 
-#+begin_src latex :noweb yes
+#+begin_src latex :noweb yes :eval never-export
 <<test(example-table)>>
 #+end_src
 
@@ -5420,7 +5464,7 @@ verbatim text my friend
 #+end_example
 
 #+name: shell-output
-#+begin_src sh :stdin haskell-c
+#+begin_src sh :stdin haskell-c :eval never-export
 echo "nice"
 #+end_src
 
@@ -5472,13 +5516,13 @@ It seems by [[https://lists.gnu.org/archive/html/emacs-orgmode/2010-09/msg00428.
 ** Custom agenda commands
 To use the occur-tree, you must specify a regular expression with ~\\~ instead of ~\~ in the string.
 So in order to search for ~TODO\|NEXT~, you must write
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (setq org-agenda-custom-commands
       '(("t" occur-tree "TODO\\|NEXT")))
 #+end_src
 
 To search for all headings containing the TODO keyword you write 
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (setq org-agenda-custom-commands
       '(("t" occur-tree "^[\\*]+ TODO")))
 #+end_src
@@ -5494,7 +5538,7 @@ To search for all headings containing the TODO keyword you write
 :ID:       105bca01-668c-48a3-8e92-fb40d9300df2
 :END:
 One can achieve this by doing:
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (custom-set-variables '(org-emphasis-alist (cons '("$" org-code) org-emphasis-alist)))
 #+end_src
 But since the emphasis happens after the pretty entities, it disables it. Try evaluating the code and opening the attached file to see the results.
@@ -5507,7 +5551,7 @@ Also, [[http://permalink.gmane.org/gmane.emacs.orgmode/59025][add entries to *em
 :END:
 
 I reconstructed the programmatically generated original emphasis regular expresion ~[[file:elisp/org-mode/org.el::(setq%20org-emph-re][org-emph-re]]~, 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle no :eval never-export
 (setq org-emph-re-reconstruction "\\([ \t('\"{]\\|^\\)\\(\\([*/_=~+]\\)\\([^ \t\r\n,\"']\\|[^ \t\r\n,\"'].*?\\(?:\n.*?\\)\\{0,1\\}[^ \t\r\n,\"']\\)\\3\\)\\([- \t.,:!?;'\")}\\[]\\|$\\)")
 #+end_src
 <2014-11-18 Tue>
@@ -5531,7 +5575,7 @@ I reconstructed the programmatically generated original emphasis regular expresi
 3) [[http://orgmode.org/manual/Beamer-export.html][Beamer export - The Org Manual]]
 **** Vertical spacing of multiline math environment
 [[id:dcb1d1ea-109f-482c-af2a-3e3e35bdc698][Spacing around multiline math environments]]'s link, [[http://tex.stackexchange.com/a/28253/56669][Too much space at the top of a beamer block when using multilined math environment's answer]] has a solution. Since the beamer export of Org-Mode doesn't insert lines right after the ~\begin{document}~, one of the comments suggests to write:
-#+begin_src latex
+#+begin_src latex :eval never-export
 \AtBeginDocument{\setlength\abovedisplayskip{0pt}}
 #+end_src
 in the preamble.
@@ -5598,11 +5642,11 @@ In your buffer, or set the ~(org-export-with-todo-keywords)~ variable.
 :ID:       ea9354e6-0294-4926-a6f8-651d7d2fc6ef
 :END:
 Add directionality to the html tag:
-#+begin_src html
+#+begin_src html :eval never-export
 <html dir="rtl" xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 #+end_src
 And make all td alignments to the right, like so:
-#+begin_src html
+#+begin_src html :eval never-export
 <style type="text/css">
   td.right  { text-align: right;  }
   td.left   { text-align: right;   }
@@ -5618,7 +5662,7 @@ And make all td alignments to the right, like so:
 [[http://stackoverflow.com/a/27095959/1346426][How to make inline comments in Org-mode?'s answer]] is my answer.
 I followed his suggestions and made this comment, which is also a link. Run this emacs-lisp source block to continue with the experiment.
 #+macro: open  
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (defun org-open-comment-link ()
   (interactive)
   (org-next-link)
@@ -5684,13 +5728,13 @@ After that you can export with org-mode successfully.
 **** Explicitly Exporting a LaTeX source block
 Actually just writing:
 #+begin_example
-#+begin_src latex
+#+begin_src latex :eval never-export
 Some LaTeX code
 #+end_src
 #+end_example
 Already exports it. to export explicitly one should write:
 #+begin_example
-#+begin_src latex :exports results :results code
+#+begin_src latex :exports results :results code :eval never-export
 Some LaTeX code
 #+end_src
 #+end_example
@@ -5717,7 +5761,7 @@ Diagrams uses an external program, so one should run ~pdflatex --enable-write18~
 ***** Adding tikz support
 [[http://bnbeckwith.com/blog/org-mode-tikz-previews-on-windows.html][Enabling tikz previews in org-mode]] has a solution for it.
 I added these lines to my configuration file:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (setq org-latex-packages-alist '(("" "tikz" t)))
 (eval-after-load "preview"
     '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t))
@@ -5727,7 +5771,7 @@ and it worked but made all the math previews blurry..
 [[http://lists.gnu.org/archive/html/emacs-orgmode/2009-08/msg00487.html][Re: (Orgmode) how to draw picture in org-mode ? Does it support tikz/pgf]] also has a similar offer, but not as detailed as the previous source.
 [[http://lists.gnu.org/archive/html/emacs-orgmode/2014-05/msg00675.html][(O) Preview tikz in org-mode (reduce margins of produced images)]] has some discussion on the subject, may be related, didn't read it through.
 I tried doing:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (add-to-list 'org-latex-packages-alist '("" "amsthm,caption,subcaption,multirow,bigdelim,titlesec,tikz"))
 (eval-after-load "preview"
     '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t))
@@ -5831,7 +5875,7 @@ C-c / t - View TODO items in a sparse tree
 #+end_example
 
 *** Function Definition example
-#+begin_src haskell
+#+begin_src haskell :eval never-export
 :{
 let fac 0 = 1
     fac n = n * fac (n-1)
@@ -5855,11 +5899,11 @@ _My Example_
 Evaluate the second shell source, and you're supposed to get the certain Masechta in the page specified.
 
 #+name: open_gemara
-#+begin_src sh :var masechet="baba_batra" :var page=1 :results output silent
+#+begin_src sh :var masechet="baba_batra" :var page=1 :results output silent :eval never-export
 evince -p $page ~/gemara/$masechet.pdf
 #+end_src
 
-#+begin_src sh :noweb yes :results output silent
+#+begin_src sh :noweb yes :results output silent :eval never-export
 <<open_gemara("baba_batra",14)>>
 #+end_src
 
@@ -5870,7 +5914,7 @@ evince -p $page ~/gemara/$masechet.pdf
 :PROPERTIES:
 :ID:       a1b41475-cd00-43d7-acef-6ad5cd6a79e0
 :END:
-#+begin_src haskell :tangle haskell/tangling_example.hs :export none
+#+begin_src haskell :tangle haskell/tangling_example.hs :export none :eval never-export
 fac 0 = 1
 fac n = n * fac (n-1)
 
@@ -5879,16 +5923,16 @@ main = print (fac 10)
 
 #+name: fac
 #+header: :var num="1"
-#+begin_src sh :noweb yes :results verbatim raw silent :exports none
+#+begin_src sh :noweb yes :results verbatim raw silent :exports none :eval never-export
 haskell/tangling_example $num
 #+end_src
 
-#+begin_src latex :noweb yes :results org
+#+begin_src latex :noweb yes :results org :eval never-export
 <<fac()>>
 #+end_src
 
 #+RESULTS:
-#+BEGIN_SRC org
+#+BEGIN_SRC org :eval never-export
 3628800
 #+END_SRC
 <2014-09-14 Sun>
@@ -5901,7 +5945,7 @@ haskell/tangling_example $num
 :END:
 Run this to get a preliminary list of files
 #+name: org-files :eval never
-#+begin_src sh
+#+begin_src sh :eval never-export
 ls *.org | cut -f1 -d"."
 #+end_src
 
@@ -5921,7 +5965,7 @@ Now change the name of the table to ~org-files-tbl~ for the elisp source block
 | torah             |
 
 Now run this to get a list form of the table
-#+begin_src emacs-lisp :var tbl=org-files-tbl
+#+begin_src emacs-lisp :var tbl=org-files-tbl :eval never-export
 (concat "(\""(mapconcat 'car tbl "\" \"") "\")")
 #+end_src
 
@@ -5949,7 +5993,7 @@ javascript:location.href='org-protocol://store-link://'+encodeURIComponent(locat
 :ID:       cbc0e2f5-42c7-4e26-bb52-6976324bc599
 :END:
 Accroding to [[http://orgmode.org/worg/org-contrib/org-protocol.html#sec-3-1][org-protocol.el – Intercept calls from emacsclient to trigger custom actions]] and [[https://productforums.google.com/forum/#!topic/chrome/2xAkIviw2bo][Custom url handlers using gconftool-2 Ubuntu 11.04 not working - Google Product Forums]], create a =.desktop= file like so:
-#+begin_src conf
+#+begin_src conf :eval never-export
 [Desktop Entry]
 Name=org-protocol
 Comment=org-protocol handler
@@ -5962,12 +6006,12 @@ MimeType=x-scheme-handler/org-protocol;
 Categories=Network;
 #+end_src
 Add these commands to your ~.profile~:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 gconftool-2 -s /desktop/gnome/url-handlers/org-protocol/command '/usr/bin/emacsclient %s' --type String
 gconftool-2 -s /desktop/gnome/url-handlers/org-protocol/enabled --type Boolean true
 #+end_src
 And run this command:
-#+begin_src sh
+#+begin_src sh :eval never-export
 update-desktop-database
 #+end_src
 <2015-04-28 Tue>
@@ -5976,7 +6020,7 @@ update-desktop-database
 :ID:       2356622e-9c7e-41fc-bd81-91c768c95893
 :END:
 Double click on the tangled file on Windows.
-#+begin_src conf :tangle misc/org-protocol.reg
+#+begin_src conf :tangle misc/org-protocol.reg :eval never-export
 REGEDIT4
 
 [HKEY_CLASSES_ROOT\org-protocol]
@@ -6062,7 +6106,7 @@ The changes I made are documented in the attached files
 \end{equation*}
 
 I thought [[http://stackoverflow.com/questions/24909918/org-mode-macros-inside-code-blocks-and-using-babel][emacs - org-mode macros inside code blocks and using babel - Stack Overflow]] was asking my question, so this is the original answer I intended to answer:
-#+begin_src markdown
+#+begin_src markdown :eval never-export
 Hi, actually, org-mode does not expand macros inside of code blocks, even though macro expansion happens before code block execution.
 
 The reason lies in these lines ([195-207 in lisp/org-macro.el](http://repo.or.cz/w/org-mode.git?a=blame_incremental;hb=fa64b59b05a2344de2d377bf30004d50a73dd4cf;f=lisp%2Forg-macro.el#l176) as of now):
@@ -6120,7 +6164,7 @@ have good explanations on the subject. It appears that =(setq bidi-paragraph-dir
 makes Emacs decide whether to diplay the text LTR or RTL.
 However, [[http://lists.gnu.org/archive/html/emacs-orgmode/2013-06/msg01051.html][Re: Right-to-left text in org mode]] explains that org-mode overrides it
 and forces LTR. You need to add a hook to disable that behaviour, like so:
-#+begin_src lisp
+#+begin_src lisp :eval never-export
     (add-hook 'org-mode-hook
             (lambda ()
               (setq bidi-paragraph-direction nil)))
@@ -6141,7 +6185,7 @@ and forces LTR. You need to add a hook to disable that behaviour, like so:
 | 4 | 5 | 6 |
 
 #+name: transpose
-#+begin_src emacs-lisp :var table=transpose-example
+#+begin_src emacs-lisp :var table=transpose-example :eval never-export
 (require 'cl)
 (apply #'mapcar* #'list table)
 #+end_src
@@ -6153,7 +6197,7 @@ and forces LTR. You need to add a hook to disable that behaviour, like so:
 ** Theme
 *** Outline Colors
 This goes from blue to magenta (too pale)
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (set-face-foreground 'org-level-1 "#5166EC")
 (set-face-foreground 'org-level-2 "#4FC7EC")
 (set-face-foreground 'org-level-3 "#4DEDAE")
@@ -6165,7 +6209,7 @@ This goes from blue to magenta (too pale)
 #+end_src
 
 This goes from blue to magenta (too bright)
-#+begin_src emacs-lisp :results silent
+#+begin_src emacs-lisp :results silent :eval never-export
 (set-face-foreground 'org-level-1 "#0027FF")
 (set-face-foreground 'org-level-2 "#00D5FF")
 (set-face-foreground 'org-level-3 "#00FF7A")
@@ -6264,7 +6308,7 @@ I found out that there are [[https://addons.mozilla.org/En-us/firefox/addon/auto
 #+TBLFM: @<<$3..@>$4='(decode-hex-string $-2)
 
 Play this to be able to update the table.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :eval never-export
 (defun decode-hex-string (hex-string)
   (apply #'concat 
      (loop for i from 0 to (- (/ (length hex-string) 4) 1) 
@@ -6370,15 +6414,15 @@ I decided to go with [[id:c48c8694-d9f8-4f29-9eb5-a4e44cd6e839][pidginTex]] in t
 :END:
 I followed the instructions on [[https://code.google.com/p/pidgintex/][pidgintex - A fast plugin for Pidgin that renders LaTeX expressions in messages. - Google Project Hosting]], but it didn't work.
 First, this is how you should clone the rep (they omitted the 's' in https for some reason..)
-#+begin_src sh
+#+begin_src sh :eval never-export
 svn checkout https://pidgintex.googlecode.com/svn/trunk/ pidgintex-read-only
 #+end_src
 And you need to install this package in order for the ~make~ to work
-#+begin_src sh
+#+begin_src sh :eval never-export
 sudo apt-get install pidgin-dev
 #+end_src
 And also maybe those (I installed them for telegram-purple):
-#+begin_src sh
+#+begin_src sh :eval never-export
 sudo apt-get install libssl-dev libglib2.0-dev libpurple-dev
 #+end_src
 ** Solutions
@@ -6453,7 +6497,7 @@ Attached is a file that can be imported by template.
 
 Whenever an observable sends an error, it is automatically unsubscribed form.
 In order to prevent the observable from unsubscribing, use the ~retry()~ operator like so:
-#+begin_src java
+#+begin_src java :eval never-export
 ViewObservable.clicks(sendPhoneButton)
         .flatMap(o -> {
             if (phoneTextField.getText().toString().equals("100"))
@@ -6492,7 +6536,7 @@ A sample usage is when you have two sources, and when one of them fails you grac
 In short, for how to use ~SubscribeOn~ you need to think where are subscriptions happenning (e.g. ~flatMap~ or ~concatWith~), and then intercept the scheduling using ~SubscribeOn~.
 
 For example, if we have this:
-#+begin_src java
+#+begin_src java :eval never-export
 Observable.range(1,100)
         .map(Object::toString)
         .subscribeOn(AndroidSchedulers.mainThread())
@@ -6504,7 +6548,7 @@ Observable.range(1,100)
         });
 #+end_src
 The subscription will occur on (blue is ~Schedulers.io()~ and red is ~AndroidSchedulers.mainThread()~:
-#+begin_src haskell :noweb yes :tangle haskell/ObserveOn_SubscribeOn_diagram.hs :exports none
+#+begin_src haskell :noweb yes :tangle haskell/ObserveOn_SubscribeOn_diagram.hs :exports none :eval never-export
 {-# LANGUAGE NoMonomorphismRestriction #-}
 {-# LANGUAGE FlexibleContexts #-}
 import Diagrams.Prelude
@@ -6549,7 +6593,7 @@ dia = vcat [observable o | o <- [("range",red),("map",red),("flatMap",blue),("do
 :END:
 [[http://stackoverflow.com/a/467053/1346426][Show ignored files in git's answer]] has a solution.
 To find all ignored files with their patterns do:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 find . -exec git check-ignore -v {} \;
 #+end_src
 This only lists the ignored files which are not tracked.
@@ -6559,7 +6603,7 @@ This only lists the ignored files which are not tracked.
 :ID:       358af91b-a0b7-45d3-b1fb-e42325d20a31
 :END:
 Do this
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 find . -exec git check-ignore {} \; | while read -r line; do git status "$line"; done
 #+end_src
 <2014-12-30 Tue>
@@ -6573,7 +6617,7 @@ find . -exec git check-ignore {} \; | while read -r line; do git status "$line";
 :END:
 [[http://stackoverflow.com/a/9370094/1346426][How to list files ignored by git that are currently staged or committed?'s answer]] has a solution.
 Just do this
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 git ls-files -i --exclude-standard
 #+end_src
 <2014-12-30 Tue>
@@ -6645,7 +6689,7 @@ _For all of the directory_
 <2015-05-17 Sun>
 **** Referencing a revision
 Use this to get the revision information
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 git log --name-status
 #+end_src
 **** Removing a file from a previous commit
@@ -6668,7 +6712,7 @@ git log --name-status
 :ID:       91b5cc97-f932-43bf-8a92-77c2ddc9b124
 :END:
 
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 if []; then # A precaution
     git rebase -i --root
 fi
@@ -6678,7 +6722,7 @@ Change everything from ~pick~ to ~edit~.
 Make the appropriate ~.gitignore~ file.
 
 Do the following until you reach the end:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 if []; then # A precaution
     git rm -r --cached . ; git add . ; git commit --amend -C HEAD ; git rebase --continue
 fi
@@ -6721,7 +6765,7 @@ Unmerged paths:
 #+end_example
 
 All you have to do is:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 if []; then # A precaution
     git rm build/intermediates/model_data.bin
     git rebase --continue
@@ -6739,7 +6783,7 @@ fi
 [[http://git-scm.com/docs/git-mv][Git - git-mv Documentation]] explains how to.
 <2014-08-27 Wed>
 **** Return all deleted files
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
   git checkout -- `gs | grep ".el" | grep deleted | cut -f2 -d":" | xargs`
 #+end_src
 <2015-05-10 Sun>
@@ -6789,7 +6833,7 @@ fi
 <2015-03-30 Mon>
 ***** Removing a submodule that is a .git directory
 Do this:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 git deinit asubmodule
 rm -rf asubmodule-directory
 git rm asubmodule
@@ -6845,7 +6889,7 @@ However, I'm using a home network which seems to be fine.
 :PROPERTIES:
 :ID:       cc8cac6f-e8d8-4d33-9927-19801ec50e18
 :END:
-The [[http://synergy-project.org/][Synergy - Mouse and keyboard sharing software]] site makes you pay for it, so I'm using [[http://synergykm.com/synergy-binaries-mirror/][Synergy Binaries Download Mirror | SynergyKM]] which offers it for free.
+The [[http://synergy-project.org/][Synergy - Mouse and keyboard sharing software]] site makes you pay for it, so I'm using [[http://synergykm.com/binaries/][Synergy Binary Download Mirror]] which offers it for free.
 You can also download from the nightly builds - https://synergy-project.org/nightly
 
 <2015-01-06 Tue>
@@ -6987,7 +7031,7 @@ title="<your_title>"
 #+end_example
 and you'll see something like this:
 
-#+begin_src html
+#+begin_src html :eval never-export
 <div created="20140629115428798" modified="20140706224022063" title="TeXShop">
 #+end_src
 
@@ -7057,11 +7101,11 @@ In order to use it you need to request an API key from Google.
 [[https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/yv2fHlWIOBU][dumb question: how to generate an API key for Speech? - Google Groups]] has an explanation of how to do so. Make sure you enabled the API.
 Also according to [[https://gist.github.com/alotaiba/1730160][Google Speech To Text API]] you need to change the =lang= variable in the request url to =en-US=. Change this line
 in =/usr/share/google2ubuntu/librairy/interface.py=
-#+begin_src python :session
+#+begin_src python :session :eval never-export
 req = urllib2.Request('https://www.google.com/speech-api/v2/recognize?output=json&lang='+self.lang+'&key='+key+'&client=chromium', data=data, headers={'Content-type': 'audio/x-flac; rate=16000'})
 #+end_src
 to this:
-#+begin_src python :session
+#+begin_src python :session :eval never-export
 req = urllib2.Request('https://www.google.com/speech-api/v2/recognize?output=json&lang=en-US&key='+key+'&client=chromium', data=data, headers={'Content-type': 'audio/x-flac; rate=16000'})
 #+end_src
 and it should work.
@@ -7086,7 +7130,7 @@ I set the internal laptop microphone to 72% and the noise threshold to 5 and it 
 :ID:       369f68ff-6381-49e2-970d-309bdd4f2d1d
 :END:
 Using [[http://stackoverflow.com/a/1117411/1346426][JAVA_HOME directory's answer]]'s advice, I did:
-#+begin_src sh
+#+begin_src sh :eval never-export
 readlink -f `which java`
 #+end_src
 
@@ -7094,7 +7138,7 @@ readlink -f `which java`
 : /usr/lib/jvm/java-6-oracle/jre/bin/java
 
 For Java 8 I just went to the equivalent directory
-#+begin_src sh
+#+begin_src sh :eval never-export
 ls /usr/lib/jvm/
 #+end_src
 
@@ -7107,7 +7151,7 @@ ls /usr/lib/jvm/
 :ID:       78e5e70a-c21f-4754-9e19-e67a2c157f81
 :END:
 After finding ~java~ using [[id:369f68ff-6381-49e2-970d-309bdd4f2d1d][Finding the java directory]], set ~JAVA_HOME~ to the directory containing the ~jre~ directory like so:
-#+begin_src sh
+#+begin_src sh :eval never-export
 export JAVA_HOME=/usr/lib/jvm/java-6-oracle/
 #+end_src
 <2014-11-17 Mon>
@@ -7134,7 +7178,7 @@ export JAVA_HOME=/usr/lib/jvm/java-6-oracle/
 **** Using the command line
 _Calling_
 #+name: linphone-call-phone
-#+begin_src sh :var phone_number="" :results output
+#+begin_src sh :var phone_number="" :results output :eval never-export
 linphonecsh init
 linphonecsh register --host "didlogic.com" --username 88389 --password dhECQhkbO8eBVV
 linphonecsh dial $phone_number
@@ -7142,7 +7186,7 @@ linphonecsh dial $phone_number
 
 _Ending the call:_
 #+name: linphone-end-call
-#+begin_src sh :results output
+#+begin_src sh :results output :eval never-export
 linphonecsh exit
 #+end_src
 
@@ -7160,7 +7204,7 @@ The default is =/home/username/.local/share/meld=, so I just replaced it with a 
 [[http://www.webupd8.org/2012/06/fix-mp4-playback-in-ubuntu-1204.html][Fix MP4 Playback In Ubuntu 12.04 or 12.10 (Gstreamer Bug Affecting Totem, Minitube, Etc.) ~ Web Upd8: Ubuntu / Linux blog]] fixes the problem.
 <2014-10-31 Fri>
 *** nohands
-#+begin_src sh
+#+begin_src sh :eval never-export
 sudo add-apt-repository "deb http://ppa.launchpad.net/sebastian-ruehl/nohands/ubuntu natty main"
 
 #+end_src
@@ -7177,7 +7221,7 @@ sudo add-apt-repository "deb http://ppa.launchpad.net/sebastian-ruehl/nohands/ub
 [[http://comments.gmane.org/gmane.comp.voip.pjsip/14728][the PJSIP open source SIP stack ()]] says to add ~--clock-rate 44100~ and that solves it.
 **** Trying to operate
 #+name: call-phone
-#+begin_src sh :var uri="" :results output
+#+begin_src sh :var uri="" :results output :eval never-export
 pjsua --id "sip:88389@didlogic.com" --registrar "sip:didlogic.com" --realm "*" --username "88389" --password "dhECQhkbO8eBVV" $uri
 #+end_src
 
@@ -7194,13 +7238,13 @@ I'm not sure whether I'm using the right parameteres, so I thought of trying to 
 :ID:       03ba483f-a6b1-4c87-8d6a-4b3f88b2532a
 :END:
 [[http://en.wikibooks.org/wiki/Scala/Setup][Scala/Setup - Wikibooks, open books for an open world]] says to do:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 sudo apt-get install scala
 #+end_src
 But it gets the older version.
 [[https://gist.github.com/visenger/5496675][Scala and sbt installation on ubuntu 12.04]] gets the newer version.
 This is a script I built based on it.
-#+begin_src sh :tangle ~/scripts/install/scala.sh :eval never
+#+begin_src sh :tangle ~/scripts/install/scala.sh :eval never :eval never-export
 SCALA_VERSION="2.11.4"
 cd ~/install
 wget --continue "http://www.scala-lang.org/files/archive/scala-$SCALA_VERSION.deb"
@@ -7223,7 +7267,7 @@ sudo apt-get install scala
 :ID:       aa971c20-91bc-430e-b9a1-736d80bd9a39
 :END:
 I followed [[https://projects.savoirfairelinux.com/projects/sflphone/wiki/FAQ#How-can-I-get-debug-messages][FAQ - SFLphone - Savoir-faire Linux]], and discovered I had to do:
-#+begin_src sh :results output
+#+begin_src sh :results output :eval never-export
 sflphone
 G_MESSAGES_DEBUG=all sflphone-client-gnome
 #+end_src
@@ -7315,7 +7359,7 @@ Failure: Module initialization failed
 I tried following [[http://rebusdigitalis.blogspot.co.il/2011/03/using-your-phone-from-your-computer-via_15.html][Rebus Digitalis - Things Digital: Using your phone from your computer via BT-HFP]].
 
 I got this message when running
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 hfpd -f -d4 -E
 #+end_src
 #+begin_example
@@ -7333,7 +7377,7 @@ Bluetooth System Started
 According to [[https://bugs.launchpad.net/ubuntu/+source/bluez-utils/+bug/365779][Bug #365779 “missing hcid.conf and pairing problem” : Bugs : bluez-utils package : Ubuntu]] you don't use ~/etc/bluetooth/hcid.conf~ but instead you use ~/etc/bluetooth/main.conf~.
 
 I tried
-#+begin_src sh
+#+begin_src sh :eval never-export
 hcitool inq
 #+end_src
 and it found my Nexus after 10 seconds.
@@ -7349,7 +7393,7 @@ _More resources_
 :END:
 I couldn't enable the bluetooth, so following [[http://askubuntu.com/a/342999/252848][Trouble turning on bluetooth in 12.04's answer]],
 I did:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 rfkill list all
 #+end_src
 And it said
@@ -7365,7 +7409,7 @@ And it said
 	Hard blocked: no
 #+end_example
 I did:
-#+begin_src sh
+#+begin_src sh :eval never-export
 rfkill unblock 1
 #+end_src
 and could enable it.
@@ -7455,14 +7499,14 @@ To =/etc/sysctl.conf=.
 :ID:       17f25969-9fba-447d-9c00-363fff5d0196
 :END:
 [[http://askubuntu.com/a/544787/252848][notify-send ignores timeout?'s answer]] recommends an alternate version of =notify-send= that respects the timeout, this is a script to install it:
-#+begin_src sh :tangle scripts/install_alternate_notify_send.sh :eval never
+#+begin_src sh :tangle scripts/install_alternate_notify_send.sh :eval never :eval never-export
 sudo add-apt-repository ppa:leolik/leolik 
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install libnotify-bin
 #+end_src
 You also need to add:
-#+begin_src sh
+#+begin_src sh :eval never-export
 pkill notify-osd
 #+end_src
 To make it work.
@@ -7474,7 +7518,7 @@ To make it work.
 :ID:       4bd69aaa-e204-4892-943c-d2b2b0506df3
 :END:
 According to [[http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/][Install Oracle Java 8 (JDK 8u25) In Ubuntu & LinuxMint via PPA]], do:
-#+begin_src sh :tangle ~/scripts/add_java8_ppa.sh :eval never
+#+begin_src sh :tangle ~/scripts/add_java8_ppa.sh :eval never :eval never-export
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java8-installer
@@ -7570,11 +7614,11 @@ I found two answers that let me do what I want:
 [[http://www.omgubuntu.co.uk/2014/02/ubuntu-14-04-high-resolution-retina-screen][Ubuntu 14.04 Looks to Improve Support For Hi-Res Screens - OMG! Ubuntu!]] is an article asbout it. It links to [[https://lists.ubuntu.com/archives/ubuntu-desktop/2014-February/004423.html][cairo 1.13 snapshot in the ubuntu-desktop ppa (Hi-DPI support testing)]], I tried adding the ppa but it seems that you need to get ubuntu to use this ppa instead of the standard and I didn't want to go into all this hassle.
 However, using [[http://askubuntu.com/a/361343/252848][Ubuntu resolution with Ultrabook's answer]], it worked fine.
 I used:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 xrandr
 #+end_src
 And than chose the ~LVDS1~ screen and did:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 xrandr --output LVDS1 --scale 0.75x0.75
 #+end_src
 <2015-02-24 Tue>
@@ -7636,25 +7680,25 @@ P.S.
 <2015-05-10 Sun>
 **** From a non root user
 Following [[http://serverfault.com/q/476875][mount_afp on linux, user rights]], I did:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 groupadd fuse
 sudo -i
 adduser username fuse
 exit
 #+end_src
 Maybe it can be the other way around though.
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 sudo mknod /dev/fuse c 10 229
 sudo chmod 770 /dev/fuse
 #+end_src
 Restarted, and it worked
 
 This is the script to mount it:
-#+begin_src sh :eval never
+#+begin_src sh :eval never :eval never-export
 mount_afp afp://username:pass@10.0.0.3/username ~/mac
 #+end_src
 and to unmount it:
-#+begin_src sh
+#+begin_src sh :eval never-export
 afp_client unmount ~/mac
 #+end_src
 <2015-05-10 Sun>
@@ -7798,25 +7842,25 @@ I tried [[http://askubuntu.com/a/122349][Install Windows 7 from Ubuntu on USB Dr
 <2015-05-17 Sun>
 *** Excluding directories from the command line
 I tried following [[http://www.markomedia.com.au/excluding-directories-from-zip-and-tar-archive/][Excluding directories from ZIP and TAR archive - markomedia Technologies]] and did this
-#+begin_src sh
+#+begin_src sh :eval never-export
 zip -vr ~/data1/org_mode.zip /home/username/org-mode -x "/home/username/org-mode/data"
 #+end_src
 but it didn't exclude the directory I wanted.
 
 However, [[http://stackoverflow.com/a/20608356/1346426][ubuntu: How to zip a directory in ubuntu by excluding some subdirectories from command line (closed)'s answer]] had the solution.
 So I used this:
-#+begin_src sh
+#+begin_src sh :eval never-export
 zip -r ~/orgmode-backup/org_mode.zip ~/org-mode -x ~/org-mode/data/\* ~/org-mode/ltxpng/\* \*.pdf \*.tex
 #+end_src
 and it worked.
 <2014-09-08 Mon>
 **** Inconsistent behavior in different folders
 I used this line:
-#+begin_src sh
+#+begin_src sh :eval never-export
 zip -r ~/data1/org_mode.zip ~/org-mode -x ~/org-mode/data/\* ~/org-mode/ltxpng/\* *.pdf *.tex
 #+end_src
 and it had inconsistent behavior in different directories. I escaped the asterisks, like so:
-#+begin_src sh
+#+begin_src sh :eval never-export
 zip -r ~/data1/org_mode.zip ~/org-mode -x ~/org-mode/data/\* ~/org-mode/ltxpng/\* \*.pdf \*.tex
 #+end_src
 and it was ok again.
