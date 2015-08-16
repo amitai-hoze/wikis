@@ -4408,6 +4408,11 @@ Happens when you write =\usepackage{amsmath}= twice.
 [[http://tex.blogoverflow.com/2013/04/how-can-i-draw-a-knot-in-tex-let-me-count-the-ways/][How can I draw a knot in TeX? Let me count the ways. « Stack Exchange TeX Blog]] describes a more recent and advanced packeage.
 [[http://ftp.ntua.gr/mirror/ctan/graphics/pgf/contrib/spath3/knots_doc.pdf][http://ftp.ntua.gr/mirror/ctan/graphics/pgf/contrib/spath3/knots_doc.pdf]] is the documentation.
 <2015-05-22 Fri>
+**** Paper on the subject                                         :ATTACH:
+:PROPERTIES:
+:Attachments: paper.tex
+:ID:       6850bf04-e454-44ba-bf28-15c14893eea1
+:END:
 *** Tikz
 **** Center ~tikzpicture~
 [[http://tex.stackexchange.com/a/24004/56669][How to add caption for a TikZ picture?'s answer]] has a solution.
@@ -4556,6 +4561,27 @@ I encountered the bug when using ~\underline~ and ~\underset~
 According to [[http://tex.stackexchange.com/questions/32466/hyperref-links-break-with-babel-hebrew-or-right-to-left-language][cross referencing - hyperref links break with babel + hebrew (or right-to-left language) - TeX - LaTeX Stack Exchange]], the problem is with hebrew and hyperref.
 <2015-05-01 Fri>
 * Linux
+** Applications
+*** Various Topics
+**** Photo album viewer
+[[http://lifehacker.com/5877908/the-best-photo-management-app-for-linux][The Best Photo Management App for Linux]] is a good article on the subject.
+<2015-08-12 ד'>
+**** Simple photo editor
+| Application                                                              | Comment                                |
+|--------------------------------------------------------------------------+----------------------------------------|
+| [[http://www.darktable.org/][darktable - the photo workflow software]]                                  |                                        |
+| [[http://gqview.sourceforge.net/][GQview]]                                                                   | Simple                                 |
+| [[https://userbase.kde.org/Gwenview][Gwenview - KDE UserBase Wiki]]                                             |                                        |
+| [[http://pinta-project.com/][Pinta: Painting Made Simple!]]                                             |                                        |
+| [[https://wiki.gnome.org/Apps/Shotwell][Apps/Shotwell - GNOME Wiki!]]                                              | Without importing features are limited |
+| [[http://www.xnview.com/en/][XnView Software · Software for reading, organizing and processing images]] |                                        |
+| [[https://launchpad.net/ubuntu/trusty/+package/nautilus-image-converter][nautilus-image-converter : Trusty (14.04) : Ubuntu]]                       | Works straight from nautilus           |
+| [[http://photobatch.stani.be/][Phatch - Photo Batch Processor]]                                           |                                        |
+| [[http://www.imagemagick.org/script/index.php][ImageMagick: Convert, Edit, Or Compose Bitmap Images]]                     |                                        |
+| [[http://www.kornelix.com/fotoxx.html][fotoxx - kornelix]]                                                        |                                        |
+| [[http://mtpaint.sourceforge.net/][mtPaint]]                                                                  |                                        |
+| [[https://code.google.com/p/gnome-paint/][gnome-paint]]                                                              |                                        |
+<2015-08-12 Wed>
 ** Bash
 *** For loop
 [[http://www.cyberciti.biz/faq/bash-for-loop/][Bash For Loop Examples]] has a list of examples.
@@ -4664,6 +4690,14 @@ But actually it also workd without an newline character.
 **** Connecting without a password
 [[http://askubuntu.com/a/46935][How can I set up password-less SSH login?'s answer]] has a solution.
 <2015-05-13 Wed>
+** Drivers
+*** Printers
+**** Technion printer
+***** ppd file                                                   :ATTACH:
+:PROPERTIES:
+:Attachments: 355008.ppd
+:ID:       0d88f437-0e22-4031-b3e4-5adc2cb2c5ce
+:END:
 * Lubuntu
 ** IBM Thinkpad T23 Installation screen problem
 [[http://ubuntuforums.org/showthread.php?t=2104218][(lubuntu) IBM Thinkpad T23 - Screen Resolution Issue]] discusses it.
@@ -5089,6 +5123,541 @@ Full error message:
 [[http://askubuntu.com/a/423321][How to install WhatsApp?'s answer]] has a good explanation.
 <2015-02-17 Tue>
 * NixOS
+** Applications
+*** Android Studio
+**** Installation                                                 :ATTACH:
+:PROPERTIES:
+:Attachments: android_sdk_error.png
+:ID:       6c6bccfe-154d-47c9-80bd-6821028c6532
+:END:
+I managed to install, but got an ~Unable to run mksdcard SDK tool~ error.
+[[http://lists.science.uu.nl/pipermail/nix-dev/2015-February/016360.html][(Nix-dev) android-studio: Unable to run mksdcard SDK tool]] has a workaround for that.
+
+I tried to download oracle jdk and got this error:
+
+Full error message:
+#+begin_example
+building Nix...
+building the system configuration...
+these derivations will be built:
+  /nix/store/ph8al5x7lv24ypg0gznlql45c82cf2rc-restrict-message.drv
+  /nix/store/br7b8f40v5k4bc7ird0f39y943xd0l1z-jdk-8u45-linux-x64.tar.gz.drv
+  /nix/store/2iq6a218zir3jvkdvksqfbapz5iymib2-oraclejdk-8u45.drv
+  /nix/store/20pxl6kl21hqps12klyhc5dydmqp1gvc-system-path.drv
+  /nix/store/jvsds89z7xww4ih5rc4ln1lrn3f8niqj-system-crontab.drv
+  /nix/store/s4z2igd35kw9bx30sfyqp87b30m46ws3-unit-script.drv
+  /nix/store/2znfr48v3g94qdv2gg4hlqr4byg90zj2-unit-cron.service.drv
+  /nix/store/mz25fwn9h3nncbcni4ixvm6x79yx4kkw-dbus-conf.drv
+  /nix/store/ib1abgp5m9gyq6nvh52arc93bcp5dk2x-unit-dbus.service.drv
+  /nix/store/nlqi40zxlkknp5bzbp5h8dwcqw4rq8ma-unit-polkit.service.drv
+  /nix/store/qz0d0pcm1khbgqhb8nrz7s58s8qxpqqg-system-units.drv
+  /nix/store/p4w2smm8ldfxilwjx6q9a1b3d555px5h-etc.drv
+  /nix/store/ywdjdvj0dy3p2hb1s48z0b9vwim1pvd8-nixos-15.07.git.15be920.drv
+these paths will be fetched (3.06 MiB download, 9.23 MiB unpacked):
+  /nix/store/7kl9mhxvkdyxgp1s52a9qmny32z0aa6r-hook
+  /nix/store/8a4j1fkllfpdyal26i21naafbancbhcx-libav-0.8.17
+fetching path ‘/nix/store/7kl9mhxvkdyxgp1s52a9qmny32z0aa6r-hook’...
+fetching path ‘/nix/store/8a4j1fkllfpdyal26i21naafbancbhcx-libav-0.8.17’...
+building path(s) ‘/nix/store/70hm30dizkd9vrs76bfgji2yk9s8gkkp-restrict-message’
+building path(s) ‘/nix/store/sk6jdmm31ab4id4sw4r23n342ghnwi8a-jdk-8u45-linux-x64.tar.gz’
+
+--- Downloading ‘https://cache.nixos.org/nar/1lzy7a9yc2rxqrwjxsgkl1v83krbahil5f2bkz8vdgp45jc1hhjr.nar.xz’ to ‘/nix/store/8a4j1fkllfpdyal26i21naafbancbhcx-libav-0.8.17’...
+
+--- Downloading ‘https://cache.nixos.org/nar/1jddj92v2ay6cgr2fxn0hk3vlljv1sky33a8kxv91hgdzx8mkfbh.nar.xz’ to ‘/nix/store/7kl9mhxvkdyxgp1s52a9qmny32z0aa6r-hook’...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+---
+Unfortunately, we may not download file jdk-8u45-linux-x64.tar.gz automatically.
+Please, go to http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html, download it yourself, and add it to the Nix store
+using either
+  nix-store --add-fixed sha256 jdk-8u45-linux-x64.tar.gz
+or
+  nix-prefetch-url --type sha256 file://path/to/jdk-8u45-linux-x64.tar.gz
+
+---
+
+builder for ‘/nix/store/br7b8f40v5k4bc7ird0f39y943xd0l1z-jdk-8u45-linux-x64.tar.gz.drv’ failed to produce output path ‘/nix/store/sk6jdmm31ab4id4sw4r23n342ghnwi8a-jdk-8u45-linux-x64.tar.gz’
+killing process 10321
+killing process 10320
+cannot build derivation ‘/nix/store/2iq6a218zir3jvkdvksqfbapz5iymib2-oraclejdk-8u45.drv’: 1 dependencies couldn't be built
+cannot build derivation ‘/nix/store/20pxl6kl21hqps12klyhc5dydmqp1gvc-system-path.drv’: 1 dependencies couldn't be built
+cannot build derivation ‘/nix/store/ywdjdvj0dy3p2hb1s48z0b9vwim1pvd8-nixos-15.07.git.15be920.drv’: 1 dependencies couldn't be built
+error: build of ‘/nix/store/ywdjdvj0dy3p2hb1s48z0b9vwim1pvd8-nixos-15.07.git.15be920.drv’ failed
+#+end_example
+[[https://github.com/NixOS/nixpkgs/issues/7382][oraclejdk8, buildpath for archive not recognized · Issue #7382 · NixOS/nixpkgs]] has a discussion on the matter.
+I used [[http://www.oracle.com/technetwork/java/archive-139210.html][Oracle Java Archive | Oracle Technology Network | Oracle]] to download the older version.
+
+I tried the first method:
+#+begin_src sh :eval never
+sudo nix-store --add-fixed sha256 jdk-8u45-linux-x64.tar.gz
+#+end_src
+
+and got
+#+begin_example
+error: invalid file name ‘jdk-8u45-linux-x64.tar.gz’
+#+end_example
+
+so I tried
+#+begin_src sh :eval never
+sudo nix-prefetch-url --type sha256 file:///home/amitai/installations/jdk-8u45-linux-x64.tar.gz
+#+end_src
+and got:
+#+begin_example
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  165M  100  165M    0     0   349M      0 --:--:-- --:--:-- --:--:--  107M
+path is ‘/nix/store/sk6jdmm31ab4id4sw4r23n342ghnwi8a-jdk-8u45-linux-x64.tar.gz’
+0v9ilahx03isxdzh4ryv1bqmmzppckickz22hvgzs785769cm67j
+#+end_example
+
+It worked and I tried to import a project, and it asked me for the SDK and JDK.
+Inspired by [[https://github.com/NixOS/nixpkgs/pull/9008][Fix bazel package by philandstuff · Pull Request #9008 · NixOS/nixpkgs]],
+I used this line:
+#+begin_src nix
+export JAVA_HOME=${pkgs.oraclejdk8.home}
+#+end_src
+In ~environment.interactiveShellInit~ and used that path to define the jdk home.
+
+_sdk_home_
+/home/amitai/Android/Sdk
+
+_jdk_home_
+/nix/store/3p87byld3qm2rdpdss6vjafa05zf8vgz-openjdk-8u40b27/lib/openjdk/
+/nix/store/j9zqa1apb8rwsnl5mhvhxcb18cmgxnlk-oraclejdk-8u45/
+
+And got this error message:
+#+begin_example
+[  62604]  ERROR - llij.ide.plugins.PluginManager - Unable to save '/home/amitai/dev/android/SpeechACall/local.properties'/home/amitai/dev/android/SpeechACall/local.properties (Permission denied) 
+com.intellij.openapi.externalSystem.model.ExternalSystemException: Unable to save '/home/amitai/dev/android/SpeechACall/local.properties'/home/amitai/dev/android/SpeechACall/local.properties (Permission denied)
+        at com.android.tools.idea.gradle.project.SdkSync.setProjectSdk(SdkSync.java:153)
+        at com.android.tools.idea.gradle.project.SdkSync.setIdeSdk(SdkSync.java:128)
+        at com.android.tools.idea.gradle.project.SdkSync.syncIdeAndProjectAndroidHomes(SdkSync.java:92)
+        at com.android.tools.idea.gradle.project.SdkSync.syncIdeAndProjectAndroidHomes(SdkSync.java:49)
+        at com.android.tools.idea.gradle.project.GradleProjectImporter.importProject(GradleProjectImporter.java:153)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.createImportWizard(AndroidImportProjectAction.java:174)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.selectFileAndCreateWizard(AndroidImportProjectAction.java:149)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.selectFileAndCreateWizard(AndroidImportProjectAction.java:131)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.actionPerformed(AndroidImportProjectAction.java:87)
+        at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAware(ActionUtil.java:182)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.actionPerformed(ActionButton.java:162)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.performAction(ActionButton.java:126)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.processMouseEvent(ActionButton.java:303)
+        at java.awt.Component.processEvent(Component.java:6290)
+        at java.awt.Container.processEvent(Container.java:2234)
+        at java.awt.Component.dispatchEventImpl(Component.java:4881)
+        at java.awt.Container.dispatchEventImpl(Container.java:2292)
+        at java.awt.Component.dispatchEvent(Component.java:4703)
+        at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
+        at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
+        at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
+        at java.awt.Container.dispatchEventImpl(Container.java:2278)
+        at java.awt.Window.dispatchEventImpl(Window.java:2750)
+        at java.awt.Component.dispatchEvent(Component.java:4703)
+        at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:751)
+        at java.awt.EventQueue.access$500(EventQueue.java:97)
+        at java.awt.EventQueue$3.run(EventQueue.java:702)
+        at java.awt.EventQueue$3.run(EventQueue.java:696)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
+        at java.awt.EventQueue$4.run(EventQueue.java:724)
+        at java.awt.EventQueue$4.run(EventQueue.java:722)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:721)
+        at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.java:734)
+        at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.java:565)
+        at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.java:382)
+        at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+        at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+java.io.FileNotFoundException: /home/amitai/dev/android/SpeechACall/local.properties (Permission denied)
+        at java.io.FileOutputStream.open0(Native Method)
+        at java.io.FileOutputStream.open(FileOutputStream.java:270)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+        at com.android.tools.idea.gradle.util.PropertiesUtil.savePropertiesToFile(PropertiesUtil.java:56)
+        at com.android.tools.idea.gradle.util.LocalProperties.save(LocalProperties.java:141)
+        at com.android.tools.idea.gradle.project.SdkSync.setProjectSdk(SdkSync.java:149)
+        at com.android.tools.idea.gradle.project.SdkSync.setIdeSdk(SdkSync.java:128)
+        at com.android.tools.idea.gradle.project.SdkSync.syncIdeAndProjectAndroidHomes(SdkSync.java:92)
+        at com.android.tools.idea.gradle.project.SdkSync.syncIdeAndProjectAndroidHomes(SdkSync.java:49)
+        at com.android.tools.idea.gradle.project.GradleProjectImporter.importProject(GradleProjectImporter.java:153)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.createImportWizard(AndroidImportProjectAction.java:174)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.selectFileAndCreateWizard(AndroidImportProjectAction.java:149)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.selectFileAndCreateWizard(AndroidImportProjectAction.java:131)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.actionPerformed(AndroidImportProjectAction.java:87)
+        at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAware(ActionUtil.java:182)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.actionPerformed(ActionButton.java:162)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.performAction(ActionButton.java:126)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.processMouseEvent(ActionButton.java:303)
+        at java.awt.Component.processEvent(Component.java:6290)
+        at java.awt.Container.processEvent(Container.java:2234)
+        at java.awt.Component.dispatchEventImpl(Component.java:4881)
+        at java.awt.Container.dispatchEventImpl(Container.java:2292)
+        at java.awt.Component.dispatchEvent(Component.java:4703)
+        at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
+        at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
+        at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
+        at java.awt.Container.dispatchEventImpl(Container.java:2278)
+        at java.awt.Window.dispatchEventImpl(Window.java:2750)
+        at java.awt.Component.dispatchEvent(Component.java:4703)
+        at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:751)
+        at java.awt.EventQueue.access$500(EventQueue.java:97)
+        at java.awt.EventQueue$3.run(EventQueue.java:702)
+        at java.awt.EventQueue$3.run(EventQueue.java:696)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
+        at java.awt.EventQueue$4.run(EventQueue.java:724)
+        at java.awt.EventQueue$4.run(EventQueue.java:722)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:721)
+        at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.java:734)
+        at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.java:565)
+        at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.java:382)
+        at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+        at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+
+[  62608]  ERROR - llij.ide.plugins.PluginManager - Android Studio 1.2.2  Build #AI-141.1980579 
+[  62608]  ERROR - llij.ide.plugins.PluginManager - JDK: 1.8.0_40 
+[  62608]  ERROR - llij.ide.plugins.PluginManager - VM: OpenJDK 64-Bit Server VM 
+[  62609]  ERROR - llij.ide.plugins.PluginManager - Vendor: Oracle Corporation 
+[  62609]  ERROR - llij.ide.plugins.PluginManager - OS: Linux 
+[  62609]  ERROR - llij.ide.plugins.PluginManager - Last Action: WelcomeScreen.ImportProject 
+[  92224]  ERROR - llij.ide.plugins.PluginManager - Unable to save '/home/amitai/dev/android/SpeechACall/local.properties'/home/amitai/dev/android/SpeechACall/local.properties (Permission denied) 
+com.intellij.openapi.externalSystem.model.ExternalSystemException: Unable to save '/home/amitai/dev/android/SpeechACall/local.properties'/home/amitai/dev/android/SpeechACall/local.properties (Permission denied)
+        at com.android.tools.idea.gradle.project.SdkSync.setProjectSdk(SdkSync.java:153)
+        at com.android.tools.idea.gradle.project.SdkSync.setIdeSdk(SdkSync.java:128)
+        at com.android.tools.idea.gradle.project.SdkSync.syncIdeAndProjectAndroidHomes(SdkSync.java:92)
+        at com.android.tools.idea.gradle.project.SdkSync.syncIdeAndProjectAndroidHomes(SdkSync.java:49)
+        at com.android.tools.idea.gradle.project.GradleProjectImporter.importProject(GradleProjectImporter.java:153)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.createImportWizard(AndroidImportProjectAction.java:174)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.selectFileAndCreateWizard(AndroidImportProjectAction.java:149)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.selectFileAndCreateWizard(AndroidImportProjectAction.java:131)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.actionPerformed(AndroidImportProjectAction.java:87)
+        at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAware(ActionUtil.java:182)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.actionPerformed(ActionButton.java:162)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.performAction(ActionButton.java:126)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.processMouseEvent(ActionButton.java:303)
+        at java.awt.Component.processEvent(Component.java:6290)
+        at java.awt.Container.processEvent(Container.java:2234)
+        at java.awt.Component.dispatchEventImpl(Component.java:4881)
+        at java.awt.Container.dispatchEventImpl(Container.java:2292)
+        at java.awt.Component.dispatchEvent(Component.java:4703)
+        at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
+        at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
+        at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
+        at java.awt.Container.dispatchEventImpl(Container.java:2278)
+        at java.awt.Window.dispatchEventImpl(Window.java:2750)
+        at java.awt.Component.dispatchEvent(Component.java:4703)
+        at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:751)
+        at java.awt.EventQueue.access$500(EventQueue.java:97)
+        at java.awt.EventQueue$3.run(EventQueue.java:702)
+        at java.awt.EventQueue$3.run(EventQueue.java:696)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
+        at java.awt.EventQueue$4.run(EventQueue.java:724)
+        at java.awt.EventQueue$4.run(EventQueue.java:722)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:721)
+        at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.java:734)
+        at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.java:565)
+        at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.java:382)
+        at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+        at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+java.io.FileNotFoundException: /home/amitai/dev/android/SpeechACall/local.properties (Permission denied)
+        at java.io.FileOutputStream.open0(Native Method)
+        at java.io.FileOutputStream.open(FileOutputStream.java:270)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+        at com.android.tools.idea.gradle.util.PropertiesUtil.savePropertiesToFile(PropertiesUtil.java:56)
+        at com.android.tools.idea.gradle.util.LocalProperties.save(LocalProperties.java:141)
+        at com.android.tools.idea.gradle.project.SdkSync.setProjectSdk(SdkSync.java:149)
+        at com.android.tools.idea.gradle.project.SdkSync.setIdeSdk(SdkSync.java:128)
+        at com.android.tools.idea.gradle.project.SdkSync.syncIdeAndProjectAndroidHomes(SdkSync.java:92)
+        at com.android.tools.idea.gradle.project.SdkSync.syncIdeAndProjectAndroidHomes(SdkSync.java:49)
+        at com.android.tools.idea.gradle.project.GradleProjectImporter.importProject(GradleProjectImporter.java:153)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.createImportWizard(AndroidImportProjectAction.java:174)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.selectFileAndCreateWizard(AndroidImportProjectAction.java:149)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.selectFileAndCreateWizard(AndroidImportProjectAction.java:131)
+        at com.android.tools.idea.actions.AndroidImportProjectAction.actionPerformed(AndroidImportProjectAction.java:87)
+        at com.intellij.openapi.actionSystem.ex.ActionUtil.performActionDumbAware(ActionUtil.java:182)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.actionPerformed(ActionButton.java:162)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.performAction(ActionButton.java:126)
+        at com.intellij.openapi.actionSystem.impl.ActionButton.processMouseEvent(ActionButton.java:303)
+        at java.awt.Component.processEvent(Component.java:6290)
+        at java.awt.Container.processEvent(Container.java:2234)
+        at java.awt.Component.dispatchEventImpl(Component.java:4881)
+        at java.awt.Container.dispatchEventImpl(Container.java:2292)
+        at java.awt.Component.dispatchEvent(Component.java:4703)
+        at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
+        at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
+        at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
+        at java.awt.Container.dispatchEventImpl(Container.java:2278)
+        at java.awt.Window.dispatchEventImpl(Window.java:2750)
+        at java.awt.Component.dispatchEvent(Component.java:4703)
+        at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:751)
+        at java.awt.EventQueue.access$500(EventQueue.java:97)
+        at java.awt.EventQueue$3.run(EventQueue.java:702)
+        at java.awt.EventQueue$3.run(EventQueue.java:696)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
+        at java.awt.EventQueue$4.run(EventQueue.java:724)
+        at java.awt.EventQueue$4.run(EventQueue.java:722)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:721)
+        at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.java:734)
+        at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.java:565)
+        at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.java:382)
+        at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+        at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+
+[  92226]  ERROR - llij.ide.plugins.PluginManager - Android Studio 1.2.2  Build #AI-141.1980579 
+[  92226]  ERROR - llij.ide.plugins.PluginManager - JDK: 1.8.0_40 
+[  92226]  ERROR - llij.ide.plugins.PluginManager - VM: OpenJDK 64-Bit Server VM 
+[  92226]  ERROR - llij.ide.plugins.PluginManager - Vendor: Oracle Corporation 
+[  92226]  ERROR - llij.ide.plugins.PluginManager - OS: Linux 
+[  92226]  ERROR - llij.ide.plugins.PluginManager - Last Action: WelcomeScreen.ImportProject 
+[ 107303]   WARN - api.vfs.impl.local.FileWatcher - Watcher terminated with exit code 0 
+#+end_example
+
+I used:
+#+begin_src sh :eval never
+chmod -R u+rw .
+#+end_src
+in the project dir, and it worked!
+
+However I got this message:
+#+begin_example
+OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=350m; support was removed in 8.0
+[ 159486]   WARN - nal.AbstractExternalSystemTask - Invalid Gradle JDK configuration found. <a href='#open_external_system_settings'>Open Gradle Settings</a> 
+Project JDK is not specified. <a href='#open_project_jdk_settings'>Open Project SDK Configuration</a> 
+com.intellij.openapi.externalSystem.service.execution.ExternalSystemJdkException: Invalid Gradle JDK configuration found. <a href='#open_external_system_settings'>Open Gradle Settings</a> 
+Project JDK is not specified. <a href='#open_project_jdk_settings'>Open Project SDK Configuration</a>
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.doGetGradleJdk(GradleInstallationManager.java:142)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.getGradleJdk(GradleInstallationManager.java:122)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:177)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:139)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemApiUtil.getExecutionSettings(ExternalSystemApiUtil.java:695)
+        at com.intellij.openapi.externalSystem.service.internal.ExternalSystemResolveProjectTask.doExecute(ExternalSystemResolveProjectTask.java:49)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:138)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:124)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$2.execute(ExternalSystemUtil.java:491)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$3$1.run(ExternalSystemUtil.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$TaskRunnable.run(CoreProgressManager.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$8.run(CoreProgressManager.java:367)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$2.run(CoreProgressManager.java:152)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:452)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:402)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:54)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:137)
+        at com.intellij.openapi.application.impl.ApplicationImpl$10$1.run(ApplicationImpl.java:623)
+        at com.intellij.openapi.application.impl.ApplicationImpl$8.run(ApplicationImpl.java:405)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+        at java.lang.Thread.run(Thread.java:745)
+        at org.jetbrains.ide.PooledThreadExecutor$1$1.run(PooledThreadExecutor.java:56)
+com.intellij.openapi.externalSystem.service.execution.ProjectJdkNotFoundException: Project JDK is not specified. <a href='#open_project_jdk_settings'>Open Project SDK Configuration</a>
+        at com.intellij.openapi.externalSystem.service.execution.ExternalSystemJdkUtil.getJdk(ExternalSystemJdkUtil.java:66)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.doGetGradleJdk(GradleInstallationManager.java:139)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.getGradleJdk(GradleInstallationManager.java:122)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:177)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:139)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemApiUtil.getExecutionSettings(ExternalSystemApiUtil.java:695)
+        at com.intellij.openapi.externalSystem.service.internal.ExternalSystemResolveProjectTask.doExecute(ExternalSystemResolveProjectTask.java:49)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:138)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:124)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$2.execute(ExternalSystemUtil.java:491)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$3$1.run(ExternalSystemUtil.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$TaskRunnable.run(CoreProgressManager.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$8.run(CoreProgressManager.java:367)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$2.run(CoreProgressManager.java:152)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:452)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:402)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:54)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:137)
+        at com.intellij.openapi.application.impl.ApplicationImpl$10$1.run(ApplicationImpl.java:623)
+        at com.intellij.openapi.application.impl.ApplicationImpl$8.run(ApplicationImpl.java:405)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+        at java.lang.Thread.run(Thread.java:745)
+        at org.jetbrains.ide.PooledThreadExecutor$1$1.run(PooledThreadExecutor.java:56)
+
+
+[ 159490]   WARN - radle.project.ProjectSetUpTask - com.intellij.openapi.externalSystem.service.execution.ProjectJdkNotFoundException: Project JDK is not specified. <a href='#open_project_jdk_settings'>Open Project SDK Configuration</a>
+        at com.intellij.openapi.externalSystem.service.execution.ExternalSystemJdkUtil.getJdk(ExternalSystemJdkUtil.java:66)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.doGetGradleJdk(GradleInstallationManager.java:139)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.getGradleJdk(GradleInstallationManager.java:122)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:177)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:139)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemApiUtil.getExecutionSettings(ExternalSystemApiUtil.java:695)
+        at com.intellij.openapi.externalSystem.service.internal.ExternalSystemResolveProjectTask.doExecute(ExternalSystemResolveProjectTask.java:49)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:138)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:124)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$2.execute(ExternalSystemUtil.java:491)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$3$1.run(ExternalSystemUtil.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$TaskRunnable.run(CoreProgressManager.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$8.run(CoreProgressManager.java:367)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$2.run(CoreProgressManager.java:152)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:452)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:402)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:54)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:137)
+        at com.intellij.openapi.application.impl.ApplicationImpl$10$1.run(ApplicationImpl.java:623)
+        at com.intellij.openapi.application.impl.ApplicationImpl$8.run(ApplicationImpl.java:405)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+        at java.lang.Thread.run(Thread.java:745)
+        at org.jetbrains.ide.PooledThreadExecutor$1$1.run(PooledThreadExecutor.java:56)
+
+ 
+Aug 07, 2015 8:34:02 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+[ 165222]   WARN - nal.AbstractExternalSystemTask - Invalid Gradle JDK configuration found. <a href='#open_external_system_settings'>Open Gradle Settings</a> 
+Project JDK is not specified. <a href='#open_project_jdk_settings'>Open Project SDK Configuration</a> 
+com.intellij.openapi.externalSystem.service.execution.ExternalSystemJdkException: Invalid Gradle JDK configuration found. <a href='#open_external_system_settings'>Open Gradle Settings</a> 
+Project JDK is not specified. <a href='#open_project_jdk_settings'>Open Project SDK Configuration</a>
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.doGetGradleJdk(GradleInstallationManager.java:142)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.getGradleJdk(GradleInstallationManager.java:122)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:177)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:139)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemApiUtil.getExecutionSettings(ExternalSystemApiUtil.java:695)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.prepare(ExternalSystemFacadeManager.java:218)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.doGetFacade(ExternalSystemFacadeManager.java:164)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.doInvoke(ExternalSystemFacadeManager.java:133)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager$MyHandler.invoke(ExternalSystemFacadeManager.java:270)
+        at com.sun.proxy.$Proxy77.getResolver(Unknown Source)
+        at com.intellij.openapi.externalSystem.service.internal.ExternalSystemResolveProjectTask.doExecute(ExternalSystemResolveProjectTask.java:48)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:138)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:124)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$2.execute(ExternalSystemUtil.java:491)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$3$2.run(ExternalSystemUtil.java:572)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$TaskRunnable.run(CoreProgressManager.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$2.run(CoreProgressManager.java:152)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:452)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:402)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:54)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:137)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl$1.run(ProgressManagerImpl.java:126)
+        at com.intellij.openapi.application.impl.ApplicationImpl$8.run(ApplicationImpl.java:405)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+        at java.lang.Thread.run(Thread.java:745)
+        at org.jetbrains.ide.PooledThreadExecutor$1$1.run(PooledThreadExecutor.java:56)
+com.intellij.openapi.externalSystem.service.execution.ProjectJdkNotFoundException: Project JDK is not specified. <a href='#open_project_jdk_settings'>Open Project SDK Configuration</a>
+        at com.intellij.openapi.externalSystem.service.execution.ExternalSystemJdkUtil.getJdk(ExternalSystemJdkUtil.java:66)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.doGetGradleJdk(GradleInstallationManager.java:139)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.getGradleJdk(GradleInstallationManager.java:122)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:177)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:139)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemApiUtil.getExecutionSettings(ExternalSystemApiUtil.java:695)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.prepare(ExternalSystemFacadeManager.java:218)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.doGetFacade(ExternalSystemFacadeManager.java:164)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.doInvoke(ExternalSystemFacadeManager.java:133)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager$MyHandler.invoke(ExternalSystemFacadeManager.java:270)
+        at com.sun.proxy.$Proxy77.getResolver(Unknown Source)
+        at com.intellij.openapi.externalSystem.service.internal.ExternalSystemResolveProjectTask.doExecute(ExternalSystemResolveProjectTask.java:48)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:138)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:124)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$2.execute(ExternalSystemUtil.java:491)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$3$2.run(ExternalSystemUtil.java:572)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$TaskRunnable.run(CoreProgressManager.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$2.run(CoreProgressManager.java:152)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:452)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:402)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:54)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:137)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl$1.run(ProgressManagerImpl.java:126)
+        at com.intellij.openapi.application.impl.ApplicationImpl$8.run(ApplicationImpl.java:405)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+        at java.lang.Thread.run(Thread.java:745)
+        at org.jetbrains.ide.PooledThreadExecutor$1$1.run(PooledThreadExecutor.java:56)
+
+
+[ 165223]   WARN - radle.project.ProjectSetUpTask - com.intellij.openapi.externalSystem.service.execution.ProjectJdkNotFoundException: Project JDK is not specified. <a href='#open_project_jdk_settings'>Open Project SDK Configuration</a>
+        at com.intellij.openapi.externalSystem.service.execution.ExternalSystemJdkUtil.getJdk(ExternalSystemJdkUtil.java:66)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.doGetGradleJdk(GradleInstallationManager.java:139)
+        at org.jetbrains.plugins.gradle.service.GradleInstallationManager.getGradleJdk(GradleInstallationManager.java:122)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:177)
+        at org.jetbrains.plugins.gradle.GradleManager$4.fun(GradleManager.java:139)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemApiUtil.getExecutionSettings(ExternalSystemApiUtil.java:695)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.prepare(ExternalSystemFacadeManager.java:218)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.doGetFacade(ExternalSystemFacadeManager.java:164)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager.doInvoke(ExternalSystemFacadeManager.java:133)
+        at com.intellij.openapi.externalSystem.service.ExternalSystemFacadeManager$MyHandler.invoke(ExternalSystemFacadeManager.java:270)
+        at com.sun.proxy.$Proxy77.getResolver(Unknown Source)
+        at com.intellij.openapi.externalSystem.service.internal.ExternalSystemResolveProjectTask.doExecute(ExternalSystemResolveProjectTask.java:48)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:138)
+        at com.intellij.openapi.externalSystem.service.internal.AbstractExternalSystemTask.execute(AbstractExternalSystemTask.java:124)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$2.execute(ExternalSystemUtil.java:491)
+        at com.intellij.openapi.externalSystem.util.ExternalSystemUtil$3$2.run(ExternalSystemUtil.java:572)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$TaskRunnable.run(CoreProgressManager.java:563)
+        at com.intellij.openapi.progress.impl.CoreProgressManager$2.run(CoreProgressManager.java:152)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:452)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:402)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:54)
+        at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:137)
+        at com.intellij.openapi.progress.impl.ProgressManagerImpl$1.run(ProgressManagerImpl.java:126)
+        at com.intellij.openapi.application.impl.ApplicationImpl$8.run(ApplicationImpl.java:405)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+        at java.lang.Thread.run(Thread.java:745)
+        at org.jetbrains.ide.PooledThreadExecutor$1$1.run(PooledThreadExecutor.java:56)
+#+end_example
+
+I tried using the default gradle default wrapper and the oracle jdk location, but got:
+
+#+begin_example
+Gradle 'SpeechACall' project refresh failed
+Error:Cause: net.rubygrapefruit.platform.internal.jni.PosixProcessFunctions.getPid()I
+#+end_example
+
+I got this error
+
+[[file:data/6c/6bccfe-154d-47c9-80bd-6821028c6532/android_sdk_error.png]]
+
+I used the project's sdk.
+
+I restarted the IDE as suggested in [[http://stackoverflow.com/a/30254167/1346426][Android Studio - Failed to complete Gradle execution - getPid()'s answer]] and in [[http://stackoverflow.com/a/26985578/1346426][Android Studio Gradle Error Error:Cause: net.rubygrapefruit.platform.internal.jni.PosixProcessFunctions.getPid()I's answer]] but it didn't help. It might have to do with the gradle version.
+
+<2015-08-07 Fri>
 ** Cheat Sheet
 | Command                        | Description                        |
 |--------------------------------+------------------------------------|
@@ -5103,6 +5672,9 @@ Full error message:
 | nix-env --list-generations     | List all available generations     |
 |                                |                                    |
 ** Environments
+*** Android
+[[https://nixos.org/wiki/FHS_environments][FHS environments - Nix Wiki]] is interesting.
+<2015-08-07 Fri>
 *** Org-Mode build
 :PROPERTIES:
 :ID:       d870fdc2-d422-49bb-87f5-365cca9ed4c1
@@ -6243,6 +6815,11 @@ Variable pitch mode and org-indent don't get together wel..
 [[https://lists.gnu.org/archive/html/emacs-orgmode/2014-11/msg00746.html][Re: (O) (Bug) org-indent-mode underindents body in variable-pitch-mode]] and [[http://lists.gnu.org/archive/html/emacs-orgmode/2014-12/msg00014.html][Re: (O) (Bug) org-indent-mode underindents body in variable-pitch-mode]] have a discussion on the matter.
 I used the attached file in order to choose the right indentation.
 <2015-01-26 Mon>
+*** Org-mode editor outside emacs
+| Link                                                                  | Status | Description            | Comment |
+|-----------------------------------------------------------------------+--------+------------------------+---------|
+| [[https://www.dyne.org/software/autorg/][AutOrg :: autonomous and extensible editor for power users - dyne.org]] | Trying | A wrapper around emacs |         | 
+<2015-08-06 Thu>  
 * pfsense
 ** Installation
 [[https://doc.pfsense.org/index.php/Writing_Disk_Images#Cleaning_The_Target_Disk_.28optional.2C_but_recommended.29][Writing Disk Images - PFSenseDocs]] explains how to put the image on a usb drive.
@@ -6430,14 +7007,6 @@ sudo apt-get install libssl-dev libglib2.0-dev libpurple-dev
 [[http://tex.stackexchange.com/questions/46015/converting-ms-word-doc-to-latex-by-command-line][texlive - Converting MS Word .doc to LaTeX by command line - TeX - LaTeX Stack Exchange]] and [[http://tex.stackexchange.com/questions/27731/how-can-i-convert-from-microsoft-word-to-a-latex-document][conversion - How can I convert from Microsoft Word to a LaTeX document - TeX - LaTeX Stack Exchange]] have a discussion on the matter. It seems that opening it with LibreOffice Writer and then converting it with [[http://writer2latex.sourceforge.net/][Writer2LaTeX]] is a solid option. I downloaded the extension because it had a newer version than the software center. I tried it with Unicode encoding but it didn't understand the hebrew. According to [[http://writer2latex.sourceforge.net/index9.html][Writer2LaTeX]] it seems its planned for version 2.0. 
 [[http://whatsup.org.il/index.php?name=PNphpBB2&file=posting&mode=topicreview&t=35172][:: Whatsup - לינוקס, תוכנה חופשית וקוד פתוח בעברית]] and [[http://whatsup.org.il/index.php?name=PNphpBB2&file=viewtopic&t=35535][צפיה בנושא - מדריך :: עברית בLatex עם גופני קולמוס ב Gentoo . :: Whatsup - לינוקס, תוכנה חופשית וקוד פתוח בעברית]] are old hebrew threads on hebrew in Writer2Latex.
 I tried [[http://www.grindeq.com/index.php?p=word2latex][Converting Microsoft Word to LaTeX, LaTeX to Word, MathType to Equation]] but the encoding didn't come out right. 
-** Template Chrome Extension
-*** My templates                                                   :ATTACH:
-:PROPERTIES:
-:ID:       5905f320-b1fd-46c6-899f-248928da881d
-:Attachments: templates.json
-:END:
-Attached is a file that can be imported by template.
-<2014-08-21 Thu>
 ** Video Encoders
 [[http://lifehacker.com/316478/top-10-free-video-rippers-encoders-and-converters?tag=softwarelifehackertop10][Top 10 Free Video Rippers, Encoders, and Converters]] lists the top 10 encoders.
 [[http://forums.macrumors.com/showthread.php?t=1722181][Video conversion, high resolution with small file size - MacRumors Forums]] says that encoding video is trial and error, and you generally pay in quality whoen you make the file smaller. [[http://www.reelseo.com/encoding-formats-mpeg4-vs-h264/][H.264 versus MPEG-4 - Video Encoding Formats Compared]] explains the differences. [[http://avidemux.org/smuf/index.php?topic=11421.0][How can I use the x264 encoder with avidemux?]] explains the topic. [[http://www.getdeb.net/app/Avidemux 2.6][GetDeb.net V2 - Software for Ubuntu Linux - Information for Avidemux 2.6]] lists some standards. [[http://www.getdeb.net/app/Avidemux 2.6][GetDeb.net V2 - Software for Ubuntu Linux - Information for Avidemux 2.6]] has some more information.
