@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+
+\usepackage{knotsymb}
+
+\newcommand{\cn}[1]{$\backslash$\texttt{#1}}
+
+% Virtual knots
+
+\title{A \LaTeX\ Package for Knot Theory}
+\author{Kevin Lenth}
+\date{May 2007}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Due to the inflexibility of typesetting systems, it has been traditional to hand-draw figures and knot symbols in papers on knot theory.  More recently, the advent of computer typesetting has made it possible to include computer-drawn versions instead; however, full advantage has not yet been taken of these capabilities, requiring painstaking construction of many of the same symbols by many authors.  Attempts to circumvent these limitations have resulted in awkward and often inconsistent notation; the \texttt{knotsymb} package for \LaTeXe\ is an effort to address these issues by providing a set of common and consistent symbols.
+
+\section{The Symbols}
+\subsection{Common Knots}
+There are several knots that are ubiquitous, either because they have a particular common structure, or because they are simply standard examples.
+
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Command & Symbol \\
+\hline\hline
+\cn{unknot} & $\unknot$ \\
+\cn{unknotoriented} & $\unknotoriented$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Crossings}
+Perhaps the single most critical element of a knot is its set of crossings.  These can be classified as positive crossings (in which the strand moving to the \textsl{right} is over) and negative crossings (in which the strand moving to the \textsl{left} is over).  Some prefer to right these crossings moving to the right ($\eastpos$ for positive, $\eastneg$ for negative) while others prefer them moving up ($\northpos$, $\northneg$); and in the interests of comprehensiveness, variations for each of the eight cardinal and ordinal directions are included.
+
+Additionally, it is often useful to consider places where strands not only cross, but actually intersect (a singularity or dual point).  These are usually drawn as $\eastsingularity$, with a filled-in circle at the point of intersection.
+
+\begin{center}
+\begin{tabular}{|cc||cc|}
+\hline
+Command & Symbol & Command & Symbol \\
+\hline\hline
+\cn{northpos} & $\northpos$ & \cn{northneg} & $\northneg$ \\
+\cn{eastpos} & $\eastpos$ & \cn{eastneg} & $\eastneg$ \\
+\cn{southpos} & $\southpos$ & \cn{southneg} & $\southneg$ \\
+\cn{westpos} & $\westpos$ & \cn{westneg} & $\westneg$ \\
+\cn{northsingularity} & $\northsingularity$ & \cn{eastsingularity} & $\eastsingularity$ \\
+\cn{southsingularity} & $\southsingularity$ & \cn{westsingularity} & $\westsingularity$ \\
+\cn{northeastpos} & $\northeastpos$ & \cn{northeastneg} & $\northeastneg$ \\
+\cn{southeastpos} & $\southeastpos$ & \cn{southeastneg} & $\southeastneg$ \\
+\cn{southwestpos} & $\southwestpos$ & \cn{southwestneg} & $\southwestneg$ \\
+\cn{northwestpos} & $\northwestpos$ & \cn{northwestneg} & $\northwestneg$ \\
+\cn{northeastsingularity} & $\northeastsingularity$ & \cn{southeastsingularity} & $\southeastsingularity$ \\
+\cn{southwestsingularity} & $\southwestsingularity$ & \cn{northwestsingularity} & $\northwestsingularity$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Reidemeister Moves}
+A basic principle of knot theory is that two knots are ambient isotopic (roughly, deformable to one another without breaking the knot) if and only if one is transformable to the other via a sequence of Reidemeister moves.  These three moves are as follows:
+\begin{itemize}
+  \item[1 ---] $\displaystyle \eastlooppos \equiv \eastunloop \equiv \eastloopneg$
+  \item[2 ---] [R$_2$ coming...]
+  \item[3 ---] [R$_3$ also coming...]
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|cc|}
+\hline
+Command & Symbol \\
+\hline\hline
+\cn{eastlooppos} & $\eastlooppos$ \\
+\cn{eastunloop} & $\eastunloop$ \\
+\cn{eastloopneg} & $\eastloopneg$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}
