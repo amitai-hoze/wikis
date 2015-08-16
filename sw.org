@@ -4582,6 +4582,28 @@ According to [[http://tex.stackexchange.com/questions/32466/hyperref-links-break
 | [[http://mtpaint.sourceforge.net/][mtPaint]]                                                                  |                                        |
 | [[https://code.google.com/p/gnome-paint/][gnome-paint]]                                                              |                                        |
 <2015-08-12 Wed>
+**** Image Annotation
+| Application                                           | Web App | NixOS  | Comment |
+|-------------------------------------------------------+---------+--------+---------|
+| [[http://szoter.com/#intro][szoter - online annotation tool]]                       | \cmark  |        |         |
+| [[http://screenshot.net/online-image-editor][Free Online Image Editor - Polish and Annotate Images]] | \cmark  |        |         |
+| [[http://www.pixtick.com/][Pixtick]]                                               | \cmark  |        |         |
+| [[http://sourceforge.net/projects/hotshots/][HotShots download - SourceForge.net]]                   |         | \xmark |         |
+| [[https://code.google.com/p/qscreenshot/][qscreenshot]]                                           |         | \xmark |         |
+| [[http://getgreenshot.org/][Greenshot]]                                             |         | \xmark |         |
+| [[http://pinta-project.com/][Pinta: Painting Made Simple!]]                          |         | \cmark |         |
+| [[http://dia-installer.de/][Dia draws your structured diagrams]]                    |         | \cmark |         |
+| [[https://www.libreoffice.org/discover/draw/][Draw - LibreOffice]]                                    |         | \cmark |         |
+| [[http://xournal.sourceforge.net/][Xournal]]                                               |         | \cmark |         |
+
+***** References
+| Link                                                             | Status      | Description | Comment           |
+|------------------------------------------------------------------+-------------+-------------+-------------------|
+| [[http://www.hongkiat.com/blog/top-web-annotation-and-markup-tools/][Top Web Annotation and Markup Tools - Hongkiat]]                   | Didn't read |             |                   |
+| [[http://lifehacker.com/5889994/the-best-screen-capture-tool-for-linux][The Best Screen Capture Tool for Linux]]                           |             |             | Recommends Lookit |
+| [[https://www.reddit.com/r/linux/comments/27jd81/what_are_some_good_screenshot_annotation_tools_on/][What are some good screenshot annotation tools on Linux? : linux]] | Finished    |             |                   |
+|                                                                  |             |             |                   |
+
 ** Bash
 *** For loop
 [[http://www.cyberciti.biz/faq/bash-for-loop/][Bash For Loop Examples]] has a list of examples.
