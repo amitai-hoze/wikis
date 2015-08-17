@@ -4475,6 +4475,10 @@ pp*
 ** Spacing around align
 [[http://tex.stackexchange.com/a/47403/56669][Remove vertical space around align's answer]] has a solution.
 <2014-09-07 Sun>
+** Symbols
+*** x mark and check mark
+[[http://tex.stackexchange.com/a/42620][X mark to match checkmark's answer]] has a great explanation on the subject.
+<2015-08-17 Mon>
 ** TeXShop
 *** Adding packages
 [[http://tex.stackexchange.com/a/10256/56669][How do I add a .sty file to my MacTeX/TeXShop installation?'s answer]] has a solution.
@@ -6225,13 +6229,17 @@ In your buffer, or set the ~(org-export-with-todo-keywords)~ variable.
 [[http://permalink.gmane.org/gmane.emacs.orgmode/56206][new LaTeX exporter hook]] has an explanation on the subject.
 <2014-11-27 Thu>
 *** HTML
-**** Exporting latex macros to html
+**** Solutions
+***** Changing an image size
+[[http://stackoverflow.com/a/17176870/1346426][How to resize images in org-mode's answer]] has a solution.
+<2015-08-17 Mon>
+***** Exporting latex macros to html
 :PROPERTIES:
 :ID:       956f87a5-6b07-4a69-a6e3-c2a4834c1572
 :END:
 [[http://stackoverflow.com/a/25070478/1346426][Org html export does not recognize custom latex macros's answer]] has a solution.
 <2015-01-22 Thu>
-**** Right to left
+***** Right to left
 :PROPERTIES:
 :ID:       ea9354e6-0294-4926-a6f8-651d7d2fc6ef
 :END:
@@ -6842,6 +6850,11 @@ I used the attached file in order to choose the right indentation.
 |-----------------------------------------------------------------------+--------+------------------------+---------|
 | [[https://www.dyne.org/software/autorg/][AutOrg :: autonomous and extensible editor for power users - dyne.org]] | Trying | A wrapper around emacs |         | 
 <2015-08-06 Thu>  
+* Pebble Time
+** Various Topics
+*** Hebrew
+In [[http://pebblebits.com/news][PebbleBits]] (search for "08.07.2015 Pre-build 3.1 firmwares") it says the developer will try to add proper Pebble Time support in early August.
+<2015-08-17 Mon>
 * pfsense
 ** Installation
 [[https://doc.pfsense.org/index.php/Writing_Disk_Images#Cleaning_The_Target_Disk_.28optional.2C_but_recommended.29][Writing Disk Images - PFSenseDocs]] explains how to put the image on a usb drive.
@@ -7456,6 +7469,9 @@ git rm asubmodule
 :END:
 [[http://stackoverflow.com/a/6051027/1346426][Git - some files are marked as changed but 'git diff' doesn't show anything's answer]] has a solution.
 <2014-12-31 Wed>
+**** Multiple ~.gitignore~ files
+[[http://stackoverflow.com/a/7005830/1346426][Can I include other gitingore file in a .gitignore file?(like include in C language)'s answer]] has a solution, but it's very complicated. [[http://stackoverflow.com/a/10274455/1346426][Best practice for using multiple .gitignore's answer]] solves it by concatenating all the files, or by using [[https://github.com/zachlatta/gitignorer][zachlatta/gitignorer]]. If it makes sense, you can put another ~.gitignore~ in a subfolder, as explained in [[http://stackoverflow.com/a/3307252/1346426][Are multiple `.gitignore`s frowned on?'s answer]].
+<2015-08-17 Mon>
 *** Visual Diff
 [[http://stackoverflow.com/a/137141/1346426][What's the best visual merge tool for Git? (closed)'s answer]] suggests to use Meld, and links to [[http://www.wiredforcode.com/blog/2011/06/04/git-with-meld-diff-viewer-on-ubuntu/][Git With Meld Diff Viewer on Ubuntu - Wired For Code]] that explains how to use it with git.
 <2014-08-22 Fri>
