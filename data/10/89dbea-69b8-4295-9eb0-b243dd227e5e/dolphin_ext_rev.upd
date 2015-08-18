@@ -1,0 +1,4 @@
+Id=dolphin_extract
+File=dolphinrc,dolphinrc.rev
+Script=dolphin_ext_rev.sh
+AllGroups
