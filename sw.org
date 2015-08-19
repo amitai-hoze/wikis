@@ -58,6 +58,25 @@ The type or namespace name 'Security' does not exist in the namespace 'System.Ne
 According to [[http://social.msdn.microsoft.com/Forums/windowsapps/en-US/5ec17748-8980-4714-b25a-c3c9192bbefc/how-to-discard-certificate-validation-in-httpwebrequest][How to discard certificate validation in HttpWebRequest]] ~System.Net.Security~ is deprecated (search for "This code is not working in Windows 8 Metro"). One of the responders there says to use [[http://msdn.microsoft.com/en-us/library/windows/apps/windows.web.http.aspx][Windows.Web.Http namespace - Windows app development]] on Windows 8.1.
 <2014-09-18 Thu>
 * Android
+** Control from PC
+| Link                                                                      | USB Debugging | Platform | Comment |
+|---------------------------------------------------------------------------+---------------+----------+---------|
+| [[http://blog.laptopmag.com/control-android-from-pc][How to Control an Android Device From Your PC - LAPTOP Magazine]]           | \cmark        |          |         |
+| [[http://www.bomgar.com/remote-support/platforms/android][Remote Control Android from a PC - BOMGAR]]                                 |               |          | Paid    |
+| [[http://www.xda-developers.com/control-a-device-with-a-broken-screen-from-the-comfort-of-your-windows-pc/][Control a Device with a Broken Screen From the Comfort of Your Windows PC]] | \cmark        |          |         |
+| [[https://play.google.com/store/apps/details?id=com.sand.airdroid][AirDroid: File & Notifications - Android Apps on Google Play]]              |               | Chrome   |         |
+| [[https://play.google.com/store/apps/details?id=com.teamviewer.teamviewer.market.mobile][TeamViewer for Remote Control - Android Apps on Google Play]]               |               | Multi    |         |
+| [[https://play.google.com/store/apps/details?id=com.rsupport.mvagent][Mobizen-Your Android, Anywhere - Android Apps on Google Play]]              |               | Multi    |         |
+*** Synergy
+Currently requires cyanogen mod.
+| Link                                                                                        | Status | Description | Comment |
+|---------------------------------------------------------------------------------------------+--------+-------------+---------|
+| [[http://sourceforge.net/projects/synergyandroid/][Synergy Android Client download - SourceForge.net]]                                           |        |             |         |
+| [[http://synergy-project.org/wiki/Android_Client][Android Client - Synergy Wiki]]                                                               |        |             |         |
+| [[https://github.com/synergy/synergy-android][synergy/synergy-android]]                                                                     |        |             |         |
+| [[https://github.com/synergy/synergy/issues/531][Client application for Android (without being rooted/hacked) · Issue #531 · synergy/synergy]] |        |             |         |
+| [[http://www.makeuseof.com/tag/control-android-using-computers-mouse-keyboard/][How To Control Your Android Using Your Computer’s Mouse And Keyboard]]                        |        |             |         |
+<2015-08-19 Wed>
 ** Fast Boot
 [[https://www.youtube.com/watch?v=2l3sSNV8NE4][Fast Boot - HTC Desire S - YouTube]] shows how to do it.
 <2014-08-14 Thu>
@@ -4567,25 +4586,6 @@ According to [[http://tex.stackexchange.com/questions/32466/hyperref-links-break
 * Linux
 ** Applications
 *** Various Topics
-**** Photo album viewer
-[[http://lifehacker.com/5877908/the-best-photo-management-app-for-linux][The Best Photo Management App for Linux]] is a good article on the subject.
-<2015-08-12 ד'>
-**** Simple photo editor
-| Application                                                              | Comment                                |
-|--------------------------------------------------------------------------+----------------------------------------|
-| [[http://www.darktable.org/][darktable - the photo workflow software]]                                  |                                        |
-| [[http://gqview.sourceforge.net/][GQview]]                                                                   | Simple                                 |
-| [[https://userbase.kde.org/Gwenview][Gwenview - KDE UserBase Wiki]]                                             |                                        |
-| [[http://pinta-project.com/][Pinta: Painting Made Simple!]]                                             |                                        |
-| [[https://wiki.gnome.org/Apps/Shotwell][Apps/Shotwell - GNOME Wiki!]]                                              | Without importing features are limited |
-| [[http://www.xnview.com/en/][XnView Software · Software for reading, organizing and processing images]] |                                        |
-| [[https://launchpad.net/ubuntu/trusty/+package/nautilus-image-converter][nautilus-image-converter : Trusty (14.04) : Ubuntu]]                       | Works straight from nautilus           |
-| [[http://photobatch.stani.be/][Phatch - Photo Batch Processor]]                                           |                                        |
-| [[http://www.imagemagick.org/script/index.php][ImageMagick: Convert, Edit, Or Compose Bitmap Images]]                     |                                        |
-| [[http://www.kornelix.com/fotoxx.html][fotoxx - kornelix]]                                                        |                                        |
-| [[http://mtpaint.sourceforge.net/][mtPaint]]                                                                  |                                        |
-| [[https://code.google.com/p/gnome-paint/][gnome-paint]]                                                              |                                        |
-<2015-08-12 Wed>
 **** Image Annotation
 | Application                                           | Web App | NixOS  | Comment |
 |-------------------------------------------------------+---------+--------+---------|
@@ -4606,23 +4606,44 @@ According to [[http://tex.stackexchange.com/questions/32466/hyperref-links-break
 | [[http://www.hongkiat.com/blog/top-web-annotation-and-markup-tools/][Top Web Annotation and Markup Tools - Hongkiat]]                   | Didn't read |             |                   |
 | [[http://lifehacker.com/5889994/the-best-screen-capture-tool-for-linux][The Best Screen Capture Tool for Linux]]                           |             |             | Recommends Lookit |
 | [[https://www.reddit.com/r/linux/comments/27jd81/what_are_some_good_screenshot_annotation_tools_on/][What are some good screenshot annotation tools on Linux? : linux]] | Finished    |             |                   |
-|                                                                  |             |             |                   |
-
+<2015-08-17 Mon>
+**** Photo album viewer
+[[http://lifehacker.com/5877908/the-best-photo-management-app-for-linux][The Best Photo Management App for Linux]] is a good article on the subject.
+<2015-08-12 ד'>
+**** Simple photo editor
+| Application                                                              | Comment                                |
+|--------------------------------------------------------------------------+----------------------------------------|
+| [[http://www.darktable.org/][darktable - the photo workflow software]]                                  |                                        |
+| [[http://gqview.sourceforge.net/][GQview]]                                                                   | Simple                                 |
+| [[https://userbase.kde.org/Gwenview][Gwenview - KDE UserBase Wiki]]                                             |                                        |
+| [[http://pinta-project.com/][Pinta: Painting Made Simple!]]                                             |                                        |
+| [[https://wiki.gnome.org/Apps/Shotwell][Apps/Shotwell - GNOME Wiki!]]                                              | Without importing features are limited |
+| [[http://www.xnview.com/en/][XnView Software · Software for reading, organizing and processing images]] |                                        |
+| [[https://launchpad.net/ubuntu/trusty/+package/nautilus-image-converter][nautilus-image-converter : Trusty (14.04) : Ubuntu]]                       | Works straight from nautilus           |
+| [[http://photobatch.stani.be/][Phatch - Photo Batch Processor]]                                           |                                        |
+| [[http://www.imagemagick.org/script/index.php][ImageMagick: Convert, Edit, Or Compose Bitmap Images]]                     |                                        |
+| [[http://www.kornelix.com/fotoxx.html][fotoxx - kornelix]]                                                        |                                        |
+| [[http://mtpaint.sourceforge.net/][mtPaint]]                                                                  |                                        |
+| [[https://code.google.com/p/gnome-paint/][gnome-paint]]                                                              |                                        |
+<2015-08-12 Wed>
+**** Subtitle editors
+[[http://lintut.com/best-subtitle-editors-for-linux/][Best subtitle editor for linux]]
+<2015-08-18 Tue>
 ** Bash
 *** For loop
 [[http://www.cyberciti.biz/faq/bash-for-loop/][Bash For Loop Examples]] has a list of examples.
 <2014-08-20 Wed>
-*** =grep=
-**** Get next line
-[[http://stackoverflow.com/q/7451423][grep -A1: how to show only next line after the matched one]] has a solution.
-<2015-07-23 Thu>
+*** grep
+**** Get lines before and after
+[[http://stackoverflow.com/a/1072673/1346426][How can I make grep print the lines below and above each matching line? (duplicate)'s answer]] has a solution.
+<2015-08-19 Wed 01:27>
 **** OR between expressions
 Do this:
 #+begin_src sh :eval never-export
 grep -e exp1 -e exp2 file.txt
 #+end_src
 <2014-11-14 Fri>
-*** =sed=
+*** sed
 [[http://www.tutorialspoint.com/unix/unix-regular-expressions.htm][Unix - Regular Expressions with SED]] is a nice simple tutorial.
 **** Group capturing
 [[http://stackoverflow.com/a/2778096/1346426][sed: group capturing's answer]] has a solution
@@ -4690,9 +4711,20 @@ But actually it also workd without an newline character.
 :END:
 [[http://unix.stackexchange.com/a/12904][How to run find -exec?'s answer]] has an explanation on the subject.
 <2014-12-30 Tue>
+** Configuration
+[[http://freedesktop.org/wiki/Software/pyxdg/][pyxdg]] looks interesting.
+<2015-08-18 Tue>
 ** Difference between symbolic links and hard links
 [[http://stackoverflow.com/a/185903/1346426][What is the difference between a symbolic link and a hard link?'s answer]] has an explanation.
 <2014-08-27 Wed>
+** Drivers
+*** Printers
+**** Technion printer
+***** ppd file                                                   :ATTACH:
+:PROPERTIES:
+:Attachments: 355008.ppd
+:ID:       0d88f437-0e22-4031-b3e4-5adc2cb2c5ce
+:END:
 ** Grub 2.0
 *** Documentation
 [[https://www.gnu.org/software/grub/manual/html_node/index.html#SEC_Contents][GNU GRUB Manual 2.00: Top]] is a good guide.
@@ -4701,6 +4733,45 @@ But actually it also workd without an newline character.
 **** No such partition
 [[http://askubuntu.com/q/19560][GRUB2 panic: “No such partition”]] has some solutions for this.
 <2015-07-02 Thu>
+** KDE
+*** Configuration
+**** kconf_update
+***** Examples
+****** konsole                                                  :ATTACH:
+:PROPERTIES:
+:Attachments: konsole.upd konsole-2.10.0-remove-menuindex-from-profiles.sh konsole-2.9.0-colorscheme-bold-key.sh konsole-2.9.0-global-options.sh
+:ID:       7cc77e13-ebd5-4280-b3f4-7abebc934eb4
+:END:
+Taken from [[https://quickgit.kde.org/?p=konsole.git&a=tree&hb=9b89bdc570f43ae36354727992f420fd0d0a5499&h=8af30dc383cfe9ca6a6647fbd2f7c8036250a252&f=data%2Fupdaters][KDE QuickGit :: konsole.git/tree]]
+****** konsole                                                  :ATTACH:
+:PROPERTIES:
+:Attachments: konsole-2.9.0-global-options.sh konsole.upd konsole-2.9.0-colorscheme-bold-key.sh
+:ID:       bd2bf9f7-8e16-4584-92ae-b1447599f41a
+:END:
+Taken from [[https://searchcode.com/codesearch/view/18478599/][konsole.upd in konsole | source code search engine]].
+****** My attempts                                              :ATTACH:
+:PROPERTIES:
+:Attachments: dolphin_ext_rev.sh dolphin_ext_rev.upd
+:ID:       1089dbea-69b8-4295-9eb0-b243dd227e5e
+:END:
+***** References
+| Link                                                        | Status | Description | Comment |
+|-------------------------------------------------------------+--------+-------------+---------|
+| [[https://techbase.kde.org/Development/Tutorials/Updating_KConfig_Files][Development/Tutorials/Updating KConfig Files - KDE TechBase]] | Read   |             |         |
+| [[https://techbase.kde.org/Development/Tools/Using_kconf_update][Development/Tools/Using kconf update - KDE TechBase]]         | Read   |             |         |
+**** kreadconfig
+Example
+
+#+begin_src sh
+kreadconfig --group General --key BrowserApplication
+#+end_src
+
+#+RESULTS:
+: !chromium
+
+*** Creating a shortcut for the ~Kickoff Application Launcher~
+[[https://forum.kde.org/viewtopic.php?f=67&t=93332][(SOLVED) Custom keyboard shortcut for Kickoff? • KDE Community Forums]] has a solution.
+<2015-07-01 Wed>
 ** Protecting files from deletion
 :PROPERTIES:
 :ID:       8d28664c-8660-49ae-88ea-eec585ace26e
@@ -4716,14 +4787,6 @@ But actually it also workd without an newline character.
 **** Connecting without a password
 [[http://askubuntu.com/a/46935][How can I set up password-less SSH login?'s answer]] has a solution.
 <2015-05-13 Wed>
-** Drivers
-*** Printers
-**** Technion printer
-***** ppd file                                                   :ATTACH:
-:PROPERTIES:
-:Attachments: 355008.ppd
-:ID:       0d88f437-0e22-4031-b3e4-5adc2cb2c5ce
-:END:
 * Lubuntu
 ** IBM Thinkpad T23 Installation screen problem
 [[http://ubuntuforums.org/showthread.php?t=2104218][(lubuntu) IBM Thinkpad T23 - Screen Resolution Issue]] discusses it.
@@ -5685,6 +5748,7 @@ I restarted the IDE as suggested in [[http://stackoverflow.com/a/30254167/134642
 
 <2015-08-07 Fri>
 ** Cheat Sheet
+*** Nix standalone
 | Command                        | Description                        |
 |--------------------------------+------------------------------------|
 | nix-env -f <nixpkgs> -qas      | Getting status of packages         |
@@ -5696,7 +5760,18 @@ I restarted the IDE as suggested in [[http://stackoverflow.com/a/30254167/134642
 | nix-env --rollback             | Undo                               |
 | nix-env --switch-generation 43 | Rollback to a spcecific generation |
 | nix-env --list-generations     | List all available generations     |
-|                                |                                    |
+<2015-08-18 Tue>
+*** NixOS
+| Command                                            | Description                   |
+|----------------------------------------------------+-------------------------------|
+| sudo nix-channel --update                          | Updating                      |
+| sudo nixos-rebuild switch                          | switching                     |
+| sudo nix-env --delete-generations old              |                               |
+| sudo nix-collect-garbage                           |                               |
+| sudo nix-collect-garbage -d                        |                               |
+| nix-env -f ~/nixpkgs -qaP -A haskellPackages       | Querying all haskell packages |
+| nix-env -f ~/nixpkgs -qaP -A haskellPackages.htoml | Querying a haskell package    |
+<2015-08-18 Tue>
 ** Environments
 *** Android
 [[https://nixos.org/wiki/FHS_environments][FHS environments - Nix Wiki]] is interesting.
@@ -5752,6 +5827,17 @@ was wrong, it should have been ~/dev/sda1~.
 ** Latex
 [[https://nixos.org/wiki/TexLive_HOWTO][TexLive HOWTO - Nix Wiki]] is a good guide.
 <2015-06-30 Tue>
+** NixPkgs
+*** Haskell packages
+[[https://github.com/NixOS/cabal2nix/issues/134#issuecomment-95572099][Include git revision from hackage2nix and all-cabal-files repositories in the generated hackage-packages.nix file · Issue #134 · NixOS/cabal2nix]] says it now uses the [[https://github.com/commercialhaskell/all-cabal-files][commercialhaskell/all-cabal-files]] to include more metadata on hackage packages.
+[[https://github.com/NixOS/cabal2nix/blob/master/update-nixpkgs.sh][cabal2nix/update-nixpkgs.sh at master · NixOS/cabal2nix]] is the script that uses it to update the hackage packages.
+In [[https://github.com/NixOS/cabal2nix/blob/master/update-nixpkgs.sh#L43][cabal2nix/update-nixpkgs.sh at master · NixOS/cabal2nix]] it is seen that it includes the data in the message, like in [[https://github.com/NixOS/nixpkgs/commit/441e8a1590d05c1ad6b6c73876c8cae1c1e21ff9][hackage-packages.nix: update to https://github.com/commercialhaskell/… · NixOS/nixpkgs@441e8a1]].
+
+[[http://nix-dev.science.uu.narkive.com/XVku8W8P/a-journey-into-our-brand-new-haskell-infrastructure-part-iii][A Journey into our brand-new Haskell infrastructure: Part III]] is a talk about it, didn't read.
+<2015-08-19 Wed>
+*** Mirrors
+[[https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/fetchurl/mirrors.nix][nixpkgs/mirrors.nix at master · NixOS/nixpkgs]] contains all the urls for the mirror fetching.
+<2015-08-18 Tue>
 ** Packages
 *** Adding new ones
 [[http://nixos.org/nix/manual/#chap-writing-nix-expressions][Nix manual]] looks like a good place to start.
@@ -5774,9 +5860,6 @@ was wrong, it should have been ~/dev/sda1~.
 [[http://blog.timsears.com/posts/im_trying_nix.html][I am trying nixos ← Either a Blog &larr Tim Sears]] has a nice overview of NixOS. [[http://www.reddit.com/r/haskell/comments/1x0cjs/how_i_develop_with_nix/][How I Develop with Nix : haskell]] also has a good discussion on the pros and cons of NixOS.
 <2015-06-30 Tue>
 ** Solutions
-*** Creating a shortcut for the ~Kickoff Application Launcher~
-[[https://forum.kde.org/viewtopic.php?f=67&t=93332][(SOLVED) Custom keyboard shortcut for Kickoff? • KDE Community Forums]] has a solution.
-<2015-07-01 Wed>
 *** Dual booting with Ubuntu
 :PROPERTIES:
 :ID:       234d5161-31a7-4bd7-b40c-c5d3980df277
@@ -5803,6 +5886,71 @@ configfile (hd0,4)/boot/grub/grub.cfg
 | [[https://github.com/NixOS/nixpkgs/issues/3682][ghcWithPackages and terminfo issues · Issue #3682 · NixOS/nixpkgs]]                       |                                                        |
 <2015-07-21 Tue>
 ** Troubleshooting
+*** GLX version not found
+Full error message:
+#+begin_example
+ASSERT INFO:
+./src/unix/glx11.cpp(442): assert "ok" failed in GetGLXVersion(): GLX version not found
+
+BACKTRACE:
+[1] wxOnAssert(char const*, int, char const*, char const*, wchar_t const*)
+[2] wxGLCanvasX11::GetGLXVersion()
+[3] wxGLCanvasX11::ConvertWXAttrsToGL(int const*, int*, unsigned long)
+[4] wxGLCanvasX11::InitXVisualInfo(int const*, __GLXFBConfigRec***, XVisualInfo**)
+[5] wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+[6] wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+[7] VideoDisplay::VideoDisplay(wxToolBar*, bool, wxComboBox*, wxWindow*, agi::Context*)
+[8] VideoBox::VideoBox(wxWindow*, bool, agi::Context*)
+[9] FrameMain::InitContents()
+[10] FrameMain::FrameMain()
+[11] AegisubApp::OnInit()
+[12] wxEntry(int&, wchar_t**)
+[13] main
+[14] __libc_start_main
+[15] _start
+#+end_example
+
+[[https://bbs.archlinux.org/viewtopic.php?pid=1475809#p1475809][(SOLVED) OpenGL GLX problem (glxinfo - Xlib: extension "GLX" missing) / Applications & Desktop Environments / Arch Linux Forums]] suggests to look at the logs. I looked at the logs and found:
+#+begin_example
+Aug 19 02:20:46 nixos systemd[1]: bumblebeed.service holdoff time over, scheduling restart.
+Aug 19 02:20:46 nixos systemd[1]: Stopping Bumblebee Hybrid Graphics Switcher...
+Aug 19 02:20:46 nixos systemd[1]: Starting Bumblebee Hybrid Graphics Switcher...
+Aug 19 02:20:46 nixos systemd[1]: Started Bumblebee Hybrid Graphics Switcher.
+Aug 19 02:20:46 nixos bumblebeed[17940]: Module 'nvidia' is not found.
+#+end_example
+
+[[https://github.com/NixOS/nixpkgs/issues/7696#issuecomment-98912581][X won't start with Nvidia or Nouveau drivers on GTX 860M · Issue #7696 · NixOS/nixpkgs]] suggested to do:
+
+#+begin_src sh :eval never
+dmesg |grep -i nvidia
+#+end_src
+
+I did and got:
+
+#+begin_example
+[    7.236370] nvidia: module license 'NVIDIA' taints kernel.
+[    7.245852] nvidia 0000:01:00.0: enabling device (0000 -> 0003)
+[    7.246244] [drm] Initialized nvidia-drm 0.0.0 20150116 for 0000:01:00.0 on minor 1
+[    7.246248] NVRM: loading NVIDIA UNIX x86_64 Kernel Module  352.21  Tue Jun  9 21:53:31 PDT 2015
+[    7.248394] nvidia_uvm: Loaded the UVM driver, major device number 249
+#+end_example
+
+I removed the line determining my video drive in ~configuration.nix~:
+#+begin_src nix
+services.xserver.videoDrivers = [ "intel" "i965" "nvidia" ];
+#+end_src
+
+to let the hardware detection decide what drivers to use and still got:
+#+begin_example
+Aug 19 07:49:52 nixos systemd[1]: bumblebeed.service holdoff time over, scheduling restart.
+Aug 19 07:49:52 nixos systemd[1]: Stopping Bumblebee Hybrid Graphics Switcher...
+Aug 19 07:49:52 nixos systemd[1]: Starting Bumblebee Hybrid Graphics Switcher...
+Aug 19 07:49:52 nixos systemd[1]: Started Bumblebee Hybrid Graphics Switcher.
+Aug 19 07:49:52 nixos bumblebeed[27731]: Module 'nvidia' is not found.
+#+end_example
+
+However, I restarted my laptop and it worked!
+<2015-08-19 Wed>
 *** No ~/bin/bash~ for scripting
 [[https://www.bountysource.com/issues/5073710-bin-bash-doesn-t-exist-on-nixos-linux][/bin/bash doesn't exist on NixOS Linux -]] has a solution.
 <2015-06-30 Tue>
@@ -7279,6 +7427,9 @@ _For all of the directory_
 **** Editing commit message
 [[http://stackoverflow.com/a/179147/1346426][Edit an incorrect commit message in Git's answer]] has a solution.
 <2014-09-14 Sun>
+**** Get the date of a commit
+[[http://stackoverflow.com/a/3815007/1346426][Git commit date's answer]] has a solution.
+<2015-08-19 Wed>
 **** Getting a file from a revision
 [[http://gitready.com/intermediate/2009/02/27/get-a-file-from-a-specific-revision.html][git ready » get a file from a specific revision]] has a solution
 <2014-09-04 Thu>
@@ -7288,6 +7439,9 @@ _For all of the directory_
 :END:
 [[http://stackoverflow.com/a/2232490/1346426][Git: See my last commit's answer]] has a solution.
 <2015-03-22 Sun>
+**** Ignoring text patterns in git diff
+[[http://stackoverflow.com/a/21674411/1346426][How to make git diff ignore comments's answer]] has a solution.
+<2015-08-18 Tue>
 **** Making diff ignore new files
 [[http://stackoverflow.com/a/6896699/1346426][How to make git-diff and git log ignore new and deleted files?'s answer]] has a solution.
 <2015-05-17 Sun>
