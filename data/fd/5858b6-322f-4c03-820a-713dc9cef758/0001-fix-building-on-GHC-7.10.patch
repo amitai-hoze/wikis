@@ -1,0 +1,44 @@
+From d98a45de73203fab75667f60e37151157cbae403 Mon Sep 17 00:00:00 2001
+From: Amitai Hoze <amitai.hoze@gmail.com>
+Date: Wed, 19 Aug 2015 01:48:22 +0000
+Subject: [PATCH] fix building on GHC 7.10
+
+---
+ htoml.cabal             | 1 +
+ src/Text/Toml/Parser.hs | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/htoml.cabal b/htoml.cabal
+index e3be087..39b0df1 100644
+--- a/htoml.cabal
++++ b/htoml.cabal
+@@ -47,6 +47,7 @@ library
+                         , text                   >= 1.0    && < 2
+                         , time                   -any
+                         , old-locale             -any
++                        , time-locale-compat     -any
+ 
+ executable tests
+   hs-source-dirs:         test
+diff --git a/src/Text/Toml/Parser.hs b/src/Text/Toml/Parser.hs
+index 6037e98..26ffb7d 100644
+--- a/src/Text/Toml/Parser.hs
++++ b/src/Text/Toml/Parser.hs
+@@ -1,4 +1,5 @@
+ {-# LANGUAGE OverloadedStrings #-}
++{-# LANGUAGE FlexibleContexts #-}
+ 
+ module Text.Toml.Parser
+   ( module Text.Toml.Parser
+@@ -15,7 +16,7 @@ import qualified Data.Set            as S
+ import           Data.Text           (Text, pack, unpack)
+ import           Data.Time.Format    (parseTime)
+ import           Numeric             (readHex)
+-import           System.Locale       (defaultTimeLocale, iso8601DateFormat)
++import           Data.Time.Locale.Compat       (defaultTimeLocale, iso8601DateFormat)
+ import           Text.Parsec
+ import           Text.Parsec.Text
+ 
+-- 
+2.5.0
+
