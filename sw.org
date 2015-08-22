@@ -57,6 +57,26 @@ The type or namespace name 'Security' does not exist in the namespace 'System.Ne
 #+end_example
 According to [[http://social.msdn.microsoft.com/Forums/windowsapps/en-US/5ec17748-8980-4714-b25a-c3c9192bbefc/how-to-discard-certificate-validation-in-httpwebrequest][How to discard certificate validation in HttpWebRequest]] ~System.Net.Security~ is deprecated (search for "This code is not working in Windows 8 Metro"). One of the responders there says to use [[http://msdn.microsoft.com/en-us/library/windows/apps/windows.web.http.aspx][Windows.Web.Http namespace - Windows app development]] on Windows 8.1.
 <2014-09-18 Thu>
+* tcl
+** Expect
+*** References
+| Link                                                        | Status | Description | Comment                     |
+|-------------------------------------------------------------+--------+-------------+-----------------------------|
+| [[http://expect.sourceforge.net/][Expect - Expect - Home Page]]                                 |        | Home Page   |                             |
+| [[http://inguza.com/document/expect-and-tcl-mini-reference-manual][Expect and TCL mini reference manual - Inguza Technology AB]] |        | Short       | Contains expect expressions |
+| [[http://www.tcl.tk/man/expect5.31/expect.1.html][Manpage of EXPECT]]                                           |        |             |                             |
+| [[http://linux.die.net/man/1/expect][expect(1) - Linux man page]]                                  |        |             |                             |
+| [[http://www2.lib.uchicago.edu/keith/tcl-course/topics/expect.html][Intro to Tcl: Expect]]                                        |        |             |                             |
+| [[http://expect.sourceforge.net/example/README][expect.sourceforge.net/example/README]]                       |        | Scripts     |                             |
+| [[https://en.wikipedia.org/wiki/Expect#C.23][Expect - Wikipedia, the free encyclopedia]]                   |        |             |                             |
+| [[http://expect.sourceforge.net/FAQ.html][Expect FAQ (Frequently Asked Questions)]]                     |        |             |                             |
+*** Examples
+| Link                                                          | Status | Description | Comment |
+|---------------------------------------------------------------+--------+-------------+---------|
+| [[http://www2.tcl.tk/11583][Expect Examples]]                                               |        |             |         |
+| [[http://www.thegeekstuff.com/2010/12/5-expect-script-command-line-argument-examples/][6 Expect Script Command Line Argument Examples]]                |        |             |         |
+| [[http://stackoverflow.com/a/17697484/1346426][Read file into String and do a loop in Expect Script's answer]] |        |             |         |
+
 * Android
 ** Control from PC
 | Link                                                                      | USB Debugging | Platform | Comment |
@@ -1940,6 +1960,14 @@ Just call the function of the mode:
 (org-mode)
 #+end_src
 <2014-11-08 Sat>
+*** Writing a mode
+**** Inheriting from cc-mode                                      :ATTACH:
+:PROPERTIES:
+:Attachments: derived-mode-ex.el
+:ID:       ce657536-2edc-4308-bab0-b2201c583f98
+:END:
+The attached file shows an example of a derived mode.
+<2015-08-21 Fri>
 ** Open Nautilus from current directory
 [[http://d.hatena.ne.jp/kitokitoki/20121103/p3][I do not know - customized for programmers Nautilus]] has a solution.
 <2014-08-28 Thu>
@@ -2451,77 +2479,6 @@ and queues.
 [[http://stackoverflow.com/a/4139331/1346426][How do you trigger a block after a delay, like -performSelector:withObject:afterDelay:?'s answer]]
 has a nice example.
 <2014-07-30 Wed>
-** CocoaPods
-*** ~.gitignore~
-:PROPERTIES:
-:ID:       f55c0cae-6946-4bc6-a92a-4b2e9e1efc87
-:END:
-[[http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control][CocoaPods Guides - Using CocoaPods]] advises against adding the ~Pods~ directory, and for adding the ~Podfile.lock~ file.
-[[http://stackoverflow.com/q/9446644/1346426][What goes into your .gitignore if you're using CocoaPods?]] has a debate over the matter. The main conclusion is that if you switch branches and go back in time a lot, this might matter. But if you don't adding the ~Pods~ directory adds complexity and size to your git repository.
-Also, according to [[https://github.com/CocoaPods/CocoaPods/issues/2623][Headers in Pods/Headers/Build will not be checked in when /Pods is checked in · Issue #2623 · CocoaPods/CocoaPods]], the directory ~Pods/Headers/Build/~ should be included, but is being excluded by the ~build/~ line in the ~.gitignore~ file. So I included it by adding
-#+begin_example
-!Pods/Headers/Build/
-#+end_example
-
-to my ~.gitignore~.
-<2014-12-30 Tue>
-*** Solutions
-**** Removing from project
-:PROPERTIES:
-:ID:       dbecba86-8d7a-4686-ad39-937ce481a98c
-:END:
-[[http://stackoverflow.com/a/16427883][How to remove CocoaPods from a project?'s answer]] has a solution, I used [[https://github.com/kylef/cocoapods-deintegrate][kylef/cocoapods-deintegrate]] linked over there.
-<2015-05-03 Sun>
-*** Troubleshooting
-**** the '<TARGET_NAME>' target overrides the other_ldflags build setting defined in...
-:PROPERTIES:
-:ID:       b2fe5f3c-a125-4bf7-86c6-3f5ef0deb969
-:END:
-I used
-#+begin_src sh :eval never
-pod install
-#+end_src
-and got this error message:
-#+begin_example
-Analyzing dependencies
-Downloading dependencies
-Installing ReactiveCocoa (2.3.1)
-Generating Pods project
-Integrating client project
-
-[!] From now on use `WebClientDemo.xcworkspace`.
-
-[!] The `WebClientDemo [Debug]` target overrides the `OTHER_CFLAGS` build setting defined in `Pods/Target Support Files/Pods-WebClientDemo/Pods-WebClientDemo.debug.xcconfig'. This can lead to problems with the CocoaPods installation
-    - Use the `$(inherited)` flag, or
-    - Remove the build settings from the target.
-
-[!] The `WebClientDemo [Debug]` target overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Target Support Files/Pods-WebClientDemo/Pods-WebClientDemo.debug.xcconfig'. This can lead to problems with the CocoaPods installation
-    - Use the `$(inherited)` flag, or
-    - Remove the build settings from the target.
-
-[!] The `WebClientDemo [Release]` target overrides the `OTHER_CFLAGS` build setting defined in `Pods/Target Support Files/Pods-WebClientDemo/Pods-WebClientDemo.release.xcconfig'. This can lead to problems with the CocoaPods installation
-    - Use the `$(inherited)` flag, or
-    - Remove the build settings from the target.
-
-[!] The `WebClientDemo [Release]` target overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Target Support Files/Pods-WebClientDemo/Pods-WebClientDemo.release.xcconfig'. This can lead to problems with the CocoaPods installation
-    - Use the `$(inherited)` flag, or
-    - Remove the build settings from the target.
-#+end_example
-I followed [[http://stackoverflow.com/a/18730481/1346426][The target … overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Pods.xcconfig's answer]] and made it work.
-<2014-12-23 Tue>
-*** Tutorials
-**** Adding a CocoaPod
-:PROPERTIES:
-:ID:       54a1718a-611d-4af6-9186-b386d5fb42c4
-:END:
-[[http://www.raywenderlich.com/64546/introduction-to-cocoapods-2][Introduction to CocoaPods Tutorial - Ray Wenderlich]]
-<2014-12-23 Tue>
-**** Podfile syntax
-:PROPERTIES:
-:ID:       07345dea-1757-4359-9aa3-1fe0d12339b2
-:END:
-[[http://guides.cocoapods.org/using/the-podfile.html][CocoaPods Guides - The Podfile]] is a guide on the subject.
-<2014-12-31 Wed>
 ** Carthage
 *** Troubleshooting
 **** Carthage asking for a username and password
@@ -2594,6 +2551,77 @@ Command /usr/bin/codesign failed with exit code 1
 According to [[http://www.cocoabuilder.com/archive/xcode/268464-running-xcodebuild-via-ssh.html][Running xcodebuild via ssh | Cocoabuilder]] it's because I did it from ssh.
 <2015-05-10 Sun>
 
+** CocoaPods
+*** ~.gitignore~
+:PROPERTIES:
+:ID:       f55c0cae-6946-4bc6-a92a-4b2e9e1efc87
+:END:
+[[http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control][CocoaPods Guides - Using CocoaPods]] advises against adding the ~Pods~ directory, and for adding the ~Podfile.lock~ file.
+[[http://stackoverflow.com/q/9446644/1346426][What goes into your .gitignore if you're using CocoaPods?]] has a debate over the matter. The main conclusion is that if you switch branches and go back in time a lot, this might matter. But if you don't adding the ~Pods~ directory adds complexity and size to your git repository.
+Also, according to [[https://github.com/CocoaPods/CocoaPods/issues/2623][Headers in Pods/Headers/Build will not be checked in when /Pods is checked in · Issue #2623 · CocoaPods/CocoaPods]], the directory ~Pods/Headers/Build/~ should be included, but is being excluded by the ~build/~ line in the ~.gitignore~ file. So I included it by adding
+#+begin_example
+!Pods/Headers/Build/
+#+end_example
+
+to my ~.gitignore~.
+<2014-12-30 Tue>
+*** Solutions
+**** Removing from project
+:PROPERTIES:
+:ID:       dbecba86-8d7a-4686-ad39-937ce481a98c
+:END:
+[[http://stackoverflow.com/a/16427883][How to remove CocoaPods from a project?'s answer]] has a solution, I used [[https://github.com/kylef/cocoapods-deintegrate][kylef/cocoapods-deintegrate]] linked over there.
+<2015-05-03 Sun>
+*** Troubleshooting
+**** the '<TARGET_NAME>' target overrides the other_ldflags build setting defined in...
+:PROPERTIES:
+:ID:       b2fe5f3c-a125-4bf7-86c6-3f5ef0deb969
+:END:
+I used
+#+begin_src sh :eval never
+pod install
+#+end_src
+and got this error message:
+#+begin_example
+Analyzing dependencies
+Downloading dependencies
+Installing ReactiveCocoa (2.3.1)
+Generating Pods project
+Integrating client project
+
+[!] From now on use `WebClientDemo.xcworkspace`.
+
+[!] The `WebClientDemo [Debug]` target overrides the `OTHER_CFLAGS` build setting defined in `Pods/Target Support Files/Pods-WebClientDemo/Pods-WebClientDemo.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+
+[!] The `WebClientDemo [Debug]` target overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Target Support Files/Pods-WebClientDemo/Pods-WebClientDemo.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+
+[!] The `WebClientDemo [Release]` target overrides the `OTHER_CFLAGS` build setting defined in `Pods/Target Support Files/Pods-WebClientDemo/Pods-WebClientDemo.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+
+[!] The `WebClientDemo [Release]` target overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Target Support Files/Pods-WebClientDemo/Pods-WebClientDemo.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+#+end_example
+I followed [[http://stackoverflow.com/a/18730481/1346426][The target … overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Pods.xcconfig's answer]] and made it work.
+<2014-12-23 Tue>
+*** Tutorials
+**** Adding a CocoaPod
+:PROPERTIES:
+:ID:       54a1718a-611d-4af6-9186-b386d5fb42c4
+:END:
+[[http://www.raywenderlich.com/64546/introduction-to-cocoapods-2][Introduction to CocoaPods Tutorial - Ray Wenderlich]]
+<2014-12-23 Tue>
+**** Podfile syntax
+:PROPERTIES:
+:ID:       07345dea-1757-4359-9aa3-1fe0d12339b2
+:END:
+[[http://guides.cocoapods.org/using/the-podfile.html][CocoaPods Guides - The Podfile]] is a guide on the subject.
+<2014-12-31 Wed>
 ** Consuming SOAP web services
 These are the different options sorted by the last change date:
 
@@ -2939,30 +2967,6 @@ output:
 :END:
 According to [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/1480][iOS Dynamic Libraries deployed to iOS7 now causes linker error. · Issue #1480 · ReactiveCocoa/ReactiveCocoa]] there is a problem deploying dynamic libraries to iOS 7. It links to [[http://stackoverflow.com/q/25909870/1346426][XCode 6 and Embedded Frameworks only supported in iOS8]], which is asked by one of the discussion members. The conclusion is that you can use version ~2.3.1~ to support deployment to iOS 7. I asked if that also solves the iOS app store submission problem, and was answered that it does.
 <2014-12-19 Fri>
-**** References
-***** Video
-:PROPERTIES:
-:ID:       2c48d1a7-7f1c-4f10-a83e-0a7aea0ba829
-:END:
-| Link                                                                                 |  Status |
-|--------------------------------------------------------------------------------------+---------|
-| [[http://vimeo.com/78749139][An Introduction to ReactiveCocoa: A Big Nerd Ranch Tech Talk on Vimeo]]                |    2:52 |
-| [[https://www.youtube.com/watch?v=fWV7xyN5CR8][‪April 2014 Tech Talk: Reactive Cocoa‬‏]]                                                 | watched |
-| [[http://vimeo.com/65637501][ReactiveCocoa at MobiDevDay 2013 on Vimeo]]                                            |   48:46 |
-| [[https://www.youtube.com/watch?v=NzKp2AjnMMM][Reactive Cocoa Developer Conference • Panel Q&A and Discussion]]                       |    8:00 |
-| [[https://www.youtube.com/watch?v=kuZ5eR2JcSo&feature=youtu.be][Modularity à la Taliban by Jon Sterling • GitHub Reactive Cocoa Developer Conference]] | watched |
-<2015-01-27 Tue>
-***** Web
-:PROPERTIES:
-:ID:       7a633913-21a7-4fca-bf0e-02299d5ea927
-:END:
-| link                                                           | status                   |
-|----------------------------------------------------------------+--------------------------|
-| [[http://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1][ReactiveCocoa Tutorial - The Definitive Introduction: Part 1/2]] | don't remember..         |
-| [[http://www.raywenderlich.com/74106/mvvm-tutorial-with-reactivecocoa-part-1][MVVM Tutorial with ReactiveCocoa: Part 1/2 - Ray Wenderlich]]    | Read                     |
-| [[http://www.raywenderlich.com/74131/mvvm-tutorial-with-reactivecocoa-part-2][MVVM Tutorial with ReactiveCocoa: Part 2/2 - Ray Wenderlich]]    | Read                     |
-| [[http://cocoasamurai.blogspot.co.il/2013/03/basic-mvvm-with-reactivecocoa.html][Cocoa Samurai: Basic MVVM with ReactiveCocoa]]                   | In this pattern we still |
-<2014-12-25 Thu>
 **** libextobjc
 ***** ~@weakify~ and ~@strongify~
 :PROPERTIES:
@@ -3160,6 +3164,30 @@ According to [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/691][create
   }];
 #+end_src
 <2015-01-07 Wed>
+**** References
+***** Video
+:PROPERTIES:
+:ID:       2c48d1a7-7f1c-4f10-a83e-0a7aea0ba829
+:END:
+| Link                                                                                 |  Status |
+|--------------------------------------------------------------------------------------+---------|
+| [[http://vimeo.com/78749139][An Introduction to ReactiveCocoa: A Big Nerd Ranch Tech Talk on Vimeo]]                |    2:52 |
+| [[https://www.youtube.com/watch?v=fWV7xyN5CR8][‪April 2014 Tech Talk: Reactive Cocoa‬‏]]                                                 | watched |
+| [[http://vimeo.com/65637501][ReactiveCocoa at MobiDevDay 2013 on Vimeo]]                                            |   48:46 |
+| [[https://www.youtube.com/watch?v=NzKp2AjnMMM][Reactive Cocoa Developer Conference • Panel Q&A and Discussion]]                       |    8:00 |
+| [[https://www.youtube.com/watch?v=kuZ5eR2JcSo&feature=youtu.be][Modularity à la Taliban by Jon Sterling • GitHub Reactive Cocoa Developer Conference]] | watched |
+<2015-01-27 Tue>
+***** Web
+:PROPERTIES:
+:ID:       7a633913-21a7-4fca-bf0e-02299d5ea927
+:END:
+| link                                                           | status                   |
+|----------------------------------------------------------------+--------------------------|
+| [[http://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1][ReactiveCocoa Tutorial - The Definitive Introduction: Part 1/2]] | don't remember..         |
+| [[http://www.raywenderlich.com/74106/mvvm-tutorial-with-reactivecocoa-part-1][MVVM Tutorial with ReactiveCocoa: Part 1/2 - Ray Wenderlich]]    | Read                     |
+| [[http://www.raywenderlich.com/74131/mvvm-tutorial-with-reactivecocoa-part-2][MVVM Tutorial with ReactiveCocoa: Part 2/2 - Ray Wenderlich]]    | Read                     |
+| [[http://cocoasamurai.blogspot.co.il/2013/03/basic-mvvm-with-reactivecocoa.html][Cocoa Samurai: Basic MVVM with ReactiveCocoa]]                   | In this pattern we still |
+<2014-12-25 Thu>
 **** Solutions
 ***** Combine multiple ~RACCommand~ instances into a common result
 :PROPERTIES:
@@ -3260,6 +3288,19 @@ Terminating app due to uncaught exception 'NSInternalInconsistencyException', re
 #+end_example
 [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/1213][Catch errors in RAC() for Release builds · Issue #1213 · ReactiveCocoa/ReactiveCocoa]] has a discussion on the subject.
 <2015-06-08 Mon>
+**** unsorted
+***** Maybe add ~@weakify~ and ~@strongify~                       :check:
+:PROPERTIES:
+:ID:       88a1ed8c-d3ff-4c38-a912-f31866b8f0c9
+:END:
+When you do:
+#+begin_src objc
+RAC(self,SomeTextField.text) =
+#+end_src
+Asked a question in [[https://github.com/ReactiveCocoa/ReactiveCocoa/issues/1216][Help understanding retain cycle · Issue #1216 · ReactiveCocoa/ReactiveCocoa]].
+When checking their answer, check if they considered the race condition and synchronization problems.
+[[http://stackoverflow.com/a/23948331/1346426][reactivecocoa true shouldChangeCharactersInRange textfield equivalent's answer]] does something similar, so I guess it's ok.
+<2015-01-01 Thu>
 *** Realm
 **** Troubleshooting
 ***** Library not loaded
@@ -3684,6 +3725,32 @@ from the top and it worked.
 <2015-01-13 Tue>
 *** Replacing a ViewController with another
 [[http://stackoverflow.com/a/18430336/1346426][Switching view controllers without navigation controller's answer]] says it's a good thing to use a ~UINavigationController~ to control the navigation of the app. If you want to disable the option to go back to the previous screen you can just hide the navigation bar using [[id:c964ca80-0adb-4065-8e55-80d07dcf082a][Hiding the navigation bar]].
+** Swift
+*** References
+| Link                                           | Status |
+|------------------------------------------------+--------|
+| [[http://www.raywenderlich.com/74438/swift-tutorial-a-quick-start][Swift Tutorial: A Quick Start - Ray Wenderlich]] | Read   |
+|                                                |        |
+*** Solutions
+**** Adding an objective c bridging header
+[[https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html][Using Swift with Cocoa and Objective-C: Swift and Objective-C in the Same Project]] has a solution.
+<2015-05-15 Fri>
+**** Importing swift code into objective c
+:PROPERTIES:
+:ID:       a61cbe64-6c5e-46c0-ad9a-272dc747338b
+:END:
+[[http://stackoverflow.com/a/27251979/1346426][Can't use Swift classes inside Objective-C's answer]] has a solution.
+<2015-05-26 Tue>
+*** Various Topics
+**** Address Book programming
+[[https://www.safaribooksonline.com/library/view/ios-8-swift/9781491908969/ch13.html][13. Address Book - iOS 8 Swift Programming Cookbook]] has a detailed guide for using the address book in swift. [[https://skillsmatter.com/skillscasts/5700-how-to-leverage-the-addressbook-framework][How to Leverage the Addressbook Framework | SkillsCast | 17th September 2014]] is a lecture on the subject, and the slides are in [[http://www.slideshare.net/pandamonia/addressbookswift][AddressBook.swift]]. [[https://developer.apple.com/library/prerelease/ios/documentation/AddressBook/Reference/AddressBook_iPhoneOS_Framework/index.html#//apple_ref/doc/uid/TP40007212][Address Book Framework Reference for iOS]] is Apple's official reference. I decided to go with [[https://github.com/Alterplay/APAddressBook][Alterplay/APAddressBook]] at the end.
+<2015-05-15 Fri>
+**** Should a class inherit from NSObject
+[[http://stackoverflow.com/a/24067969][Swift native base class or NSObject's answer]] has a good explanation.
+<2015-05-05 Tue>
+**** Singleton
+[[https://github.com/hpique/SwiftSingleton][hpique/SwiftSingleton]] has a great example for a swift singleton.
+<2015-05-15 Fri>
 ** Troubleshooting
 *** +entityForName: nil is not a legal NSManagedObjectContext parameter searching for entity name
 :PROPERTIES:
@@ -3842,6 +3909,10 @@ Look at these sections:
 :END:
 [[http://stackoverflow.com/a/19161529/1346426][Formatting a UITextField for credit card input like (xxxx xxxx xxxx xxxx)'s answer]] has a great example.
 <2015-01-04 Sun>
+** Various Topics
+*** Developing on Windows or Linux
+[[http://stackoverflow.com/questions/15873461/open-xcode-project-in-windows][ios - Open Xcode Project in windows - Stack Overflow]]'s answers have an overview on all the methods.
+<2015-08-19 Wed>
 ** Xcode
 *** Adding another project
 :PROPERTIES:
@@ -3865,32 +3936,6 @@ Look at these sections:
 **** Version Editor says "no editor"
 [[http://stackoverflow.com/q/5994630/1346426][Why does Xcode 4 version editor sometimes say “no editor”]] and [[http://stackoverflow.com/q/5815427/1346426][How to “Turn On” Version Editor in Xcode 4?]] have a discussion over it with some proposed solutions, but none of them worked.
 <2015-05-17 Sun>
-** Swift
-*** References
-| Link                                           | Status |
-|------------------------------------------------+--------|
-| [[http://www.raywenderlich.com/74438/swift-tutorial-a-quick-start][Swift Tutorial: A Quick Start - Ray Wenderlich]] | Read   |
-|                                                |        |
-*** Solutions
-**** Adding an objective c bridging header
-[[https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html][Using Swift with Cocoa and Objective-C: Swift and Objective-C in the Same Project]] has a solution.
-<2015-05-15 Fri>
-**** Importing swift code into objective c
-:PROPERTIES:
-:ID:       a61cbe64-6c5e-46c0-ad9a-272dc747338b
-:END:
-[[http://stackoverflow.com/a/27251979/1346426][Can't use Swift classes inside Objective-C's answer]] has a solution.
-<2015-05-26 Tue>
-*** Various Topics
-**** Address Book programming
-[[https://www.safaribooksonline.com/library/view/ios-8-swift/9781491908969/ch13.html][13. Address Book - iOS 8 Swift Programming Cookbook]] has a detailed guide for using the address book in swift. [[https://skillsmatter.com/skillscasts/5700-how-to-leverage-the-addressbook-framework][How to Leverage the Addressbook Framework | SkillsCast | 17th September 2014]] is a lecture on the subject, and the slides are in [[http://www.slideshare.net/pandamonia/addressbookswift][AddressBook.swift]]. [[https://developer.apple.com/library/prerelease/ios/documentation/AddressBook/Reference/AddressBook_iPhoneOS_Framework/index.html#//apple_ref/doc/uid/TP40007212][Address Book Framework Reference for iOS]] is Apple's official reference. I decided to go with [[https://github.com/Alterplay/APAddressBook][Alterplay/APAddressBook]] at the end.
-<2015-05-15 Fri>
-**** Should a class inherit from NSObject
-[[http://stackoverflow.com/a/24067969][Swift native base class or NSObject's answer]] has a good explanation.
-<2015-05-05 Tue>
-**** Singleton
-[[https://github.com/hpique/SwiftSingleton][hpique/SwiftSingleton]] has a great example for a swift singleton.
-<2015-05-15 Fri>
 * Java
 ** Abstract Classes
 *** Naming
@@ -4787,6 +4832,14 @@ kreadconfig --group General --key BrowserApplication
 **** Connecting without a password
 [[http://askubuntu.com/a/46935][How can I set up password-less SSH login?'s answer]] has a solution.
 <2015-05-13 Wed>
+** Various Topics
+*** TODO Opitimizing the file system for ssd
+| Link                                                                         | Status | Description              | Comment |
+|------------------------------------------------------------------------------+--------+--------------------------+---------|
+| [[http://www.makeuseof.com/tag/optimize-linux-ssds/][How To Optimize Linux For SSDs]]                                               | Read   | nice and simple article. |         |
+| [[https://wiki.debian.org/SSDOptimization][SSDOptimization - Debian Wiki]]                                                | TODO   |                          |         |
+| [[https://sites.google.com/site/easylinuxtipsproject/ssd][Optimize your Solid State Drive for Linux Mint 17.2, Ubuntu 14.04 and Debian]] | TODO   |                          |         |
+<2015-08-22 Sat>
 * Lubuntu
 ** IBM Thinkpad T23 Installation screen problem
 [[http://ubuntuforums.org/showthread.php?t=2104218][(lubuntu) IBM Thinkpad T23 - Screen Resolution Issue]] discusses it.
