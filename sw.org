@@ -5801,6 +5801,59 @@ I used the project's sdk.
 I restarted the IDE as suggested in [[http://stackoverflow.com/a/30254167/1346426][Android Studio - Failed to complete Gradle execution - getPid()'s answer]] and in [[http://stackoverflow.com/a/26985578/1346426][Android Studio Gradle Error Error:Cause: net.rubygrapefruit.platform.internal.jni.PosixProcessFunctions.getPid()I's answer]] but it didn't help. It might have to do with the gradle version.
 
 <2015-08-07 Fri>
+**** Task Juggler
+***** Troubleshooting
+****** no kde-config
+Full error message:
+#+begin_example
+building Nix...
+building the system configuration...
+these derivations will be built:
+  /nix/store/aa22jim8dyxz7vnyhmb7pz35x8mnjw83-taskjuggler-2.4.3.drv
+  /nix/store/kzcajfmrnxq72zhknm9akxlym7m88qqm-system-path.drv
+  /nix/store/k642w4zzjs0s4jw19knzfnwsr2fd1jwf-unit-polkit.service.drv
+  /nix/store/m31im9vxr7bva0p0ii6an18gghz0zqmj-dbus-conf.drv
+  /nix/store/vf57wysprmzxz5qsjyh0wgp9dznq9lmj-unit-dbus.service.drv
+  /nix/store/x9fjdg4c42r13x9myj38mp6y0zrc5xds-system-units.drv
+  /nix/store/yz9fyp2dnv8v52l5aqjd21bhl6m70ng6-etc.drv
+  /nix/store/qllpnhyfx3nkja9n7rhnl6hpdm0ylj05-nixos-15.08.git.3c114b8.drv
+building path(s) ‘/nix/store/3mjyhp9dfdv70izi3rm5kfkddl11pk3k-taskjuggler-2.4.3’
+unpacking sources
+unpacking source archive /nix/store/jqi1gjzbyi8qfkbr2gdhvjm2n3zdg361-taskjuggler-2.4.3.tar.bz2
+source root is taskjuggler-2.4.3
+patching sources
+applying patch /nix/store/9d6qcr8xh4d6r7v8jhmk30rxvjag63jx-timezone-glibc.patch
+patching file taskjuggler/Utility.cpp
+configuring
+fixing libtool script ./admin/ltmain.sh
+configure flags: --disable-static --disable-dependency-tracking --prefix=/nix/store/3mjyhp9dfdv70izi3rm5kfkddl11pk3k-taskjuggler-2.4.3 
+    --without-arts --disable-docs
+    --x-includes=/nix/store/ix05pxlr1vdg3z4r2z4wzj9nzdns8k6a-libX11-1.6.3/include
+    --x-libraries=/nix/store/ix05pxlr1vdg3z4r2z4wzj9nzdns8k6a-libX11-1.6.3/lib
+    --with-qt-dir=/nix/store/wv09gfji3gkf7awfdxr1zl48qk7ivg7l-qt-3.3.8
+   
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking target system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /nix/store/a457ywa1haa0sgr9g7a1pgldrg3s798d-coreutils-8.24/bin/install -c
+checking for -p flag to install... yes
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /nix/store/a457ywa1haa0sgr9g7a1pgldrg3s798d-coreutils-8.24/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for KDE support... yes
+checking for kde-config... not found
+configure: error: The important program kde-config was not found!
+Please check whether you installed KDE correctly.
+
+builder for ‘/nix/store/aa22jim8dyxz7vnyhmb7pz35x8mnjw83-taskjuggler-2.4.3.drv’ failed with exit code 1
+cannot build derivation ‘/nix/store/kzcajfmrnxq72zhknm9akxlym7m88qqm-system-path.drv’: 1 dependencies couldn't be built
+cannot build derivation ‘/nix/store/qllpnhyfx3nkja9n7rhnl6hpdm0ylj05-nixos-15.08.git.3c114b8.drv’: 1 dependencies couldn't be built
+error: build of ‘/nix/store/qllpnhyfx3nkja9n7rhnl6hpdm0ylj05-nixos-15.08.git.3c114b8.drv’ failed
+#+end_example
+
+[[http://askubuntu.com/a/136657/252848][“kde-config not found” error while installing kstars from source's answer]] suggested to install kde-libs, which I did, but it didn't solve the problem. [[https://forum.kde.org/viewtopic.php?f=66&t=39449][kde-config was not found • KDE Community Forums]] says it has been renamed to ~kde4-config~, and indeed it is ~kde4-config~ on my system.
+<2015-08-28 Fri>
 *** Cheat Sheet
 **** Nix standalone
 | Command                        | Description                        |
@@ -5883,58 +5936,6 @@ was wrong, it should have been ~/dev/sda1~.
 <2015-06-30 Tue>
 *** Mac OS X
 [[https://nixos.org/wiki/Nix_on_OS_X][Nix on OS X - Nix Wiki]] is a guide for installing Nix on Mac OS X (because of the Darwin architecture), Search for binary distributions for Distribution-independent Nix bootstrap binaries for x86_64-darwin in [[http://hydra.nixos.org/release/nix/nix-1.9][Hydra - Release nix-1.9]].
-**** Task Juggler
-***** Troubleshooting
-****** no kde-config
-Full error message:
-#+begin_example
-building Nix...
-building the system configuration...
-these derivations will be built:
-  /nix/store/aa22jim8dyxz7vnyhmb7pz35x8mnjw83-taskjuggler-2.4.3.drv
-  /nix/store/kzcajfmrnxq72zhknm9akxlym7m88qqm-system-path.drv
-  /nix/store/k642w4zzjs0s4jw19knzfnwsr2fd1jwf-unit-polkit.service.drv
-  /nix/store/m31im9vxr7bva0p0ii6an18gghz0zqmj-dbus-conf.drv
-  /nix/store/vf57wysprmzxz5qsjyh0wgp9dznq9lmj-unit-dbus.service.drv
-  /nix/store/x9fjdg4c42r13x9myj38mp6y0zrc5xds-system-units.drv
-  /nix/store/yz9fyp2dnv8v52l5aqjd21bhl6m70ng6-etc.drv
-  /nix/store/qllpnhyfx3nkja9n7rhnl6hpdm0ylj05-nixos-15.08.git.3c114b8.drv
-building path(s) ‘/nix/store/3mjyhp9dfdv70izi3rm5kfkddl11pk3k-taskjuggler-2.4.3’
-unpacking sources
-unpacking source archive /nix/store/jqi1gjzbyi8qfkbr2gdhvjm2n3zdg361-taskjuggler-2.4.3.tar.bz2
-source root is taskjuggler-2.4.3
-patching sources
-applying patch /nix/store/9d6qcr8xh4d6r7v8jhmk30rxvjag63jx-timezone-glibc.patch
-patching file taskjuggler/Utility.cpp
-configuring
-fixing libtool script ./admin/ltmain.sh
-configure flags: --disable-static --disable-dependency-tracking --prefix=/nix/store/3mjyhp9dfdv70izi3rm5kfkddl11pk3k-taskjuggler-2.4.3 
-    --without-arts --disable-docs
-    --x-includes=/nix/store/ix05pxlr1vdg3z4r2z4wzj9nzdns8k6a-libX11-1.6.3/include
-    --x-libraries=/nix/store/ix05pxlr1vdg3z4r2z4wzj9nzdns8k6a-libX11-1.6.3/lib
-    --with-qt-dir=/nix/store/wv09gfji3gkf7awfdxr1zl48qk7ivg7l-qt-3.3.8
-   
-checking build system type... x86_64-unknown-linux-gnu
-checking host system type... x86_64-unknown-linux-gnu
-checking target system type... x86_64-unknown-linux-gnu
-checking for a BSD-compatible install... /nix/store/a457ywa1haa0sgr9g7a1pgldrg3s798d-coreutils-8.24/bin/install -c
-checking for -p flag to install... yes
-checking whether build environment is sane... yes
-checking for a thread-safe mkdir -p... /nix/store/a457ywa1haa0sgr9g7a1pgldrg3s798d-coreutils-8.24/bin/mkdir -p
-checking for gawk... gawk
-checking whether make sets $(MAKE)... yes
-checking for KDE support... yes
-checking for kde-config... not found
-configure: error: The important program kde-config was not found!
-Please check whether you installed KDE correctly.
-
-builder for ‘/nix/store/aa22jim8dyxz7vnyhmb7pz35x8mnjw83-taskjuggler-2.4.3.drv’ failed with exit code 1
-cannot build derivation ‘/nix/store/kzcajfmrnxq72zhknm9akxlym7m88qqm-system-path.drv’: 1 dependencies couldn't be built
-cannot build derivation ‘/nix/store/qllpnhyfx3nkja9n7rhnl6hpdm0ylj05-nixos-15.08.git.3c114b8.drv’: 1 dependencies couldn't be built
-error: build of ‘/nix/store/qllpnhyfx3nkja9n7rhnl6hpdm0ylj05-nixos-15.08.git.3c114b8.drv’ failed
-#+end_example
-
-<<current-stage>>
 *** NixPkgs
 **** Haskell packages
 [[https://github.com/NixOS/cabal2nix/issues/134#issuecomment-95572099][Include git revision from hackage2nix and all-cabal-files repositories in the generated hackage-packages.nix file · Issue #134 · NixOS/cabal2nix]] says it now uses the [[https://github.com/commercialhaskell/all-cabal-files][commercialhaskell/all-cabal-files]] to include more metadata on hackage packages.
@@ -5975,6 +5976,10 @@ diff the files.
 
 ***** bundix
 Right now Nixpkgs take it from [[https://github.com/cstrahan/bundix][cstrahan/bundix]].
+****** TODO Make bundix work
+[[https://github.com/NixOS/nixpkgs/issues/9005][bundler_HEAD: hash problems due to #8567 · Issue #9005 · NixOS/nixpkgs]] has a discussion on the topic.
+<<current-stage>>
+<2015-08-28 Fri>
 ***** Task Jungler
 [[https://github.com/NixOS/nixpkgs/issues/6879#issuecomment-83220706][nix-copy-closure problem was really a user nixos setup problem! · Issue #6879 · NixOS/nixpkgs]] says you need to use zsh, but it didn't solve it.
 **** Various Topics
