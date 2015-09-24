@@ -293,6 +293,10 @@ I took a look at [[https://code.google.com/p/google-http-java-client/wiki/Expone
 ***** VB.net GCM server
 [[http://www.androidsnippets.com/vbnet-server-side-code-to-send-c2dm-messages][VB.NET Server side code to send C2DM messages - Android Snippets]]
 <2014-09-17 Wed>
+**** Solutions
+***** Including only the GCM services
+[[http://stackoverflow.com/a/31296453/1346426][Android App permissions (duplicate)'s answer]]
+<2015-09-07 Mon>
 *** Getting the context
 A context contains application environment information that is used for managing application specific resources, and application-level operation such as launching activities, broadcasting, receiving intents etc.
 
@@ -520,32 +524,6 @@ Error:The 'java' plugin has been applied, but it is not compatible with the Andr
 <2015-02-17 Tue>
 *** IDEs
 **** Android Studio
-***** Solutions
-****** Add a gradle project as a library
-[[http://stackoverflow.com/a/19188384/1346426][AndroidStudio - Module Dependencies in Gradle's answer]] offers a solution, but it's not working for me.
-
-****** Adding a jar as a library
-:PROPERTIES:
-:ID:       9c10680b-0dd9-48ec-8b02-26d31904fc8a
-:END:
-[[http://stackoverflow.com/a/16628496/1346426][Android Studio: Add jar as library?'s answer]] has a solution.
-What I did is just add the jar to the ~libs~ directory and the line
-#+begin_src groovy :eval never-export
-compile fileTree(dir: 'libs', include: ['*.jar'])
-#+end_src
-automatically handled it.
-<2015-01-29 Thu>
-****** Building for release
-[[http://developer.android.com/sdk/installing/studio-build.html][Building Your Project with Gradle | Android Developers]] is the official Android guide.
-[[http://stackoverflow.com/a/20927125/1346426][Android Studio: how to generate signed apk using Gradle?'s answer]] and [[http://stackoverflow.com/a/20876737/1346426][Using Android Studio how do I get a signed, non-debug and zip aligned APK?'s answer]] explain how to do it, also from a command line.
-<2014-08-04 Mon>
-****** Changing font size in all UI elements
-[[http://stackoverflow.com/a/24719912/1346426][How to increase fonts in all UI elements in IntelliJ IDEA?'s answer]] has a solution.
-<2014-08-01 Fri>
-****** Checking the JDK version
-print =javac -version=, and 1.6.x is 6 according to
-[[http://en.wikipedia.org/wiki/Java_version_history#Java_SE_6_.28December_11.2C_2006.29][Java version history - Wikipedia, the free encyclopedia]]
-<2014-08-01 Fri>
 ***** Code Completion
 ****** Making it case insensitive
 Go to =File->Settings=, and then =Editor->Code Completion= and change the =Case sensitive completion= combobox accordingly.
@@ -600,6 +578,9 @@ _Conclusion_
 
 I finally decided to go with [[http://stackoverflow.com/a/21049338/1346426][What should be in my .gitignore for an Android Studio project?'s answer]] (Phil).
 <2014-10-05 Sun>
+
+[[http://stackoverflow.com/a/11968647/1346426][What to gitignore from the .idea folder?'s answer]] has some more information.
+<2015-09-07 Mon>
 ****** Errors
 ******* Nothing to push
 [[http://stackoverflow.com/a/23985135/1346426][“Nothing to push” error in IntelliJ with Git's answer]] has a solution.
@@ -607,6 +588,10 @@ I finally decided to go with [[http://stackoverflow.com/a/21049338/1346426][What
 ****** Tutorials
 [[https://www.youtube.com/watch?v=Ldmc757EXaE][Android Studio App Development | GitHub Integration & Sharing - YouTube]]
 <2014-08-01 Fri>
+***** Installation
+Install it through [[https://paolorotolo.github.io/android-studio/][Android Studio for Ubuntu]]. See different issues in [[https://github.com/PaoloRotolo/android-studio][PaoloRotolo/android-studio]]. Install Java following [[http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html][Install Oracle Java 8 In Ubuntu Or Linux Mint Via PPA Repository (JDK8) ~ Web Upd8: Ubuntu / Linux blog]]'s instructions. Finally Install the SDK following [[https://codelatte.wordpress.com/2015/01/27/installing-the-android-sdk-on-ubuntu-14-04/][Installing the Android SDK on Ubuntu 14.04 | codelatte]]'s instructions.
+<<current-stage>>
+<2015-09-04 Fri>
 ***** Keyboard shortcuts
 ****** Convert code to upper or lower case
 [[http://stackoverflow.com/a/5265587/1346426][Intellij shortcut to convert code to upper or lower case?'s answer]] has a good explanation on it.
@@ -646,6 +631,32 @@ I tried changing the ~gcm-client.iml~ to match an ~.iml~ of another Android proj
 <2014-08-08 Fri>
 ***** Renaming a package
 [[http://stackoverflow.com/a/18637004/1346426][Android Studio Rename Package's answer]] has a great solution.
+<2014-08-01 Fri>
+***** Solutions
+****** Add a gradle project as a library
+[[http://stackoverflow.com/a/19188384/1346426][AndroidStudio - Module Dependencies in Gradle's answer]] offers a solution, but it's not working for me.
+
+****** Adding a jar as a library
+:PROPERTIES:
+:ID:       9c10680b-0dd9-48ec-8b02-26d31904fc8a
+:END:
+[[http://stackoverflow.com/a/16628496/1346426][Android Studio: Add jar as library?'s answer]] has a solution.
+What I did is just add the jar to the ~libs~ directory and the line
+#+begin_src groovy :eval never-export
+compile fileTree(dir: 'libs', include: ['*.jar'])
+#+end_src
+automatically handled it.
+<2015-01-29 Thu>
+****** Building for release
+[[http://developer.android.com/sdk/installing/studio-build.html][Building Your Project with Gradle | Android Developers]] is the official Android guide.
+[[http://stackoverflow.com/a/20927125/1346426][Android Studio: how to generate signed apk using Gradle?'s answer]] and [[http://stackoverflow.com/a/20876737/1346426][Using Android Studio how do I get a signed, non-debug and zip aligned APK?'s answer]] explain how to do it, also from a command line.
+<2014-08-04 Mon>
+****** Changing font size in all UI elements
+[[http://stackoverflow.com/a/24719912/1346426][How to increase fonts in all UI elements in IntelliJ IDEA?'s answer]] has a solution.
+<2014-08-01 Fri>
+****** Checking the JDK version
+print =javac -version=, and 1.6.x is 6 according to
+[[http://en.wikipedia.org/wiki/Java_version_history#Java_SE_6_.28December_11.2C_2006.29][Java version history - Wikipedia, the free encyclopedia]]
 <2014-08-01 Fri>
 ***** Taking a screenshot from the emulator
 :PROPERTIES:
@@ -716,6 +727,15 @@ insufficient permissions for device
 #+end_example
 You need to run Android Studio with root permissions. See [[id:1d27f9ea-0cb9-47d4-b80c-646140e7034b][Launching application from unity launcher with root permissions]] on how to do so.
 <2015-04-28 Tue>
+Update:
+Actually, that's not the best solution..
+According to [[https://groups.google.com/d/msg/android-discuss/-Fp5VkTmW1k/n9Pj03n9Ld8J][Re: (android-discuss) ADB: error: insufficient permissions for device - Google Groups]] you should
+#+begin_src sh
+adb kill-server
+sudo adb start-server
+adb devices
+#+end_src
+<2015-09-04 Fri 12:58>
 ****** java.lang.NoClassDefFoundError
 :PROPERTIES:
 :ID:       9c9e590b-3442-4e3f-bdb7-0b8e11cdb5a7
@@ -732,6 +752,10 @@ Unable to find any references to the Android Gradle plug-in in build.gradle file
 #+end_example
 [[http://stackoverflow.com/a/22016342/1346426][Android Studio : Unable to find any references to the Android Gradle plug-in in build.gradle files's answer]] has a solution.
 <2015-01-01 Thu>
+***** Troubleshooting
+****** Freezing
+[[https://code.google.com/p/android/issues/detail?id=133692][Issue 133692 - android - Android Studio freezes when editing the androidmanifest.xml - Android Open Source Project - Issue Tracker - Google Project Hosting]] has an issue that's maybe related. The workaround they suggest is working with JDK6, which I can't do as I'm using Java 8 lambdas.
+[[https://code.google.com/p/android/issues/detail?id=82706][Issue 82706 - android - Android Studio 1.0.1 frequently freezing: editing build.gradle files? - Android Open Source Project - Issue Tracker - Google Project Hosting]] is focused only on freezing when editing ~.gradle~ files.
 ***** Using distribution with sources
 :PROPERTIES:
 :ID:       a8b17d01-f1bb-4048-b57c-637380888c8b
@@ -749,17 +773,29 @@ you can configure gradle wrapper to use distribution with sources
 :END:
 The attached ~workspace_shows_project.xml~ shows the project and the attached ~workspace_hides_project.xml~ hides it.
 <2014-09-16 Tue>
-***** Troubleshooting
-****** Freezing
-[[https://code.google.com/p/android/issues/detail?id=133692][Issue 133692 - android - Android Studio freezes when editing the androidmanifest.xml - Android Open Source Project - Issue Tracker - Google Project Hosting]] has an issue that's maybe related. The workaround they suggest is working with JDK6, which I can't do as I'm using Java 8 lambdas.
-[[https://code.google.com/p/android/issues/detail?id=82706][Issue 82706 - android - Android Studio 1.0.1 frequently freezing: editing build.gradle files? - Android Open Source Project - Issue Tracker - Google Project Hosting]] is focused only on freezing when editing ~.gradle~ files.
 **** Comparison
 [[https://www.infinum.co/the-capsized-eight/articles/eclipse-is-dead-for-android-development-and-i-helped-kill-it][Eclipse is dead for Android development and I helped kill it — Infinum]] has an article
 and a discussion in the comments about the comparison between Eclipse and Andriod Studio.
 [[http://stackoverflow.com/a/24963217/1346426][Import all settings from Eclipse to Android Studio (closed)'s answer]] also discusses it.
 <2014-08-01 Fri>
 **** Eclipse
-***** Taking emulator screenshots
+***** Installation
+- [[http://www.weldon.whipple.org/2012/12/android-development-using-eclipse-on.html][weldon.whipple.org: Android Development Using Eclipse on Ubuntu 12.04]]
+- [[http://forum.xda-developers.com/showthread.php?t=2043285][(GUIDE) How to Properly Configure Ubuntu 12.10 64bit - Build Jellybean (All Variants) - XDA Forum]]
+
+<2013-03-10 Sun>
+****** Installing Java
+- [[http://www.maketecheasier.com/install-java-runtime-in-ubuntu][How to Install Java Runtime In Ubuntu 12.04]]
+- [[https://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/][Install Oracle Java Runtime (JRE) 7 in Ubuntu 12.04 (Precise Pangolin) • Liberian Geek]]
+<2013-03-10 Sun>
+****** Installing Eclipse
+[[http://wiki.eclipse.org/Eclipse/Installation][Eclipse/Installation - Eclipsepedia]]
+<2013-03-10 Sun>
+******* Eclipse not starting
+[[http://wiki.eclipse.org/IRC_FAQ#I_just_installed_Eclipse_on_Linux.2C_but_it_does_not_start._What_is_the_problem.3F][IRC FAQ - Eclipsepedia]]
+<2013-03-10 Sun>
+***** Solutions
+****** Taking emulator screenshots
 [[http://stackoverflow.com/a/2066183/1346426][How to take emulator screenshots using Eclipse?'s answer]] has a solution.
 <2014-06-09 Mon>
 *** JNI
@@ -1401,22 +1437,6 @@ public _Constructor()
 **** WakefulBroadcastReceiver not recognized
 [[http://stackoverflow.com/a/19051240/1346426][WakefulBroadcastReceiver cannot be resolved to a type's answer]] has a solution.
 <2014-09-17 Wed>
-*** Ubuntu
-**** Setup
-- [[http://www.weldon.whipple.org/2012/12/android-development-using-eclipse-on.html][weldon.whipple.org: Android Development Using Eclipse on Ubuntu 12.04]]
-- [[http://forum.xda-developers.com/showthread.php?t=2043285][(GUIDE) How to Properly Configure Ubuntu 12.10 64bit - Build Jellybean (All Variants) - XDA Forum]]
-
-<2013-03-10 Sun>
-***** Installing Java
-- [[http://www.maketecheasier.com/install-java-runtime-in-ubuntu][How to Install Java Runtime In Ubuntu 12.04]]
-- [[https://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/][Install Oracle Java Runtime (JRE) 7 in Ubuntu 12.04 (Precise Pangolin) • Liberian Geek]]
-<2013-03-10 Sun>
-***** Installing Eclipse
-[[http://wiki.eclipse.org/Eclipse/Installation][Eclipse/Installation - Eclipsepedia]]
-<2013-03-10 Sun>
-****** Eclipse not starting
-[[http://wiki.eclipse.org/IRC_FAQ#I_just_installed_Eclipse_on_Linux.2C_but_it_does_not_start._What_is_the_problem.3F][IRC FAQ - Eclipsepedia]]
-<2013-03-10 Sun>
 *** UI
 **** Fragments
 ***** Tutorials
@@ -3728,7 +3748,7 @@ from the top and it worked.
 :PROPERTIES:
 :ID:       a61cbe64-6c5e-46c0-ad9a-272dc747338b
 :END:
-[[http://stackoverflow.com/a/27251979/1346426][Can't use Swift classes inside Objective-C's answer]] has a solution.
+[[http://stackoverflow.com/a/27251979/1346426][Can't use Swift classes inside Objective-C's answer]]
 <2015-05-26 Tue>
 **** Various Topics
 ***** Address Book programming
@@ -5978,7 +5998,6 @@ diff the files.
 Right now Nixpkgs take it from [[https://github.com/cstrahan/bundix][cstrahan/bundix]].
 ****** TODO Make bundix work
 [[https://github.com/NixOS/nixpkgs/issues/9005][bundler_HEAD: hash problems due to #8567 · Issue #9005 · NixOS/nixpkgs]] has a discussion on the topic.
-<<current-stage>>
 <2015-08-28 Fri>
 ***** Task Jungler
 [[https://github.com/NixOS/nixpkgs/issues/6879#issuecomment-83220706][nix-copy-closure problem was really a user nixos setup problem! · Issue #6879 · NixOS/nixpkgs]] says you need to use zsh, but it didn't solve it.
@@ -6174,7 +6193,7 @@ I had trouble operating it but it turns out that [[~/build/emacs/org-mode/doc/li
 #+begin_src emacs-lisp :eval never
 (org-babel-lob-ingest "~/org-mode/babel-lib.org")
 #+end_src
-<<current-stage>>
+
 And it produced an error. It has to be done like so:
 #+begin_src emacs-lisp :eval never
 (org-babel-lob-ingest "/home/username/org-mode/babel-lib.org")
@@ -7809,6 +7828,9 @@ git rm asubmodule
 ***** Cloning a repository into another one
 [[http://stackoverflow.com/a/10362680][Git Clone Into Another Existing Git Repo's answer]] explains that if you clone a git repository into an existing one it will be ignored as it contains a ~.git~ directory. However, for full external library inclusion functionality, you should use submodules.
 <2015-03-30 Mon>
+***** Configuring the upstream repository
+[[http://stackoverflow.com/a/5561327/1346426][What does git push -u mean?'s answer]]
+<2015-09-02 Wed>
 ***** Git status showing modified, but no diff
 :PROPERTIES:
 :ID:       9ef61d24-554d-44f6-9bd9-f1b39ab3b8e5
@@ -7818,6 +7840,52 @@ git rm asubmodule
 ***** Multiple ~.gitignore~ files
 [[http://stackoverflow.com/a/7005830/1346426][Can I include other gitingore file in a .gitignore file?(like include in C language)'s answer]] has a solution, but it's very complicated. [[http://stackoverflow.com/a/10274455/1346426][Best practice for using multiple .gitignore's answer]] solves it by concatenating all the files, or by using [[https://github.com/zachlatta/gitignorer][zachlatta/gitignorer]]. If it makes sense, you can put another ~.gitignore~ in a subfolder, as explained in [[http://stackoverflow.com/a/3307252/1346426][Are multiple `.gitignore`s frowned on?'s answer]].
 <2015-08-17 Mon>
+***** Sharing a repository between Windows and *nix
+=core.autocrlf=
+
+If you're programming on Windows and working
+with people who are not (or vice-versa), you'll probably run into
+line-ending issues at some point. This is because Windows uses both a
+carriage-return character and a linefeed character for newlines in its
+files, whereas Mac and Linux systems use only the linefeed character.
+This is a subtle but incredibly annoying fact of cross-platform work;
+many editors on Windows silently replace existing LF-style line endings
+with CRLF, or insert both line-ending characters when the user hits the
+enter key.
+
+Git can handle this by auto-converting CRLF line endings into LF when
+you add a file to the index, and vice versa when it checks out code onto
+your filesystem. You can turn on this functionality with the
+=core.autocrlf= setting. If you're on a Windows machine, set it to
+=true= -- this converts LF endings into CRLF when you check out code:
+
+#+begin_src sh
+git config --global core.autocrlf true
+#+end_src
+
+If you're on a Linux or Mac system that uses LF line endings, then you
+don't want Git to automatically convert them when you check out files;
+however, if a file with CRLF endings accidentally gets introduced, then
+you may want Git to fix it. You can tell Git to convert CRLF to LF on
+commit but not the other way around by setting =core.autocrlf= to input:
+
+#+begin_src sh
+git config --global core.autocrlf input
+#+end_src
+
+This setup should leave you with CRLF endings in Windows checkouts, but
+LF endings on Mac and Linux systems and in the repository.
+
+If you're a Windows programmer doing a Windows-only project, then you
+can turn off this functionality, recording the carriage returns in the
+repository by setting the config value to =false=:
+
+#+begin_src sh
+git config --global core.autocrlf false
+#+end_src
+
+taken from [[https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration][Git - Git Configuration]].
+<2015-09-02 Wed>
 **** Visual Diff
 [[http://stackoverflow.com/a/137141/1346426][What's the best visual merge tool for Git? (closed)'s answer]] suggests to use Meld, and links to [[http://www.wiredforcode.com/blog/2011/06/04/git-with-meld-diff-viewer-on-ubuntu/][Git With Meld Diff Viewer on Ubuntu - Wired For Code]] that explains how to use it with git.
 <2014-08-22 Fri>
@@ -7844,8 +7912,10 @@ However, I'm using a home network which seems to be fine.
 :END:
 The [[http://synergy-project.org/][Synergy - Mouse and keyboard sharing software]] site makes you pay for it, so I'm using [[http://synergykm.com/binaries/][Synergy Binary Download Mirror]] which offers it for free.
 You can also download from the nightly builds - https://synergy-project.org/nightly
-
 <2015-01-06 Tue>
+**** Windows
+You can download it from [[http://www.snapfiles.com/downloads/synergy/dlsynergy.html][Synergy - Trusted Free download from SnapFiles]].
+<2015-09-04 Fri>
 *** Mac OS X
 **** Troubleshooting
 ***** Not getting the OS version
@@ -8710,6 +8780,9 @@ I'm in the middle of testing it now.
 :END:
 this shortcut messes up the rendering. [[http://askubuntu.com/a/68487][How to disable global <Super>-p shortcut?'s answer]] has a solution.
 <2015-03-20 Fri>
+**** Disabling the Super key
+[[http://askubuntu.com/a/105585/252848][How do I disable the Super key?'s answer]]
+<2015-09-08 Tue>
 **** Dual booting with Mint
 [[http://unix.stackexchange.com/a/155406][How to have triple boot Linux Mint 17 Cinnamon/Ubuntu 14.04/Windows 8?'s answer]] has a solution.
 <2015-07-02 Thu>
@@ -8885,6 +8958,9 @@ Using the =alphaover= transition for text overlay leaves the black stroke, but m
 :END:
 [[http://stackoverflow.com/a/11890935/1346426][Is there a github markdown language identifier for Objective C code?'s answer]] has a solution.
 <2014-12-31 Wed>
+**** org-mode support
+[[http://webapps.stackexchange.com/a/45985][How to change appearance of org-mode files on Github?'s answer]] says it uses [[https://github.com/bdewey/org-ruby][bdewey/org-ruby]] for rendering the org-mode file.
+<2015-08-28 Fri>
 *** Gmail
 **** Nested lists
 [[https://productforums.google.com/forum/#!topic/gmail/UVWvuTuE-0I][Nested List in gmail - Google Product Forums]] has a good solution.
