@@ -5286,6 +5286,13 @@ Full error message:
 [[http://askubuntu.com/a/423321][How to install WhatsApp?'s answer]] has a good explanation.
 <2015-02-17 Tue>
 ** NixOS
+*** Contributions
+**** TaskJuggler                                                  :ATTACH:
+:PROPERTIES:
+:Attachments: Gemfile Gemfile.lock gemset.nix
+:ID:       af439fc7-e244-463e-9688-ec331a98b28c
+:END:
+This is my experimentation adding the TaskJuggler gem to the new NixOS Ruby backend
 *** Applications
 **** Android Studio
 ***** Installation                                               :ATTACH:
