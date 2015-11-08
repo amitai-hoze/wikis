@@ -1,0 +1,473 @@
+* Haskell Wiki
+:PROPERTIES:
+:ID:       116d44fd-8ed7-4fef-9bf1-e67e3f5d601e
+:END:
+** Android
+:PROPERTIES:
+:ID:       36a4a3d6-d631-4130-b561-eafc659deccc
+:END:
+[[https://github.com/neurocyte/ghc-android][neurocyte/ghc-android]] is a cross compiler for Android.
+<2015-05-03 Sun>
+** Command line arguments
+[[http://learnyouahaskell.com/input-and-output][Input and Output - Learn You a Haskell for Great Good!]] has an explanation on it (Under "Command line arguments")
+<2014-09-11 Thu>
+** Converting a string into int
+[[http://stackoverflow.com/a/2468453/1346426][Convert String to Integer/Float in Haskell?'s answer]] has a solution.
+<2014-09-14 Sun>
+** Defining a fucntion in ghci
+[[http://stackoverflow.com/a/2846610][How to define a function in ghci across multiple lines?'s answer]] has a solution
+<2014-09-11 Thu>
+** Defining an operator
+:PROPERTIES:
+:ID:       9f7a06a4-a19a-4b02-bf0a-0099a6e621a4
+:END:
+[[http://stackoverflow.com/a/9356458/1346426][Haskell - How do I create an operator?'s answer]] has a solution.
+<2014-12-09 Tue>
+** Diagrams
+*** Latex
+**** Overlaying a diagram
+It seems the the usual way to use overlay specifications:
+#+begin_src latex
+  \only<1>{
+    \begin{diagram}[width=300,height=200]
+        {-# LANGUAGE FlexibleContexts #-}
+        import Data.List
+        
+        foo = circle 1 # fc green
+        dia = foo ||| foo
+    \end{diagram}
+  }
+#+end_src
+messes it up. You should instead use the ~\onlyenv~ environment:
+#+begin_src latex
+  \begin{onlyenv}<1>
+      \begin{diagram}[width=300,height=200]
+          {-# LANGUAGE FlexibleContexts #-}
+          import Data.List
+
+          foo = circle 1 # fc green
+          dia = foo ||| foo
+      \end{diagram}
+  \end{onlyenv}
+#+end_src
+
+**** Troubleshooting
+***** Illegal equational constraint.. (Use GADTs or TypeFamilies to permit this)
+Add:
+#+begin_src haskell
+{-# LANGUAGE TypeFamilies #-}
+#+end_src
+To fix it.
+<2015-07-27 Mon>
+***** Mising fragile
+Error message:
+#+begin_example
+! Illegal parameter number in definition of \test.
+<to be read again> 
+                    
+l.309     \end{diagram}
+#+end_example
+This can be solved by adding the fragile option to the frame
+<2014-10-01 Wed>
+***** Missing ~diagrams-latex.sty~
+This is the error message:
+#+begin_example
+! LaTeX Error: Missing \begin{document}.
+#+end_example
+It seems that I downloaded the html leading to ~diagrams-latex.sty~ and not the file itself.
+***** NixOS
+****** Missing module when exporting
+[[https://github.com/NixOS/nixpkgs/issues/395][Wrapper package needed for haskell package hint · Issue #395 · NixOS/nixpkgs]] has a solution.
+I just added this [[file:init.org::NIX_GHC][environment variable]], and it fixed it.
+<2015-07-27 Mon>
+***** prettyPrint problem
+****** Bug reproduction
+:PROPERTIES:
+:EXPORT_LaTeX_CLASS: article
+:EXPORT_OPTIONS: H:1 d:nil
+:EXPORT_LaTeX_HEADER: \input{latex/diagrams_headers}
+:EXPORT_FILE_NAME: pretty-print-problem
+:END:
+
+#+author:Amitai Hoze
+
+******* Reproducing the bug
+#+begin_src latex :noweb yes
+\begin{diagram}[width=400,height=75]
+import Diagrams.TwoD.Text
+
+superScript c = case c of
+            '0' -> '\x2070'
+            '1' -> '\xb9'
+            '2' -> '\xb2'
+            '3' -> '\xb3'
+            '4' -> '\x2074'
+            '5' -> '\x2075'
+            '6' -> '\x2076'
+            '7' -> '\x2077'
+            '8' -> '\x2078'
+            '9' -> '\x2079'
+            '+' -> '\x207A'
+            '-' -> '\x207B'
+            '=' -> '\x207C'
+            '(' -> '\x207D'
+            ')' -> '\x207E'
+            'i' -> '\x2071'
+            'n' -> '\x207F'
+            otherwise -> c
+
+format ('^':'-':d:chars) = [superScript '-',superScript d] ++ format chars
+format ('^':d:chars) = [superScript d] ++ format chars
+format (c:chars) = [c] ++ format chars
+format [] = []
+
+dia = text (format "A^-3d^2+3A^-1d+3A") # scale 0.2 <> strutX (7)
+\end{diagram}
+#+end_src
+******* Temporary fix
+#+begin_src latex :noweb yes
+\begin{diagram}[width=400,height=75]
+import Diagrams.TwoD.Text
+
+superScript c = case c of
+            '0' -> '\x2070'
+            '1' -> '\xb9'
+            '2' -> '\xb2'
+            '3' -> '\xb3'
+            '4' -> '\x2074'
+            '5' -> '\x2075'
+            '6' -> '\x2076'
+            '7' -> '\x2077'
+            '8' -> '\x2078'
+            '9' -> '\x2079'
+            '+' -> '\x207A'
+            '-' -> '\x207B'
+            '=' -> '\x207C'
+            '(' -> '\x207D'
+            ')' -> '\x207E'
+            'i' -> '\x2071'
+            'n' -> '\x207F'
+            otherwise -> c
+
+format ('^':('-':(d:(chars)))) = [superScript '-',superScript d] ++ format chars
+format ('^':(d:chars)) = [superScript d] ++ format chars
+format (c:chars) = [c] ++ format chars
+format [] = []
+
+dia = text (format "A^-3d^2+3A^-1d+3A") # scale 0.2 <> strutX (7)
+\end{diagram}
+#+end_src
+*** Troubleshooting
+**** Error Installing arithmoi
+This is the error message:
+#+begin_example
+Resolving dependencies...
+Configuring arithmoi-0.4.1.1...
+Building arithmoi-0.4.1.1...
+Preprocessing library arithmoi-0.4.1.1...
+[ 1 of 34] Compiling Math.NumberTheory.Primes.Sieve.Indexing ( Math/NumberTheory/Primes/Sieve/Indexing.hs, dist/build/Math/NumberTheory/Primes/Sieve/Indexing.o )
+
+<no location info>:
+    Warning: Couldn't figure out LLVM version!
+             Make sure you have installed LLVM
+ghc: could not execute: opt
+Failed to install arithmoi-0.4.1.1
+cabal: Error: some packages failed to install:
+arithmoi-0.4.1.1 failed during the building phase. The exception was:
+ExitFailure 1
+diagrams-1.2 depends on arithmoi-0.4.1.1 which failed to install.
+diagrams-contrib-1.1.2.1 depends on arithmoi-0.4.1.1 which failed to install.
+#+end_example
+[[http://stackoverflow.com/q/24796874/1346426][Can't install diagrams/arithmoi on Mac]] has a discussion on it, but the LLVM installation instructions in the question's comments are suitable for Mac.
+I finally wrote:
+#+begin_src sh
+sudo apt-get install llvm
+#+end_src
+and it worked.
+<2014-09-07 Sun>
+**** Error Installing glib
+When running:
+#+begin_src sh
+cabal install -fcairo diagrams-builder
+#+end_src
+This is the error message:
+#+begin_example
+Resolving dependencies...
+[1 of 2] Compiling SetupWrapper     ( /tmp/cairo-0.13.0.0-11880/cairo-0.13.0.0/SetupWrapper.hs, /tmp/cairo-0.13.0.0-11880/cairo-0.13.0.0/dist/setup/SetupWrapper.o )
+
+/tmp/cairo-0.13.0.0-11880/cairo-0.13.0.0/SetupWrapper.hs:12:39:
+    Module
+    `Distribution.Simple.Configure'
+    does not export
+    `configCompilerEx'
+Failed to install cairo-0.13.0.0
+[1 of 2] Compiling SetupWrapper     ( /tmp/glib-0.13.0.1-11880/glib-0.13.0.1/SetupWrapper.hs, /tmp/glib-0.13.0.1-11880/glib-0.13.0.1/dist/setup/SetupWrapper.o )
+
+/tmp/glib-0.13.0.1-11880/glib-0.13.0.1/SetupWrapper.hs:12:39:
+    Module
+    `Distribution.Simple.Configure'
+    does not export
+    `configCompilerEx'
+Failed to install glib-0.13.0.1
+cabal: Error: some packages failed to install:
+cairo-0.13.0.0 failed during the configure step. The exception was:
+ExitFailure 1
+diagrams-builder-0.6.0.1 depends on glib-0.13.0.1 which failed to install.
+diagrams-cairo-1.2.0.1 depends on glib-0.13.0.1 which failed to install.
+glib-0.13.0.1 failed during the configure step. The exception was:
+ExitFailure 1
+pango-0.13.0.0 depends on glib-0.13.0.1 which failed to install.
+#+end_example
+[[https://github.com/gibiansky/IHaskell/issues/275][support --package-db · Issue #275 · gibiansky/IHaskell · GitHub]] suggests to upgrade ghc to 7.8.3.
+I downloaded the Linux Binary from [[http://www.haskell.org/platform/linux.html][Haskell Platform for Linux]], and followed the instructions.
+I also wrote
+#+begin_src sh
+cabal install cabal-install
+#+end_src
+Since it recommended it.
+I ran:
+#+begin_src sh
+cabal install -fcairo diagrams-builder
+#+end_src
+again and now I got this error message:
+#+begin_example
+Resolving dependencies...
+[1 of 2] Compiling SetupWrapper     ( /tmp/cairo-0.13.0.0-27461/cairo-0.13.0.0/SetupWrapper.hs, /tmp/cairo-0.13.0.0-27461/cairo-0.13.0.0/dist/setup/SetupWrapper.o )
+[2 of 2] Compiling Main             ( /tmp/cairo-0.13.0.0-27461/cairo-0.13.0.0/Setup.hs, /tmp/cairo-0.13.0.0-27461/cairo-0.13.0.0/dist/setup/Main.o )
+Linking /tmp/cairo-0.13.0.0-27461/cairo-0.13.0.0/dist/setup/setup ...
+[1 of 2] Compiling Gtk2HsSetup      ( Gtk2HsSetup.hs, dist/setup-wrapper/Gtk2HsSetup.o )
+[2 of 2] Compiling Main             ( SetupMain.hs, dist/setup-wrapper/Main.o )
+Linking dist/setup-wrapper/setup ...
+Cannot find gtk2hsC2hs
+Please install `gtk2hs-buildtools` first and check that the install directory is in your PATH (e.g. HOME/.cabal/bin).
+Failed to install cairo-0.13.0.0
+[1 of 2] Compiling SetupWrapper     ( /tmp/glib-0.13.0.1-27461/glib-0.13.0.1/SetupWrapper.hs, /tmp/glib-0.13.0.1-27461/glib-0.13.0.1/dist/setup/SetupWrapper.o )
+[2 of 2] Compiling Main             ( /tmp/glib-0.13.0.1-27461/glib-0.13.0.1/Setup.hs, /tmp/glib-0.13.0.1-27461/glib-0.13.0.1/dist/setup/Main.o )
+Linking /tmp/glib-0.13.0.1-27461/glib-0.13.0.1/dist/setup/setup ...
+[1 of 2] Compiling Gtk2HsSetup      ( Gtk2HsSetup.hs, dist/setup-wrapper/Gtk2HsSetup.o )
+[2 of 2] Compiling Main             ( SetupMain.hs, dist/setup-wrapper/Main.o )
+Linking dist/setup-wrapper/setup ...
+Cannot find gtk2hsC2hs
+Please install `gtk2hs-buildtools` first and check that the install directory is in your PATH (e.g. HOME/.cabal/bin).
+Failed to install glib-0.13.0.1
+cabal: Error: some packages failed to install:
+cairo-0.13.0.0 failed during the configure step. The exception was:
+ExitFailure 1
+diagrams-builder-0.6.0.1 depends on glib-0.13.0.1 which failed to install.
+diagrams-cairo-1.2.0.1 depends on glib-0.13.0.1 which failed to install.
+glib-0.13.0.1 failed during the configure step. The exception was:
+ExitFailure 1
+pango-0.13.0.0 depends on glib-0.13.0.1 which failed to install.
+amitai@amitai-N76VJ:/$ echo $PATH
+/home/amitai/scripts/org_mode:/home/amitai/scripts/android:/home/amitai/bin:/home/amitai/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/amitai/Work/Android/sdk//tools:/home/amitai/Work/Android/sdk//platform-tools:/home/amitai/Work/Android/android-ndk-r8e/
+#+end_example
+So I added:
+#+begin_src sh
+export PATH=$HOME/.cabal/bin:$PATH
+#+end_src
+to my ~.bashrc~ file and ran:
+#+begin_src sh
+sudo apt-get install gtk2hs-buildtools
+#+end_src
+I ran
+#+begin_src sh
+cabal install -fcairo diagrams-builder
+#+end_src
+again and got:
+#+begin_example
+Resolving dependencies...
+[1 of 2] Compiling SetupWrapper     ( /tmp/cairo-0.13.0.0-28885/cairo-0.13.0.0/SetupWrapper.hs, /tmp/cairo-0.13.0.0-28885/cairo-0.13.0.0/dist/setup/SetupWrapper.o )
+[2 of 2] Compiling Main             ( /tmp/cairo-0.13.0.0-28885/cairo-0.13.0.0/dist/setup/setup.hs, /tmp/cairo-0.13.0.0-28885/cairo-0.13.0.0/dist/setup/Main.o )
+Linking /tmp/cairo-0.13.0.0-28885/cairo-0.13.0.0/dist/setup/setup ...
+[1 of 2] Compiling Gtk2HsSetup      ( Gtk2HsSetup.hs, dist/setup-wrapper/Gtk2HsSetup.o )
+[2 of 2] Compiling Main             ( SetupMain.hs, dist/setup-wrapper/Main.o )
+Linking dist/setup-wrapper/setup ...
+Configuring cairo-0.13.0.0...
+setup: The program 'gtk2hsC2hs' version >=0.13.11 is required but the version
+found at /usr/bin/gtk2hsC2hs is version 0.13.6
+Failed to install cairo-0.13.0.0
+[1 of 2] Compiling SetupWrapper     ( /tmp/glib-0.13.0.1-28885/glib-0.13.0.1/SetupWrapper.hs, /tmp/glib-0.13.0.1-28885/glib-0.13.0.1/dist/setup/SetupWrapper.o )
+[2 of 2] Compiling Main             ( /tmp/glib-0.13.0.1-28885/glib-0.13.0.1/dist/setup/setup.hs, /tmp/glib-0.13.0.1-28885/glib-0.13.0.1/dist/setup/Main.o )
+Linking /tmp/glib-0.13.0.1-28885/glib-0.13.0.1/dist/setup/setup ...
+[1 of 2] Compiling Gtk2HsSetup      ( Gtk2HsSetup.hs, dist/setup-wrapper/Gtk2HsSetup.o )
+[2 of 2] Compiling Main             ( SetupMain.hs, dist/setup-wrapper/Main.o )
+Linking dist/setup-wrapper/setup ...
+Configuring glib-0.13.0.1...
+setup: The program 'gtk2hsC2hs' version >=0.13.11 is required but the version
+found at /usr/bin/gtk2hsC2hs is version 0.13.6
+Failed to install glib-0.13.0.1
+cabal: Error: some packages failed to install:
+cairo-0.13.0.0 failed during the configure step. The exception was:
+ExitFailure 1
+diagrams-builder-0.6.0.1 depends on glib-0.13.0.1 which failed to install.
+diagrams-cairo-1.2.0.1 depends on glib-0.13.0.1 which failed to install.
+glib-0.13.0.1 failed during the configure step. The exception was:
+ExitFailure 1
+pango-0.13.0.0 depends on glib-0.13.0.1 which failed to install.
+#+end_example
+I followed [[http://stackoverflow.com/a/10197981/1346426][How to upgrade gtk2hsC2hs?'s answer]] and wrote:
+#+begin_src sh
+cabal install gtk2hs-buildtools
+#+end_src
+I ran
+
+again and got:
+#+begin_example
+Resolving dependencies...
+[1 of 2] Compiling SetupWrapper     ( /tmp/cairo-0.13.0.0-30059/cairo-0.13.0.0/SetupWrapper.hs, /tmp/cairo-0.13.0.0-30059/cairo-0.13.0.0/dist/setup/SetupWrapper.o )
+[2 of 2] Compiling Main             ( /tmp/cairo-0.13.0.0-30059/cairo-0.13.0.0/dist/setup/setup.hs, /tmp/cairo-0.13.0.0-30059/cairo-0.13.0.0/dist/setup/Main.o )
+Linking /tmp/cairo-0.13.0.0-30059/cairo-0.13.0.0/dist/setup/setup ...
+[1 of 2] Compiling Gtk2HsSetup      ( Gtk2HsSetup.hs, dist/setup-wrapper/Gtk2HsSetup.o )
+[2 of 2] Compiling Main             ( SetupMain.hs, dist/setup-wrapper/Main.o )
+Linking dist/setup-wrapper/setup ...
+Configuring cairo-0.13.0.0...
+setup: The pkg-config package 'cairo' version >=1.2.0 is required but it could
+not be found.
+Failed to install cairo-0.13.0.0
+cabal: Error: some packages failed to install:
+cairo-0.13.0.0 failed during the configure step. The exception was:
+ExitFailure 1
+diagrams-builder-0.6.0.1 depends on cairo-0.13.0.0 which failed to install.
+diagrams-cairo-1.2.0.1 depends on cairo-0.13.0.0 which failed to install.
+pango-0.13.0.0 depends on cairo-0.13.0.0 which failed to install.
+#+end_example
+I followed [[http://stackoverflow.com/a/19661190/1346426][install gtk2hs with Darcs's answer]] and wrote:
+#+begin_src sh
+sudo apt-get install libghc-gtk-dev
+#+end_src
+And ran
+#+begin_src sh
+cabal install -fcairo diagrams-builder
+#+end_src
+and finally it worked!
+<2014-09-07 Sun>
+**** ‘Diagram’ is applied to too many type arguments              :ATTACH:
+:PROPERTIES:
+:Attachments: tmp.hs out
+:ID:       95bc388f-9fc8-4071-968f-3c9cdd36a001
+:END:
+I took the atached file from the temporary tangling done when exporting to latex,
+and indeed when compiling it shows this error message:
+#+begin_example
+[1 of 1] Compiling Diagram1804289383846930886 ( tmp.hs, tmp.o )
+
+tmp.hs:97:41:
+    ‘Diagram’ is applied to too many type arguments
+    In the type signature for ‘fromBraidGens’:
+      fromBraidGens :: NPoly LPQ BraidGens -> Diagram B R2
+#+end_example
+
+The attached ~out~ file is the error as shown when trying to compile the ~.tex~ file:
+<2015-08-17 Mon>
+*** Website
+[[http://projects.haskell.org/diagrams/][Diagrams - About diagrams]]
+** Guides
+[[http://tim.dysinger.net/posts/2014-02-18-haskell-with-emacs.html][Haskell Development on Emacs]] looks interesting, didn't read it though.
+<2014-09-07 Sun>
+** Hackage
+*** Server apis
+[[https://hackage.haskell.org/api][Server API | Hackage]]
+
+** Haskell Processor
+:PROPERTIES:
+:ID:       1975c70e-4da9-4ebc-9895-8d6b6f1ed1ec
+:END:
+[[http://c2.com/cgi/wiki?AlternativeMicroprocessorDesign][Alternative Microprocessor Design]] is a nice article on alternative processor designs.
+<2014-12-02 Tue>
+** HaTeX
+*** References
+| Link                             | Status | Description | Comment |
+|----------------------------------+--------+-------------+---------|
+| [[https://wiki.haskell.org/HaTeX_User's_Guide][HaTeX User's Guide - HaskellWiki]] |        |             |         |
+<2015-08-20 Thu>
+*** Repository
+[[https://github.com/Daniel-Diaz/HaTeX][Daniel-Diaz/HaTeX · GitHub]]
+<2014-09-14 Sun>
+** Importing a file
+:PROPERTIES:
+:ID:       9786c28b-4901-4cdc-ac6b-b271c62f8fad
+:END:
+[[http://stackoverflow.com/a/1438482/1346426][How to import a .hs file in Haskell's answer]] has a solution.
+<2014-12-12 Fri>
+** iOS
+[[http://www.quora.com/How-practical-is-it-to-write-apps-for-iOS-and-Mac-in-Haskell/answer/Justin-Spahr-Summers][Justin Spahr-Summers's answer to How practical is it to write apps for iOS and Mac in Haskell? - Quora]] is a good answer. It also links to a great article: [[http://ericsink.com/entries/fsharp_chasm.html][Why your F# evangelism isn't working]].
+<2015-05-03 Sun>
+** Multiline Strings
+[[http://stackoverflow.com/a/16030409/1346426][Haskell - Do literal backslashes always have to be escaped in a string?'s answer]] has a solution.
+[[http://kwangyulseo.com/2014/02/06/multi-line-strings-in-haskell/][Multi-line strings in Haskell | Kwang Yul Seo]] also discusses the subject.
+** Powers
+[[http://stackoverflow.com/a/6400628/1346426][Exponentiation in Haskell's answer]] has a nice explanation on the subject.
+<2014-10-01 Wed>
+** Printing with a Monad Writer
+[[http://learnyouahaskell.com/for-a-few-monads-more][For a Few Monads More - Learn You a Haskell for Great Good!]] is a nice guide for it.
+[[http://stackoverflow.com/a/11684566/1346426][How to play with Control.Monad.Writer in haskell?'s answer]] has a more updated explanation on how to do it.
+[[http://stackoverflow.com/a/11217578][Haskell Monad.Writer's answer]] deals with some typing problems, didn't understand it, may not be related.
+
+I tried to use it with a recursive function but I think you need to play around with the types and assignments and know what you're doing, since it only worked for me with one function call and multiple functions calling each other.
+<2014-09-11 Thu>
+** Repeating an item to create a list
+[[http://stackoverflow.com/a/5592657/1346426]['Repeat' in Haskell?'s answer]] has a solution
+<2014-09-10 Wed>
+** Shell Scripting
+[[http://www.yesodweb.com/blog/2012/03/shelly-for-shell-scripts][Shelly: Write your shell scripts in Haskell]] has a nice overview on the subject. It recommends shelly.
+[[https://hackage.haskell.org/package/turtle-1.0.0/docs/Turtle-Tutorial.html][Turtle.Tutorial]] is another library based on shelly but aimed for Haskell beginners.
+[[http://www.reddit.com/r/haskell/comments/2u6b8m/use_haskell_for_shell_scripting/][Use Haskell for shell scripting : haskell]] explains why turtle was made, mentioning that the tradeoffs are the lack of subshells and command tracing. [[http://www.haskellforall.com/2015/01/use-haskell-for-shell-scripting.html][Haskell for all: Use Haskell for shell scripting]] is an introduction to turtle.
+
+[[http://www.linux-magazin.de/Online-Artikel/Shell-scripting-with-type-safety-using-Haskell][Shell scripting with type-safety using Haskell » Linux-Magazin]] has an introduction to shelly.
+[[https://donsbot.wordpress.com/2010/08/17/practical-haskell/][Practical Haskell: scripting with types | Control.Monad.Writer]] has another method, but you need to pay to see it.
+[[http://chrisdone.com/posts/shell-conduit][shell-conduit: Write shell scripts in Haskell with Conduit]] is another project, currently in experimental stages.
+<2015-06-30 Tue>
+** Shelly
+*** Documentation
+[[https://github.com/yesodweb/Shelly.hs/tree/master/doc][Shelly.hs/doc at master · yesodweb/Shelly.hs]]
+*** Examples
+[[http://scholarslab.org/research-and-development/shell-programming-in-haskell-converting-s5-slides-to-pdf/][Shell Programming in Haskell: Converting S5 Slides to PDF | Scholars' Lab]] has a very nice example.
+[[https://gist.github.com/erochest/2150126][A script I wrote in Literate Haskell using Shelly]] is the source code.
+<2015-07-02 Thu>
+*** Scripts
+**** Solutions
+***** String literals as ~Data.Text~
+[[http://stackoverflow.com/a/11553196][haskell - Restricting string literals to Text only - Stack Overflow's answer]] has a solution for it.
+<2015-07-06 Mon>
+** Solutions
+*** Using haskell-ng
+[[http://stackoverflow.com/questions/29033580/how-do-i-use-the-new-haskell-ng-infrastructure-on-nixos][ghc - How do I use the new haskell-ng infrastructure on NixOS? - Stack Overflow's answer]] has a solution
+<2015-07-20 Mon>
+** Troubleshooting
+*** Could not deduce from the context
+:PROPERTIES:
+:ID:       3165abee-3221-47fc-b2b6-d4d92b10d094
+:END:
+[[http://stackoverflow.com/a/9353392/1346426][Haskell Could not deduce … from the Context error's answer]] has a good explanation on the subject
+<2014-12-09 Tue>
+** Using a language extension in GHCi
+[[http://stackoverflow.com/a/12584927/1346426][How do I enable language extensions from within GHCi?'s answer]] has a solution.
+[[https://www.fpcomplete.com/school/to-infinity-and-beyond/pick-of-the-week/guide-to-ghc-extensions/how-to-enable-extensions][How to Enable Extensions - School of Haskell | FP Complete]] has a more thorough explanation on the subject.
+<2014-09-14 Sun>
+** Various Topics
+*** Ambiguous names
+[[http://stackoverflow.com/a/2173654/1346426][map - Haskell Ambiguous Occurrences -- how to avoid? - Stack Overflow's answer]] has a nice solution.
+<2015-07-12 Sun>
+*** Computer Algebra System                                        :ATTACH:
+:PROPERTIES:
+:Attachments: 1-s2.0-S0096300307003013-main.pdf
+:ID:       4b067d74-9e80-4978-a22d-c2fc72471548
+:END:
+[[http://www.cs.columbia.edu/~sedwards/classes/2007/w4115-fall/reports/HCAS-slides.pdf][www.cs.columbia.edu/~sedwards/classes/2007/w4115-fall/reports/HCAS-slides.pdf]] is a nice presentation.
+[[http://5outh.blogspot.co.il/2013/05/symbolic-calculus-in-haskell.html][Abstract Nonsense: Symbolic Calculus in Haskell]] has a nice basic example.
+[[http://homepages.inf.ed.ac.uk/wadler/realworld/docon2.html][DoCon]] looks interesting.
+[[https://github.com/abid-mujtaba/haskell-cas][abid-mujtaba/haskell-cas]] also looks interesting.
+[[http://www.diku.dk/~berthold/papers/cashIFL10-withCopyright.pdf][www.diku.dk/~berthold/papers/cashIFL10-withCopyright.pdf]] also looks interesting.
+[[https://en.wikipedia.org/wiki/List_of_computer_algebra_systems][List of computer algebra systems - Wikipedia, the free encyclopedia]] has a comprehensive list.
+[[http://www.mathematik.uni-marburg.de/~eden/paper/AISC08LobachevLoogen.pdf][www.mathematik.uni-marburg.de/~eden/paper/AISC08LobachevLoogen.pdf]] is very intersting.
+The attached pdf is also intersting.
+[[https://wiki.haskell.org/Applications_and_libraries/Mathematics#Computer_Algebra][Applications and libraries/Mathematics - HaskellWiki]] has additional matter on the subject.
+<2015-07-07 Tue>
+<2015-07-09 Thu>
+*** Pattern matching identical values
+[[http://stackoverflow.com/questions/1179008/pattern-matching-identical-values][haskell - Pattern matching identical values - Stack Overflow's answer]] says you can't
+<2015-07-20 Mon>
+*** Syntax extensions
+[[https://www.fpcomplete.com/school/to-infinity-and-beyond/pick-of-the-week/guide-to-ghc-extensions/basic-syntax-extensions][Basic Syntax Extensions - School of Haskell | FP Complete]]
+*** Unary operators
+[[https://mail.haskell.org/pipermail/haskell-cafe/2007-September/031544.html][(Haskell-cafe) Custom unary operator extension?]]

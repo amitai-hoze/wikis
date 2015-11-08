@@ -221,7 +221,7 @@ _Links_
 <2014-10-06 Mon>
 **** Making a LoaderManager aware of database changes
 _With a ContentProvider_
-[[http://stackoverflow.com/a/15529866/1346426][How do CursorLoader automatically updates the view even if the app is inactive?'s answer]] has a solution. [[http://stackoverflow.com/a/7915117/1346426][CursorLoader not updating after data change's answer]] has somre more details on it.
+[[http://stackoverflow.com/a/15529866/1346426][How do CursorLoader automatically updates the view even if the app is inactive?'s answer]] has a solution. [[http://stackoverflow.com/a/7915117/1346426][CursorLoader not updating after data change's answer]] has some more details on it.
 
 _Without a ContentProvider_
 [[http://stackoverflow.com/a/11616535/1346426][Data out of sync between a custom CursorLoader and a CursorAdapter backing a ListView's answer]] has a great explanation. [[http://stackoverflow.com/a/9063814/1346426][Getting SQLiteCursorLoader to observe data changes's answer]] has some more details. [[https://github.com/commonsguy/cwac-loaderex/blob/master/src/com/commonsware/cwac/loaderex/SQLiteCursorLoader.java][cwac-loaderex/SQLiteCursorLoader.java at master · commonsguy/cwac-loaderex · GitHub]] is Commonsware's library that does it.
