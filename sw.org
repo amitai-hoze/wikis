@@ -3876,6 +3876,10 @@ You don’t have permission to save the file “project.xcworkspace” in the fo
 [[http://stackoverflow.com/a/16621981/1346426][You don’t have permission to save the file “project.xcworkspace” in the folder “jDiet.xcodeproj”.?'s answer]] has a solution. It turns out that because I checked out the svn repository with ~sudo~, the permissions were wrong, I just checked it out without ~sudo~ and it was ok.
 <2014-12-19 Fri>
 *** UI
+**** Constraints
+***** Solutions
+****** Fitting view size to text size
+Disable the ~Scrolling enabled~ attribute.
 **** ~UILabel~
 ***** Changing font programmatically
 [[http://stackoverflow.com/a/10477421/1346426][UILabel font size?'s answer]] has a solution
