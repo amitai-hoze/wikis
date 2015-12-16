@@ -1,5 +1,3 @@
-#+author:Amitai Hoze
-
 * Software Development and Tools Wiki
 :PROPERTIES:
 :ID:       3908e762-5db3-4580-8bbd-de600632b580
@@ -1617,6 +1615,19 @@ _Saving Observable state_
 *** Version Management
 [[http://stackoverflow.com/a/13661791/1346426][Check if user has updated app or installed a fresh copy?'s answer]] has a good explanation and a good syggestion for implementation. [[http://stackoverflow.com/a/8885432/1346426][How to determine if user is reinstalling the app on Android's answer]] suggests another method.
 <2014-11-21 Fri>
+** Atlassian
+*** Confluence
+**** Emacs integration
+ [[http://www.emacswiki.org/emacs/ConfluenceMode][EmacsWiki: Confluence Mode]]
+<2015-12-16 Wed>
+**** Plugins for editing the source
+ [[https://marketplace.atlassian.com/plugins/org.swift.confluence.wiki/server/installation][Wiki Markup for Confluence | Atlassian Marketplace]]
+ [[https://marketplace.atlassian.com/plugins/com.atlassian.confluence.plugins.editor.confluence-source-editor/server/installation][Confluence Source Editor | Atlassian Marketplace]]
+<2015-12-16 Wed>
+*** Jira
+**** org-mode integration
+ [[http://www.emacswiki.org/emacs/OrgJiraMode][EmacsWiki: Org Jira Mode]]
+<2015-12-16 Wed>
 ** C++
 *** Varaible name from macro argument
 :PROPERTIES:
@@ -2582,6 +2593,23 @@ to my ~.gitignore~.
 [[http://stackoverflow.com/a/16427883][How to remove CocoaPods from a project?'s answer]] has a solution, I used [[https://github.com/kylef/cocoapods-deintegrate][kylef/cocoapods-deintegrate]] linked over there.
 <2015-05-03 Sun>
 **** Troubleshooting
+***** CocoaPods did not set the base configuration of your project because because your project already has a custom config set
+Error message:
+#+begin_example
+ [!] CocoaPods did not set the base configuration of your project because because your project already has a custom config set. In order for CocoaPods integration to work at all, please either set the base configurations of the target BluePlaquesLondonFramework` to `Pods/Target Support Files/Pods/Pods.debug.xcconfig` or include the `Pods/Target Support Files/Pods/Pods.debug.xcconfig` in your build configuration.
+#+end_example
+
+[[http://stackoverflow.com/a/27039447/1346426][Cocoapods Warning - CocoaPods did not set the base configuration of your project because because your project already has a custom config set's answer]] has a solution, and [[https://stackoverflow.com/questions/26287103/cocoapods-warning-cocoapods-did-not-set-the-base-configuration-of-your-project/27039447#comment48241702_27039447][ios - Cocoapods Warning - CocoaPods did not set the base configuration of your project because because your project already has a custom config set's comment]] helped me.
+<2015-12-16 Wed>
+***** Podfile.lock: No such file or directory
+#+begin_example
+diff: /../Podfile.lock: No such file or directory
+diff: Manifest.lock: No such file or directory error: 
+The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.`
+#+end_example
+
+[[http://stackoverflow.com/a/22428278/1346426][CocoaPods Errors on Project Build's answer]] helped me.
+<2015-12-16 Wed>
 ***** the '<TARGET_NAME>' target overrides the other_ldflags build setting defined in...
 :PROPERTIES:
 :ID:       b2fe5f3c-a125-4bf7-86c6-3f5ef0deb969
@@ -3750,6 +3778,17 @@ from the top and it worked.
 :END:
 [[http://stackoverflow.com/a/27251979/1346426][Can't use Swift classes inside Objective-C's answer]]
 <2015-05-26 Tue>
+**** Testing
+***** Mocking
+[[https://realm.io/news/swift-summit-jan-riehn-testing/][Testing in Swift - Realm is a mobile database: a replacement for SQLite & Core Data]] is a nice lecture on mocking. [[http://iosunittesting.com/manual-mocking-swift/][Manual Mocking in Swift - iOS Unit Testing]] and [[https://www.andrewcbancroft.com/2014/07/15/how-to-create-mocks-and-stubs-in-swift/][How to Create Mocks and Stubs in Swift - Andrew Bancroft]] are articles that take a similar approach.
+<2015-12-15 Tue>
+***** Troubleshooting
+[[https://github.com/CocoaPods/CocoaPods/issues/2695]['Failed to import bridging header' when executing test target · Issue #2695 · CocoaPods/CocoaPods]] talks about a similar issue caused by integrating CocoaPods, but it seems resolved.
+One possible reason is a difference in the ~Header Search Paths~ between the App target and the Tests target. Try to make it identical and see if that works.
+<2015-12-15 Tue>
+***** Unit Testing in Swift 2
+ [[https://realm.io/news/jorge-ortiz-unit-testing-swift-2/][Unit Testing in Swift 2.0: The Before and After Story, with Jorge Ortiz - Realm is a mobile database: a replacement for SQLite & Core Data]] has a nice lecture on the new features in Swift 2.0 that support testing. It covers the ~Testable~ keyword, the Test Coverage and provides a basic tutorial. [[https://github.com/Quick/Quick][Quick/Quick]] is a BDD framework for swift and Objective C, [[http://programmers.stackexchange.com/questions/135218/what-is-the-difference-between-writing-test-cases-for-bdd-and-tdd/135246#135246][What is the difference between writing test cases for BDD and TDD? - Programmers Stack Exchange's answer]] explains about the difference between BDD and TDD. [[http://masilotti.com/better-swift-unit-testing/][Better Unit Testing with Swift · Masilotti.com]] is a blog post demonstrating how to implement testing without 3rd party libraries, and explaining the philosophy.
+ <2015-12-14 Mon>
 **** Various Topics
 ***** Address Book programming
 [[https://www.safaribooksonline.com/library/view/ios-8-swift/9781491908969/ch13.html][13. Address Book - iOS 8 Swift Programming Cookbook]] has a detailed guide for using the address book in swift. [[https://skillsmatter.com/skillscasts/5700-how-to-leverage-the-addressbook-framework][How to Leverage the Addressbook Framework | SkillsCast | 17th September 2014]] is a lecture on the subject, and the slides are in [[http://www.slideshare.net/pandamonia/addressbookswift][AddressBook.swift]]. [[https://developer.apple.com/library/prerelease/ios/documentation/AddressBook/Reference/AddressBook_iPhoneOS_Framework/index.html#//apple_ref/doc/uid/TP40007212][Address Book Framework Reference for iOS]] is Apple's official reference. I decided to go with [[https://github.com/Alterplay/APAddressBook][Alterplay/APAddressBook]] at the end.
@@ -4901,6 +4940,12 @@ According to [[http://www.tonymacx86.com/mavericks-laptop-support/132350-hp-lapt
 :END:
 [[http://twobitlabs.com/2011/08/install-diffmerge-git-mac-os-x/][Using DiffMerge as your Git visual merge and diff tool | Two Bit Labs]] has a guide for it.
 <2014-12-25 Thu>
+**** Emacs
+[[http://wikemacs.org/wiki/Installing_Emacs_on_OS_X#Homebrew][Installing Emacs on OS X - WikEmacs]]
+<2015-12-16 Wed>
+**** Git annex
+[[http://git-annex.branchable.com/install/OSX/Homebrew/][Homebrew]] explains how to install it.
+<2015-12-16 Wed>
 *** Compressing with a password
 [[http://osxdaily.com/2012/01/07/set-zip-password-mac-os-x/][Password Protect Zip Files in Mac OS X]]
 <2014-08-12 Tue>
