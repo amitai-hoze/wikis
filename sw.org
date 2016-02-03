@@ -2698,6 +2698,12 @@ _Tutorials_
 [[http://www.bignerdranch.com/blog/dependency-injection-ios/][Dependency Injection, iOS and You | Big Nerd Ranch]] is a nice article about it.
 <2015-01-13 Tue>
 *** Frameworks and Libraries
+**** HTTP Stubbing
+***** Mockingjay
+I tried using it with ~Alamofire~ but it didn't work.
+Maybe [[https://github.com/kylef/Mockingjay/issues/39][Problem using MockingJay · Issue #39 · kylef/Mockingjay]] has something to do with it.
+[[https://github.com/the-grid/Disc][the-grid/Disc: An API client for Passport]] and [[https://github.com/the-grid/Portal][the-grid/Portal: An API client for The Grid]] are projects that use Mockingjay.
+<2016-01-24 Sun>
 **** libPhoneNumber
 ***** Function debugging code generation
 #+name: functions
@@ -2872,6 +2878,11 @@ I left only the functions that handle ~NSString~ and not ~NBPhoneNumber~.
  }];
 #+end_src
 <2015-01-04 Sun>
+**** Quick
+***** Various Topics
+****** Asynchronous testing
+[[https://github.com/Quick/Quick/issues/364][How to properly use asynchronous expectations with beforeEach/afterEach beforeSuite/afterSuite · Issue #364 · Quick/Quick]] and [[https://github.com/Quick/Quick/issues/365][Allow expect() to accept an Observable using push semantics (rather than the current pull) · Issue #365 · Quick/Quick]] hace good discussions on the subject.
+<2016-02-03 Wed>
 **** ReactiveCocoa
 ***** Documentation
 | Link                                    | Description      |
@@ -3549,12 +3560,46 @@ the answer is...           1
 :ID:       746d3403-059b-4868-957e-f5723a03b402
 :END:
 **** Core Data
+***** Batch operations
+:PROPERTIES:
+:ID:       05216310-F96A-4A3E-B945-9076AF2EB944
+:END:
+[[http://stackoverflow.com/a/33534668/1346426][Core Data NSBatchDeleteRequest appears to leave objects in context's answer]] states that the results of a deletion using ~NSBatchDeleteRequest~ are not propagated to the managed object context. [[https://www.bignerdranch.com/blog/new-in-core-data-and-ios-8-batch-updating/][New in Core Data and iOS 8: Batch Updating | Big Nerd Ranch]] has a great explanation on batch operations, and it also states that updating the context should be done manually (search for "Reflecting Changes in UI").
+<2016-02-02 Tue>
 ***** Debugging
 :PROPERTIES:
 :ID:       d2185eaa-007e-42ca-ab4e-36af3c8bb384
 :END:
 [[http://stackoverflow.com/a/19100739/1346426][viewing coredata with sqlite browser in xcode 5's answer]] has a solution.
 <2014-06-27 Fri>
+***** Deleting/Resetting the stack
+:PROPERTIES:
+:ID:       A145B4B2-7E54-4926-8AAA-2D8807758329
+:END:
+[[http://stackoverflow.com/questions/1077810/delete-reset-all-entries-in-core-data][iphone - Delete/Reset all entries in Core Data? - Stack Overflow]] has a lot of answers, and they offer 2 kinds of solutions. Either removing the file like in [[http://stackoverflow.com/a/1222145/1346426][Delete/Reset all entries in Core Data?'s answer]], or deleting all objects using the context like in [[http://stackoverflow.com/a/1078306/1346426][Delete/Reset all entries in Core Data?'s answer]]. Removing the file however is not guaranteed to be supported on next iOS versions, and there are also journal files to be deleted, which are not guaranteed to stay with the same file names. [[https://github.com/bignerdranch/CoreDataStack][bignerdranch/CoreDataStack]] removes also the journal files in its ~CoreDataStack.resetStack(resetCallback:)~ method like so:
+#+begin_src swift
+// Remove journal files if present
+// Eat the error because different versions of SQLite might have different journal files
+let _ = try? fm.removeItemAtURL(storeURL.URLByAppendingPathComponent("-shm"))
+let _ = try? fm.removeItemAtURL(storeURL.URLByAppendingPathComponent("-wal"))
+#+end_src
+[[https://github.com/jessesquires/JSQCoreDataKit][jessesquires/JSQCoreDataKit: A swifter Core Data stack]] doesn't even do that in its ~CoreDataModel.removeExistingModelStore()~ function, just:
+#+begin_src swift
+/**
+Removes the existing model store specfied by the receiver.
+- throws: If removing the store fails or errors, then this function throws an `NSError`.
+*/
+public func removeExistingModelStore() throws {
+    let fileManager = NSFileManager.defaultManager()
+    if let storePath = storeURL?.path where fileManager.fileExistsAtPath(storePath) {
+        try fileManager.removeItemAtPath(storePath)
+    }
+}
+#+end_src
+<2016-02-03 Wed>
+***** Performing work on a background thread
+[[http://stackoverflow.com/a/24663533/1346426][Core Data background context best practice's answer]] is very detailed. [[http://www.mlsite.net/blog/?p=518][Core Data Gotcha | Things that were not immediately obvious to me]] has a good explanation on merging and faults.
+<2016-02-03 Wed>
 **** ~NSKeyedArchiver~
 ***** Security
 :PROPERTIES:
@@ -3763,6 +3808,18 @@ from the top and it worked.
 **** Replacing a ViewController with another
 [[http://stackoverflow.com/a/18430336/1346426][Switching view controllers without navigation controller's answer]] says it's a good thing to use a ~UINavigationController~ to control the navigation of the app. If you want to disable the option to go back to the previous screen you can just hide the navigation bar using [[id:c964ca80-0adb-4065-8e55-80d07dcf082a][Hiding the navigation bar]].
 *** Swift
+**** Error Handling
+***** Various Topics
+****** Displaying a custom message for each error
+| Method            | Example                                                                             |
+|-------------------+-------------------------------------------------------------------------------------|
+| Associated Values | [[http://stackoverflow.com/a/31443717/1346426][Simplest way to throw an error/exception with a custom message in Swift 2?'s answer]] |
+| Extension         | [[http://stackoverflow.com/a/30720807/1346426][Swift do-try-catch syntax's answer]]                                                  |
+
+<2015-12-24 Thu>
+****** Enums vs Class Heirarchy
+[[http://stackoverflow.com/a/32918565/1346426][Should I use enums or class hierarchy for errors in swift? (closed)'s answer]] has a good explanation of it.
+<2015-12-24 Thu>
 **** References
 | Link                                           | Status |
 |------------------------------------------------+--------|
@@ -3779,6 +3836,14 @@ from the top and it worked.
 [[http://stackoverflow.com/a/27251979/1346426][Can't use Swift classes inside Objective-C's answer]]
 <2015-05-26 Tue>
 **** Testing
+***** Frameworks
+| Link                | Description            |
+|---------------------+------------------------|
+| [[https://github.com/typelift/SwiftCheck][typelift/SwiftCheck]] | Port of QuickCheck     |
+| [[https://github.com/vadymmarkov/Fakery][vadymmarkov/Fakery]]  | Generating fake values |
+| [[https://github.com/mflint/SwiftMock][mflint/SwiftMock]]    | Preliminary            |
+| [[https://github.com/rheinfabrik/Dobby][rheinfabrik/Dobby]]   | Mocking                |
+<2015-12-27 Sun>
 ***** Mocking
 [[https://realm.io/news/swift-summit-jan-riehn-testing/][Testing in Swift - Realm is a mobile database: a replacement for SQLite & Core Data]] is a nice lecture on mocking. [[http://iosunittesting.com/manual-mocking-swift/][Manual Mocking in Swift - iOS Unit Testing]] and [[https://www.andrewcbancroft.com/2014/07/15/how-to-create-mocks-and-stubs-in-swift/][How to Create Mocks and Stubs in Swift - Andrew Bancroft]] are articles that take a similar approach.
 <2015-12-15 Tue>
@@ -3788,6 +3853,8 @@ One possible reason is a difference in the ~Header Search Paths~ between the App
 <2015-12-15 Tue>
 ***** Unit Testing in Swift 2
  [[https://realm.io/news/jorge-ortiz-unit-testing-swift-2/][Unit Testing in Swift 2.0: The Before and After Story, with Jorge Ortiz - Realm is a mobile database: a replacement for SQLite & Core Data]] has a nice lecture on the new features in Swift 2.0 that support testing. It covers the ~Testable~ keyword, the Test Coverage and provides a basic tutorial. [[https://github.com/Quick/Quick][Quick/Quick]] is a BDD framework for swift and Objective C, [[http://programmers.stackexchange.com/questions/135218/what-is-the-difference-between-writing-test-cases-for-bdd-and-tdd/135246#135246][What is the difference between writing test cases for BDD and TDD? - Programmers Stack Exchange's answer]] explains about the difference between BDD and TDD. [[http://masilotti.com/better-swift-unit-testing/][Better Unit Testing with Swift · Masilotti.com]] is a blog post demonstrating how to implement testing without 3rd party libraries, and explaining the philosophy.
+
+[[https://realm.io/news/testing-in-swift/][Testing in Swift with Jeff Hui (Video) - Realm is a mobile database: a replacement for SQLite & Core Data]] is a great talk that introduces generative tests using a QuickCheck port to swift called Fox. It mentions that once you represent state as an immutable value, you can have generative tests for your code. It also suggests that using ~UIAutomation~ has a high maintenance cost.
  <2015-12-14 Mon>
 **** Various Topics
 ***** Address Book programming
@@ -3799,6 +3866,11 @@ One possible reason is a difference in the ~Header Search Paths~ between the App
 ***** Singleton
 [[https://github.com/hpique/SwiftSingleton][hpique/SwiftSingleton]] has a great example for a swift singleton.
 <2015-05-15 Fri>
+*** Testing
+**** Solutions
+***** Asserting that an expectation is not fulfilled
+[[http://stackoverflow.com/a/33458329/1346426][What if XCTestExpectation is unexpected's answer]] has a solution.
+<2016-02-01 Mon>
 *** Troubleshooting
 **** +entityForName: nil is not a legal NSManagedObjectContext parameter searching for entity name
 :PROPERTIES:
@@ -3853,6 +3925,9 @@ It seems that you have to wrap ~BOOL~ type variables like so:
 }];
 #+end_src
 <2015-01-06 Tue>
+**** linker command failed with exit code 1, duplicate symbols
+[[http://stackoverflow.com/a/11324169/1346426][iPhone: Duplicate Symbol Error?'s answer]] has a solution
+<2016-01-24 Sun>
 **** Terminating app due to uncaught exception '(null)', reason: '(null)'
 :PROPERTIES:
 :ID:       044d8caf-4514-47f6-b09f-5ae0ea0a5066
@@ -3965,6 +4040,12 @@ Look at these sections:
 **** Developing on Windows or Linux
 [[http://stackoverflow.com/questions/15873461/open-xcode-project-in-windows][ios - Open Xcode Project in windows - Stack Overflow]]'s answers have an overview on all the methods.
 <2015-08-19 Wed>
+**** Implementing the equality operator for NSObject subclasses
+:PROPERTIES:
+:ID:       C41AC336-043F-4873-BDC0-A5B2F90BE420
+:END:
+[[http://stackoverflow.com/a/31102598/1346426][Bug with equals operator and NSObjects in Swift 2.0?'s answer]] explains the problem and gives a solution. [[http://stackoverflow.com/a/32342485/1346426][Bug with equals operator and NSObjects in Swift 2.0?'s answer]] offers another solution, elaborated on [[http://mgrebenets.github.io/swift/2015/06/21/equatable-nsobject-with-swift-2/][Equatable NSObject With Swift 2 - NSBogan]]. The second solution doesn't work with ~NSManagedObject~ subclasses, so I designed a generic workaround for it in [[https://gist.github.com/amitai-hoze/7ecc76418d4b75c418d4][NSObject equality operator bug workaround]].
+<2016-01-19 Tue>
 *** Xcode
 **** Adding another project
 :PROPERTIES:
@@ -4946,6 +5027,10 @@ According to [[http://www.tonymacx86.com/mavericks-laptop-support/132350-hp-lapt
 **** Git annex
 [[http://git-annex.branchable.com/install/OSX/Homebrew/][Homebrew]] explains how to install it.
 <2015-12-16 Wed>
+**** P4Merge
+***** Set up as git merge tool
+[[http://pempek.net/articles/2014/04/18/git-p4merge/][Smooth Git + P4Merge | PEMPEK.NET]]
+<2016-01-24 Sun>
 *** Compressing with a password
 [[http://osxdaily.com/2012/01/07/set-zip-password-mac-os-x/][Password Protect Zip Files in Mac OS X]]
 <2014-08-12 Tue>
