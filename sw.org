@@ -3597,6 +3597,9 @@ public func removeExistingModelStore() throws {
 }
 #+end_src
 <2016-02-03 Wed>
+***** Entity inheritence
+[[http://stackoverflow.com/a/7897490/1346426][iphone - CoreData: Dealing with polymorphic associations? - Stack Overflow's answer]] has a good explanation.
+<2016-02-18 Thu>
 ***** Performing work on a background thread
 [[http://stackoverflow.com/a/24663533/1346426][Core Data background context best practice's answer]] is very detailed. [[http://www.mlsite.net/blog/?p=518][Core Data Gotcha | Things that were not immediately obvious to me]] has a good explanation on merging and faults.
 <2016-02-03 Wed>
@@ -4037,15 +4040,31 @@ Look at these sections:
 [[http://stackoverflow.com/a/19161529/1346426][Formatting a UITextField for credit card input like (xxxx xxxx xxxx xxxx)'s answer]] has a great example.
 <2015-01-04 Sun>
 *** Various Topics
+**** Adding an observer for a notification
+[[http://sealedabstract.com/code/nsnotificationcenter-with-blocks-considered-harmful/][NSNotificationCenter with blocks considered harmful | Sealed Abstract]] says that ~-[NSNotificationCenter addObserverForName:object:queue:usingBlock:]~ is not good practice. However, [[http://nshipster.com/nsnotification-and-nsnotificationcenter/][NSNotification & NSNotificationCenter - NSHipster]] says
+#+begin_quote
+Contrary to a recent article claiming otherwise, –addObserverForName:object:queue:usingBlock: should not be considered harmful. It’s perfectly safe and suitable for use in applications. Just make sure to understand memory management rules when referencing self in blocks. Any concerns in this respect are the same as for any other block-based API.
+#+end_quote
+and it seems about right.
+<2016-02-22 Mon>
+**** Background execution
+[[https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html][Background Execution]]
+<2016-02-18 Thu>
 **** Developing on Windows or Linux
 [[http://stackoverflow.com/questions/15873461/open-xcode-project-in-windows][ios - Open Xcode Project in windows - Stack Overflow]]'s answers have an overview on all the methods.
 <2015-08-19 Wed>
+**** Enumerating on an `enum`
+[[http://stackoverflow.com/questions/24007461/how-to-enumerate-an-enum-with-string-type][swift - How to enumerate an enum with String type? - Stack Overflow]] has a good discussion in its answers.
+<2016-02-18 Thu>
 **** Implementing the equality operator for NSObject subclasses
 :PROPERTIES:
 :ID:       C41AC336-043F-4873-BDC0-A5B2F90BE420
 :END:
 [[http://stackoverflow.com/a/31102598/1346426][Bug with equals operator and NSObjects in Swift 2.0?'s answer]] explains the problem and gives a solution. [[http://stackoverflow.com/a/32342485/1346426][Bug with equals operator and NSObjects in Swift 2.0?'s answer]] offers another solution, elaborated on [[http://mgrebenets.github.io/swift/2015/06/21/equatable-nsobject-with-swift-2/][Equatable NSObject With Swift 2 - NSBogan]]. The second solution doesn't work with ~NSManagedObject~ subclasses, so I designed a generic workaround for it in [[https://gist.github.com/amitai-hoze/7ecc76418d4b75c418d4][NSObject equality operator bug workaround]].
 <2016-01-19 Tue>
+**** Turning on speaker phone while calling programmatically
+[[http://stackoverflow.com/questions/15033695/switch-call-to-speaker-ios-private-api][objective c - Switch call to speaker - iOS private api - Stack Overflow]] explains that this can only be done by hacking, and is not acceptable in the App Store.
+<2016-02-21 Sun>
 *** Xcode
 **** Adding another project
 :PROPERTIES:
@@ -6636,6 +6655,9 @@ I reconstructed the programmatically generated original emphasis regular expresi
 #+end_src
 in the preamble.
 <2014-09-07 Sun>
+**** Confluence Wiki
+[[http://pythonhackers.com/p/sdelafond/org-confluence][pythonhackers.com/p/sdelafond/org-confluence]] has an explanation on how to do it.
+<2016-02-18 Thu>
 **** Export settings
 [[http://orgmode.org/guide/Export-options.html#Export-options][Export options - The compact Org-mode Guide]] has an explanation on the subject. [[http://orgmode.org/manual/Export-settings.html][Export settings - The Org Manual]] has a detailed explanation on the subject.
 <2014-08-27 Wed>
