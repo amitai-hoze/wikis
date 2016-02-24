@@ -3654,6 +3654,20 @@ _Comments_
 [[http://userguide.icu-project.org/strings/regexp][Regular Expressions - ICU User Guide]]
 <2014-08-07 Thu>
 *** Solutions
+**** App is installed but greyed out and when pressed writes installed
+[[https://developer.appcelerator.com/question/156538/ios-app-icon-greyed-out-title-stuck-permanently-on-installing#answer-267802][iOS App Icon Greyed-Out, title stuck permanently on "Installing..." » Community Questions & Answers » Appcelerator Developer Center]]
+says it's a signing issue, although the question says that the app's icon title says
+"Waiting" And ours does write the name of the app. So I went to the provisioning profile
+in [[https://developer.apple.com/account/ios/profile/profileList.action][iOS Provisioning Profiles - Apple Developer]], edited it and found out that I could add
+device IDs there, so I added the test IDs. However, this didn't work as well.
+after reading [[http://stackoverflow.com/a/20006265][Xcode 5 - App passes validation, icon grayed out after installing via iTunes's answer]]
+I realized there's also signing taking place when you're archiving, so I schecked the
+project's settings and found out that in the "General" tab under Team it said "None".
+I changed it to the signing identity I used to distribute the app and it worked.
+<2014-07-27 Sun>
+**** Find out if sim card is available in iPhone programmatically
+[[http://stackoverflow.com/a/13644893/1346426][Detect if Sim Card is available in iPhone programmatically's answer]]
+<2016-02-24 Wed>
 **** Requesting access to Contacts on iOS 7
 ABAddressBookRequestAccessWithCompletion is used to request access grant
 to the iPhone's address book from the user.
@@ -3747,17 +3761,6 @@ I had [[http://stackoverflow.com/q/19626276/1346426][Signing identity problems i
 I followed [[http://stackoverflow.com/a/22798011/1346426][Signing identity problems in XCode 5's answer]], restarted
 Xcode and it worked.
 <2014-07-20 Sun>
-**** App is installed but greyed out and when pressed writes installed
-[[https://developer.appcelerator.com/question/156538/ios-app-icon-greyed-out-title-stuck-permanently-on-installing#answer-267802][iOS App Icon Greyed-Out, title stuck permanently on "Installing..." » Community Questions & Answers » Appcelerator Developer Center]]
-says it's a signing issue, although the question says that the app's icon title says
-"Waiting" And ours does write the name of the app. So I went to the provisioning profile
-in [[https://developer.apple.com/account/ios/profile/profileList.action][iOS Provisioning Profiles - Apple Developer]], edited it and found out that I could add
-device IDs there, so I added the test IDs. However, this didn't work as well.
-after reading [[http://stackoverflow.com/a/20006265][Xcode 5 - App passes validation, icon grayed out after installing via iTunes's answer]]
-I realized there's also signing taking place when you're archiving, so I schecked the
-project's settings and found out that in the "General" tab under Team it said "None".
-I changed it to the signing identity I used to distribute the app and it worked.
-<2014-07-27 Sun>
 **** UIButton shifts up after app returns to foreground
 :PROPERTIES:
 :ID:       5fa89dd1-813e-4529-8e9d-aaa442ca2148
@@ -4050,10 +4053,13 @@ and it seems about right.
 **** Background execution
 [[https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html][Background Execution]]
 <2016-02-18 Thu>
+**** Customizing local notifications
+[[http://stackoverflow.com/a/9137501/1346426][Set default iOS local notification style for application's answer]] has a good explanation. [[http://stackoverflow.com/a/24310333/1346426][UILocalNotification Not Working … No Vibration on iPhone 4 iOS 4.3's answer]] also has a good explanation.
+<2016-02-24 Wed>
 **** Developing on Windows or Linux
 [[http://stackoverflow.com/questions/15873461/open-xcode-project-in-windows][ios - Open Xcode Project in windows - Stack Overflow]]'s answers have an overview on all the methods.
 <2015-08-19 Wed>
-**** Enumerating on an `enum`
+**** Enumerating on an ~enum~
 [[http://stackoverflow.com/questions/24007461/how-to-enumerate-an-enum-with-string-type][swift - How to enumerate an enum with String type? - Stack Overflow]] has a good discussion in its answers.
 <2016-02-18 Thu>
 **** Implementing the equality operator for NSObject subclasses
@@ -4065,6 +4071,9 @@ and it seems about right.
 **** Turning on speaker phone while calling programmatically
 [[http://stackoverflow.com/questions/15033695/switch-call-to-speaker-ios-private-api][objective c - Switch call to speaker - iOS private api - Stack Overflow]] explains that this can only be done by hacking, and is not acceptable in the App Store.
 <2016-02-21 Sun>
+**** UICollectionView with  NSFetchedResultsContoller
+[[http://stackoverflow.com/a/20554673/1346426][NSFetchedResultsContollerDelegate for CollectionView's answer]] is a good answer. However, the github repository it links to links to [[https://github.com/jessesquires/JSQDataSourcesKit][jessesquires/JSQDataSourcesKit: Type-safe, value-oriented, composable data source objects that keep your view controllers light]].
+<2016-02-24 Wed>
 *** Xcode
 **** Adding another project
 :PROPERTIES:
