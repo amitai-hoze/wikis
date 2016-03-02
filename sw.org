@@ -4053,6 +4053,28 @@ and it seems about right.
 **** Background execution
 [[https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html][Background Execution]]
 <2016-02-18 Thu>
+**** Catching all exceptions
+[[http://www.raywenderlich.com/33669/overview-of-ios-crash-reporting-tools-part-1][Overview of iOS Crash Reporting Tools: Part 1/2]] has an overview of all crash reporting tools.
+
+[[http://stackoverflow.com/a/1283189/1346426][How do you implement global iPhone Exception Handling?'s answer]] explains how to do it in objective c. [[http://stackoverflow.com/a/31770435/1346426][How should I use NSSetUncaughtExceptionHandler in Swift's answer]] explains how to do so in swift, but notes that Swift 2 errors are not caught with this.
+
+[[http://stackoverflow.com/questions/26545444/runtime-error-handling-in-swift#comment58875221_26546200][exception - Runtime error handling in Swift - Stack Overflow's comment]] says that crittercism does catch swift 2 errors.
+
+[[http://stackoverflow.com/a/15514063/1346426][How to prevent EXC_BAD_ACCESS from crashing an app?'s answer]] explains how to to catch ~EXC_BAD_ACCESS~, it seems to be related. It links to [[https://plcrashreporter.org/][PLCrashReporter - In-process CrashReporter framework for iOS and Mac OS X]], and crittercism, now called [[https://www.apteligent.com/][Home - Apteligent]], uses it, which might explain why it catches swift 2 errors.
+
+In [[http://stackoverflow.com/a/7365872/1346426][Using PLCrashReporter, can you receive events before the crash?'s answer]] PLCrashReporter's developer explains about the ~-[PLCrashReporter setCrashCallbacks:]~ hook to execute code when a crash occurs. He says: "writing code intended for execution inside of a signal handler is exceptionally difficult, and is not recommended.".
+
+[[http://rajatwork.com/?p=113][Using & Integrating PlCrashReporter in a iOS Project | Raj]] explains how to integrate PlCrashReporter into an Xcode project.
+
+[[http://stackoverflow.com/a/27427721/1346426][iOS SWIFT application - How to ignore SIGPIPE signal globally?'s answer]] shows how to catch a signal in swift. [[http://blog.dunkelstern.de/2016/01/14/post-mortem-analysis-of-swift-server-code/][Post mortem analysis of Swift server code]] also has an example.
+
+[[http://www.cocoawithlove.com/2010/05/handling-unhandled-exceptions-and.html][Handling unhandled exceptions and signals]] is a very referenced post about adding exception and signal handling to an app.
+<2016-03-02 Wed>
+***** Questions I might answer
+[[http://stackoverflow.com/questions/35557716/nssetuncaughtexceptionhandler-not-catches-the-exception-in-swift-but-crittercism][ios - NSSetUncaughtExceptionHandler not catches the exception in swift But Crittercism does it - Stack Overflow]]
+[[http://stackoverflow.com/questions/26545444/runtime-error-handling-in-swift][exception - Runtime error handling in Swift - Stack Overflow]]
+[[http://stackoverflow.com/questions/31024803/swift-how-to-deal-with-uncaught-exception][swift - How to deal with uncaught exception - Stack Overflow]]
+<2016-03-02 Wed>
 **** Customizing local notifications
 [[http://stackoverflow.com/a/9137501/1346426][Set default iOS local notification style for application's answer]] has a good explanation. [[http://stackoverflow.com/a/24310333/1346426][UILocalNotification Not Working … No Vibration on iPhone 4 iOS 4.3's answer]] also has a good explanation.
 <2016-02-24 Wed>
