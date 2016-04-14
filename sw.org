@@ -3665,9 +3665,15 @@ I realized there's also signing taking place when you're archiving, so I schecke
 project's settings and found out that in the "General" tab under Team it said "None".
 I changed it to the signing identity I used to distribute the app and it worked.
 <2014-07-27 Sun>
+**** Calling C++ functions from Swift
+[[http://www.swiftprogrammer.info/swift_call_cpp.html][Use C++ Code in Swift]] has a solution.
+<2016-03-29 Tue>
 **** Find out if sim card is available in iPhone programmatically
 [[http://stackoverflow.com/a/13644893/1346426][Detect if Sim Card is available in iPhone programmatically's answer]]
 <2016-02-24 Wed>
+**** Making UI changes right before a long operation on the main thread
+[[http://iphonedevsdk.com/forum/iphone-sdk-tutorials/82677-how-to-display-an-activity-indicator-or-other-ui-before-beginning-a-long-task.html][How to display an activity indicator or other UI before beginning a long task - iPhone Dev SDK]]
+<2016-04-14 Thu>
 **** Requesting access to Contacts on iOS 7
 ABAddressBookRequestAccessWithCompletion is used to request access grant
 to the iPhone's address book from the user.
@@ -3761,6 +3767,9 @@ I had [[http://stackoverflow.com/q/19626276/1346426][Signing identity problems i
 I followed [[http://stackoverflow.com/a/22798011/1346426][Signing identity problems in XCode 5's answer]], restarted
 Xcode and it worked.
 <2014-07-20 Sun>
+**** Transferring errors from swift to objc
+[[https://www.uraimo.com/2015/11/03/error-handling-from-objective-c-to-swift-2-and-back/][uraimo.com | Error Handling: From Objective-C to Swift and Back]]
+<2016-04-14 Thu>
 **** UIButton shifts up after app returns to foreground
 :PROPERTIES:
 :ID:       5fa89dd1-813e-4529-8e9d-aaa442ca2148
@@ -4056,6 +4065,8 @@ and it seems about right.
 **** Catching all exceptions
 [[http://www.raywenderlich.com/33669/overview-of-ios-crash-reporting-tools-part-1][Overview of iOS Crash Reporting Tools: Part 1/2]] has an overview of all crash reporting tools.
 
+[[http://landonf.bikemonkey.org/code/objc/Reliable_Crash_Reporting.20110912.html][Landon Fuller]] has a very good article on the matter.
+
 [[http://stackoverflow.com/a/1283189/1346426][How do you implement global iPhone Exception Handling?'s answer]] explains how to do it in objective c. [[http://stackoverflow.com/a/31770435/1346426][How should I use NSSetUncaughtExceptionHandler in Swift's answer]] explains how to do so in swift, but notes that Swift 2 errors are not caught with this.
 
 [[http://stackoverflow.com/questions/26545444/runtime-error-handling-in-swift#comment58875221_26546200][exception - Runtime error handling in Swift - Stack Overflow's comment]] says that crittercism does catch swift 2 errors.
@@ -4066,15 +4077,41 @@ In [[http://stackoverflow.com/a/7365872/1346426][Using PLCrashReporter, can you 
 
 [[http://rajatwork.com/?p=113][Using & Integrating PlCrashReporter in a iOS Project | Raj]] explains how to integrate PlCrashReporter into an Xcode project.
 
+I succeeded in executing code using ~-[PLCrashReporter setCrashCallbacks:]~, namely:
+#+begin_src objc
+void post_crash_callback (siginfo_t *info, ucontext_t *uap, void *context) {
+  // this is not async-safe, but this is a test implementation
+  NSLog(@"post crash callback: signo=%d, uap=%p, context=%p", info->si_signo, uap, context);
+}
+#+end_src
+
+and got a log entry:
+#+begin_example
+Mar  6 12:30:55 alex-dizengofs-iPhone Reporty-AppStore[286] <Warning>: post crash callback: signo=5, uap=0x16fd64ff8, context=0xabababab
+#+end_example
+
 [[http://stackoverflow.com/a/27427721/1346426][iOS SWIFT application - How to ignore SIGPIPE signal globally?'s answer]] shows how to catch a signal in swift. [[http://blog.dunkelstern.de/2016/01/14/post-mortem-analysis-of-swift-server-code/][Post mortem analysis of Swift server code]] also has an example.
 
 [[http://www.cocoawithlove.com/2010/05/handling-unhandled-exceptions-and.html][Handling unhandled exceptions and signals]] is a very referenced post about adding exception and signal handling to an app.
-<2016-03-02 Wed>
+[[https://mikeash.com/pyblog//friday-qa-2011-04-01-signal-handling.html][mikeash.com: Friday Q&A 2011-04-01: Signal Handling]] talks about signal handling in general, but I'm not sure using ~kqueue~ or GCD is possible when the app crashes.
+
+[[http://www.cocoawithlove.com/blog/2016/02/02/partial-functions-part-two-catching-precondition-failures.html#setting-up-a-mach-exception-handler][Partial functions in Swift, Part 2: Catching precondition failures]] suggests using Mach exceptions, but links to [[https://mikeash.com/pyblog/friday-qa-2013-01-11-mach-exception-handlers.html][mikeash.com: Friday Q&A 2013-01-11: Mach Exception Handlers]] that explains that this can only be done using private APIs on iOS. [[https://www.plcrashreporter.org/documentation/api/v1.2-beta2/mach_exceptions.html][Plausible CrashReporter: Mach Exceptions on Mac OS X and iOS]] also discusses it.
+
+[[https://www.securecoding.cert.org/confluence/display/c/SIG30-C.+Call+only+asynchronous-safe+functions+within+signal+handlers][SIG30-C. Call only asynchronous-safe functions within signal handlers - CERT C Coding Standard - CERT Secure Coding Standards]] and [[https://www.securecoding.cert.org/confluence/display/c/SIG31-C.+Do+not+access+shared+objects+in+signal+handlers][SIG31-C. Do not access shared objects in signal handlers - CERT C Coding Standard - CERT Secure Coding Standards]] are a great reference for writing signal handlers.
+
+[[https://news.ycombinator.com/item?id=5215956][I'm curious to know how you think Crashalytics is a mediocre solution. I run Ap... | Hacker News]] claims that Crashlytics uses private APIs.
+
+[[https://www.plausible.coop/blog/?p=176][Blog | Plausible Labs » Exploring iOS Crash Reports]] may contain more information.
+<2016-03-10 Thu>
 ***** Questions I might answer
 [[http://stackoverflow.com/questions/35557716/nssetuncaughtexceptionhandler-not-catches-the-exception-in-swift-but-crittercism][ios - NSSetUncaughtExceptionHandler not catches the exception in swift But Crittercism does it - Stack Overflow]]
 [[http://stackoverflow.com/questions/26545444/runtime-error-handling-in-swift][exception - Runtime error handling in Swift - Stack Overflow]]
 [[http://stackoverflow.com/questions/31024803/swift-how-to-deal-with-uncaught-exception][swift - How to deal with uncaught exception - Stack Overflow]]
 <2016-03-02 Wed>
+**** Concurrency
+[[https://www.objc.io/issues/2-concurrency/concurrency-apis-and-pitfalls/][Concurrent Programming: APIs and Challenges · objc.io]] has a good explanation.
+[[http://devetc.org/code/2014/01/21/timers-clocks-and-cocoa.html][dev etc : Timers, Clocks, and Cocoa]] explains that the Cocoa Foundation waiting mechanisms use a clock that stops when the cpu goes to sleep.
+<2016-03-10 Thu>
 **** Customizing local notifications
 [[http://stackoverflow.com/a/9137501/1346426][Set default iOS local notification style for application's answer]] has a good explanation. [[http://stackoverflow.com/a/24310333/1346426][UILocalNotification Not Working … No Vibration on iPhone 4 iOS 4.3's answer]] also has a good explanation.
 <2016-02-24 Wed>
@@ -4090,12 +4127,23 @@ In [[http://stackoverflow.com/a/7365872/1346426][Using PLCrashReporter, can you 
 :END:
 [[http://stackoverflow.com/a/31102598/1346426][Bug with equals operator and NSObjects in Swift 2.0?'s answer]] explains the problem and gives a solution. [[http://stackoverflow.com/a/32342485/1346426][Bug with equals operator and NSObjects in Swift 2.0?'s answer]] offers another solution, elaborated on [[http://mgrebenets.github.io/swift/2015/06/21/equatable-nsobject-with-swift-2/][Equatable NSObject With Swift 2 - NSBogan]]. The second solution doesn't work with ~NSManagedObject~ subclasses, so I designed a generic workaround for it in [[https://gist.github.com/amitai-hoze/7ecc76418d4b75c418d4][NSObject equality operator bug workaround]].
 <2016-01-19 Tue>
+**** NSThread source code
+[[https://github.com/PureDarwin/PureFoundation/blob/master/NSThread.m][PureFoundation/NSThread.m at master · PureDarwin/PureFoundation]]
+**** Smooth scrolling for UITableView and UICollectionView
+[[http://iosinjordan.tumblr.com/post/56778173518/help-my-tables-dont-scroll-smoothly][Help! My tables don't scroll smoothly! - ios thoughts from jordan]] has a good explanation.
+[[http://stackoverflow.com/a/9462814/1346426][When does a view (or layer) require offscreen rendering?'s answer]] has an explanation on offscreen rendering.
+[[http://www.captechconsulting.com/blogs/performance-tuning-on-older-ios-devices][Blog]] explains blending and misaligned images.
+[[http://stackoverflow.com/a/28215058/1346426][Poor UICollectionView Scrolling Performance With UIImage's answer]] also talks about it.
+<2016-04-14 Thu>
 **** Turning on speaker phone while calling programmatically
 [[http://stackoverflow.com/questions/15033695/switch-call-to-speaker-ios-private-api][objective c - Switch call to speaker - iOS private api - Stack Overflow]] explains that this can only be done by hacking, and is not acceptable in the App Store.
 <2016-02-21 Sun>
 **** UICollectionView with  NSFetchedResultsContoller
 [[http://stackoverflow.com/a/20554673/1346426][NSFetchedResultsContollerDelegate for CollectionView's answer]] is a good answer. However, the github repository it links to links to [[https://github.com/jessesquires/JSQDataSourcesKit][jessesquires/JSQDataSourcesKit: Type-safe, value-oriented, composable data source objects that keep your view controllers light]].
 <2016-02-24 Wed>
+**** Using ~NSException~ for program flow
+[[http://stackoverflow.com/a/4649234/1346426][Objective-C Exceptions's answer]] explains ~NSException~s are not exception-safe, but using ARC you can enable full exception safety, and use them for program flow safely. Howerver, [[http://stackoverflow.com/a/4311634/1346426][Usage of NSException in iPhone Apps's answer]] says that bevause system code is not exception-safe, it is practically not safe to throw and catch exceptions. The answerer [[https://www.linkedin.com/in/billbumgarner][Bill Bumgarner | LinkedIn]] works in Apple and developed ther objective c runtime.
+<2016-03-30 Wed>
 *** Xcode
 **** Adding another project
 :PROPERTIES:
