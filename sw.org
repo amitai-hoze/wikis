@@ -3643,8 +3643,10 @@ _Comments_
 | [[http://nshipster.com/nscoding/][NSCoding / NSKeyedArchiver - NSHipster]]      | Read   | Explains when to use it, and then how          |
 <2015-01-11 Sun>
 *** Push Notifications
-[[https://www.youtube.com/watch?v=ATYhOlK11QM][Push Notifications: What are they and how do I send them? - YouTube]]
-<2014-04-24 Thu>
+**** How to handle them
+[[http://doublenegative.com/ios-push-notifications/][iOS push notifications - the succinct explanation]] is a great article.
+[[http://stackoverflow.com/a/33778990/1346426][Remote notification method called twice's answer]] is a good answer.
+<2016-07-07 Thu>
 *** Reading Crash Reports
 [[http://www.raywenderlich.com/23704/demystifying-ios-application-crash-logs][Demystifying iOS Application Crash Logs | Ray Wenderlich]]
 [[http://stackoverflow.com/a/8172962][How to symbolicate iPhone \ iPad crash logs?'s answer]]
@@ -4135,6 +4137,9 @@ Mar  6 12:30:55 alex-dizengofs-iPhone Reporty-AppStore[286] <Warning>: post cras
 [[http://www.captechconsulting.com/blogs/performance-tuning-on-older-ios-devices][Blog]] explains blending and misaligned images.
 [[http://stackoverflow.com/a/28215058/1346426][Poor UICollectionView Scrolling Performance With UIImage's answer]] also talks about it.
 <2016-04-14 Thu>
+**** Turning on flash light when app is in background
+According to [[http://stackoverflow.com/a/32137434/1346426][Iphone flashlight not working while app is in background's answer]] and [[http://stackoverflow.com/questions/33189475/how-to-keep-torch-on-when-user-presses-home-button][ios - How to keep torch on when user presses Home button - Stack Overflow]] it seems this is not possible.
+<2016-04-17 Sun>
 **** Turning on speaker phone while calling programmatically
 [[http://stackoverflow.com/questions/15033695/switch-call-to-speaker-ios-private-api][objective c - Switch call to speaker - iOS private api - Stack Overflow]] explains that this can only be done by hacking, and is not acceptable in the App Store.
 <2016-02-21 Sun>
@@ -7667,6 +7672,11 @@ I tried [[http://www.grindeq.com/index.php?p=word2latex][Converting Microsoft Wo
 *** Templates
 [[http://pymotw.com/2/string/#templates][string – Working with text - Python Module of the Week]] has an explanation.
 <2014-09-14 Sun>
+** Regular Expressions
+*** Solutions
+**** Only letters in any language
+[[http://stackoverflow.com/a/15806080/1346426][Java Regex to Validate Full Name allow only Spaces and Letters's answer]]
+<2016-04-26 Tue>
 ** Ruby
 *** Bundler
 **** Solutions
