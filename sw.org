@@ -1,3 +1,5 @@
+#+author:Amitai Hoze
+
 * Software Development and Tools Wiki
 :PROPERTIES:
 :ID:       3908e762-5db3-4580-8bbd-de600632b580
@@ -162,6 +164,13 @@ Version 3 is not served to any device configuration: all devices that might rece
 [[http://stackoverflow.com/a/5625179/1346426][Enable and disable a Broadcast Receiver's answer]] has a solution and [[http://www.grokkingandroid.com/enabling-and-disabling-broadcastreceivers/][Android Quick Tip: Enabling and Disabling BroadcastReceivers at Runtime | Grokking Android]] is a nice guide on the subject.
 However, I tried this solution and had [[http://stackoverflow.com/q/16514551/1346426][Cannot Disable Broadcast Receiver]]'s problem.
 <2014-10-05 Sun>
+*** Boost for Android
+[[https://github.com/moritz-wundke/Boost-for-Android][moritz-wundke/Boost-for-Android: Android port of Boost C++ Libraries]] has a script for compiling the sources for Android. However, their guide uses ~Android.mk~, and we want to use the newer ~CMakeLists.txt~. 
+[[https://github.com/dec1/Boost-for-Android][dec1/Boost-for-Android: Android port of Boost C++ Libraries]] is a fork from the previous repository, and uses the newer ~CMakeLists.txt~.
+
+[[https://www.crystax.net/en/blog/2][CrystaX]] has a guide for it.
+[[https://blog.conan.io/2018/01/30/Cross-building-Boost-Android.html][Cross building Boost C++ libraries to Android with Conan]] is a another method of doing so, but it uses binaries.
+<2018-06-25 Mon>
 *** Changing application name
 [[http://stackoverflow.com/a/5443324/1346426][How to change an Android app's name?'s answer]] has a solution.
 <2014-08-01 Fri>
@@ -262,6 +271,23 @@ emulator: ERROR: This AVD's configuration is missing a kernel file!!
 #+end_example
 [[http://stackoverflow.com/a/10101698/1346426][Emulator error: This AVD's configuration is missing a kernel file's answer]] has a solution.
 <2015-01-23 Fri>
+***** Segmentation fault
+Error in Android Studio
+#+begin_example
+Emulator: Process finished with exit code 139 (interrupted by signal 11: SIGSEGV)
+#+end_example
+
+Error when running from command line:
+#+begin_example
+Segmentation fault (core dumped)
+#+end_example
+
+[[https://stackoverflow.com/a/45417478/1346426][Android virtual device manager crashes with “double free or corruption”'s answer]] solved the problem.
+I'm guessing it's a kvm problem.
+Maybe [[https://bugzilla.redhat.com/show_bug.cgi?id=1296722][Bug 1296722 – qemu-kvm crashes with double free or corruption in cephx code]] has some data.
+[[https://github.com/uw-it-aca/spacescout-android/wiki/1.-Setting-Up-Android-Studio-on-Ubuntu][1. Setting Up Android Studio on Ubuntu · uw-it-aca/spacescout-android Wiki]] is a guide for installing kvm, it is compatible with Ubuntu 18.04
+This is my more detailed question in SO: [[https://stackoverflow.com/questions/51011575/android-emulator-crashes-with-sigsegv-on-ubuntu-18-04][Android Emulator crashes with SIGSEGV on Ubuntu 18.04 - Stack Overflow]]
+<2018-06-24 Sun>
 *** Exponential backoff
 :PROPERTIES:
 :ID:       edd99623-d05a-4b0a-8c7b-c1a11ab7c64f
