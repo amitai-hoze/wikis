@@ -1655,7 +1655,15 @@ _Saving Observable state_
  [[http://www.emacswiki.org/emacs/OrgJiraMode][EmacsWiki: Org Jira Mode]]
 <2015-12-16 Wed>
 ** C++
-*** Varaible name from macro argument
+*** Packet generation libraries
+| Name         | Link                                           | Conclusion                                                |
+|--------------+------------------------------------------------+-----------------------------------------------------------|
+| libtins      | [[http://libtins.github.io/][C++ packet sniffing and crafting library]]       | Sends packets through a high level function, not suitable |
+| PcapPlusPlus | [[http://seladb.github.io/PcapPlusPlus-Doc/][PcapPlusPlus: Welcome to PcapPlusPlus web-site]] |                                                           |
+
+[[http://collaboration.cmc.ec.gc.ca/science/rpn/biblio/ddj/Website/articles/CUJ/2003/0312/0312casado/cuj0312casado.htm][Static Packet Construction with C++ Templates]] is an article about how to do it.
+<2018-07-03 Tue>
+*** Variable name from macro argument
 :PROPERTIES:
 :ID:       5df75ca8-8b5b-4900-a078-3448009e3e1a
 :END:
@@ -7421,6 +7429,9 @@ This goes from blue to magenta (too bright)
 (set-face-foreground 'org-level-8 "#FF00ED")
 #+end_src
 *** Troubleshooting
+**** File mode specification error opening Org file without head
+[[https://lists.gnu.org/archive/html/emacs-orgmode/2016-04/msg00547.html][Re: (O) Bug: File mode specification error opening Org file without head]] has a solution.
+<2018-07-02 Mon>
 **** Symbol's value as variable is void: debian-aspell-only-dictionary-alist
 :PROPERTIES:
 :ID:       9f3bc9ca-d125-40f0-bc0b-54a3134ff523
@@ -9100,6 +9111,9 @@ _Links_
 - [[http://askubuntu.com/q/53896][Natural Sounding Text to Speech?]]
 <2015-01-22 Thu>
 *** Troubleshooting
+**** Can't start dropbox on Ubuntu 18.04
+[[https://askubuntu.com/a/1036417/252848][Can't start dropbox on Ubuntu 18.04's answer]] has a solution.
+<2018-07-02 Mon>
 **** Caught in a loop trying to login after upgrading from 14.10 to 15.04
 [[http://askubuntu.com/a/613110][Caught in loop when trying to login after upgrade from 14.10 to 15.04's answer]] has a solution.
 [[http://askubuntu.com/a/614987][Upgrade 14.04 to 15.04 xorg blank screen (closed)'s answer]] may have more data (old link, don't remember if it's related).
