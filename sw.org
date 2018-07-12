@@ -159,11 +159,6 @@ Version 3 is not served to any device configuration: all devices that might rece
 - [[http://code.tutsplus.com/tutorials/android-essentials-submitting-your-application-to-the-android-market--mobile-9135][Android Essentials: Submitting Your Application to the Android Market - Tuts+ Code Tutorial]]
 - [[https://www.youtube.com/watch?v=iVpIkQmNSwk][Android Development Tutorials #28 - How To Publish Your App To Google Play Part 1 - YouTube]]
 <2014-08-11 Mon>
-*** BroadcastReceiver
-**** Enable and disable programmatically
-[[http://stackoverflow.com/a/5625179/1346426][Enable and disable a Broadcast Receiver's answer]] has a solution and [[http://www.grokkingandroid.com/enabling-and-disabling-broadcastreceivers/][Android Quick Tip: Enabling and Disabling BroadcastReceivers at Runtime | Grokking Android]] is a nice guide on the subject.
-However, I tried this solution and had [[http://stackoverflow.com/q/16514551/1346426][Cannot Disable Broadcast Receiver]]'s problem.
-<2014-10-05 Sun>
 *** Boost for Android
 [[https://github.com/moritz-wundke/Boost-for-Android][moritz-wundke/Boost-for-Android: Android port of Boost C++ Libraries]] has a script for compiling the sources for Android. However, their guide uses ~Android.mk~, and we want to use the newer ~CMakeLists.txt~. 
 [[https://github.com/dec1/Boost-for-Android][dec1/Boost-for-Android: Android port of Boost C++ Libraries]] is a fork from the previous repository, and uses the newer ~CMakeLists.txt~.
@@ -171,6 +166,11 @@ However, I tried this solution and had [[http://stackoverflow.com/q/16514551/134
 [[https://www.crystax.net/en/blog/2][CrystaX]] has a guide for it.
 [[https://blog.conan.io/2018/01/30/Cross-building-Boost-Android.html][Cross building Boost C++ libraries to Android with Conan]] is a another method of doing so, but it uses binaries.
 <2018-06-25 Mon>
+*** BroadcastReceiver
+**** Enable and disable programmatically
+[[http://stackoverflow.com/a/5625179/1346426][Enable and disable a Broadcast Receiver's answer]] has a solution and [[http://www.grokkingandroid.com/enabling-and-disabling-broadcastreceivers/][Android Quick Tip: Enabling and Disabling BroadcastReceivers at Runtime | Grokking Android]] is a nice guide on the subject.
+However, I tried this solution and had [[http://stackoverflow.com/q/16514551/1346426][Cannot Disable Broadcast Receiver]]'s problem.
+<2014-10-05 Sun>
 *** Changing application name
 [[http://stackoverflow.com/a/5443324/1346426][How to change an Android app's name?'s answer]] has a solution.
 <2014-08-01 Fri>
@@ -823,6 +823,9 @@ and a discussion in the comments about the comparison between Eclipse and Andrio
 [[http://stackoverflow.com/a/2066183/1346426][How to take emulator screenshots using Eclipse?'s answer]] has a solution.
 <2014-06-09 Mon>
 *** JNI
+**** JNI Object lifetimes
+[[http://www.latkin.org/blog/2016/02/01/jni-object-lifetimes-quick-reference/][JNI object lifetimes - quick reference]]
+<2018-07-09 Mon>
 **** Tutorials
 [[http://blog.edwards-research.com/2012/04/tutorial-android-jni/][Tutorial: Android JNI « blog | edwards research]]
 <2014-08-08 Fri>
@@ -832,6 +835,22 @@ and a discussion in the comments about the comparison between Eclipse and Andrio
 :END:
 [[http://stackoverflow.com/questions/4948533/alternatives-to-macro-substitution-in-java][Alternatives to macro substitution in java - Stack Overflow]] has some suggestions.
 <2015-01-22 Thu>
+*** NDK
+**** Writing to a file
+I got permission denied when using this code:
+#+begin_src c
+FILE * fp = fopen(file, mode);
+if (fp == NULL) {
+    log_android(ANDROID_LOG_ERROR, "Unable to open '%s': %s\n", file, strerror
+                (errno));
+    return;
+}
+#+end_src
+
+Reasons:
+1. Android app has no permissions to write to storage, see [[https://stackoverflow.com/a/48678961/1346426][Exception 'open failed: EACCES (Permission denied)' on Android's answer]]
+2. Need to add permissions in the manifest, see [[https://discuss.cocos2d-x.org/t/how-to-write-the-sdcard-in-android/15604/2][How to write the /sdcard in Android - cocos2d-x / C++ - Cocos2d-x Forums]]
+<2018-07-04 Wed>
 *** Phone number validation
 [[http://stackoverflow.com/a/5959341/1346426][Validation for a cell number in Android's answer]] has a solution using regular expressions.
 [[http://stackoverflow.com/a/6359128/1346426][Phone number validation Android's answer]] suggests to use =PhoneNumberUtils.isGlobalPhoneNumber= but I couldn't find specific country rules for it. [[http://stackoverflow.com/a/13890682/1346426][Validation for a cell number in Android's answer]] suggests using =android.util.Patterns.PHONE.matcher= but the documentation itself in [[http://developer.android.com/reference/android/util/Patterns.html][Patterns | Android Developers]] says it's just a heuristic, and also [[http://blog.danlew.net/2014/05/22/why-i-dont-use-patterns/][Why I avoid android.util.Patterns]] does.
@@ -1655,11 +1674,20 @@ _Saving Observable state_
  [[http://www.emacswiki.org/emacs/OrgJiraMode][EmacsWiki: Org Jira Mode]]
 <2015-12-16 Wed>
 ** C++
+*** Networking
+**** Calculating Checksums
+[[http://www.roman10.net/2011/11/27/how-to-calculate-iptcpudp-checksumpart-2-implementation/][How to Calculate IP/TCP/UDP Checksum–Part 2 Implementation – roman10]] has explanations and a code that works!!
+<2018-07-10 Tue>
 *** Packet generation libraries
-| Name         | Link                                           | Conclusion                                                |
-|--------------+------------------------------------------------+-----------------------------------------------------------|
-| libtins      | [[http://libtins.github.io/][C++ packet sniffing and crafting library]]       | Sends packets through a high level function, not suitable |
-| PcapPlusPlus | [[http://seladb.github.io/PcapPlusPlus-Doc/][PcapPlusPlus: Welcome to PcapPlusPlus web-site]] |                                                           |
+[[https://en.wikipedia.org/wiki/Packet_crafting][Packet crafting - Wikipedia]] is a nice article.
+
+| Name                        | Link                                           | Conclusion                                                |
+|-----------------------------+------------------------------------------------+-----------------------------------------------------------|
+| libtins                     | [[http://libtins.github.io/][C++ packet sniffing and crafting library]]       | Sends packets through a high level function, not suitable |
+| PcapPlusPlus                | [[http://seladb.github.io/PcapPlusPlus-Doc/][PcapPlusPlus: Welcome to PcapPlusPlus web-site]] |                                                           |
+| packet-manipulation-library | [[https://github.com/scap1784/packet-manipulation-library/tree/master/Packet][packet-manipulation-library]]                    |                                                           |
+| libcrafter                  | [[https://github.com/pellegre/libcrafter][pellegre/libcrafter]]                            |                                                           |
+| Ostinato                    | [[https://github.com/pstavirs/ostinato][pstavirs/ostinato: Ostinato]]                    |                                                           |
 
 [[http://collaboration.cmc.ec.gc.ca/science/rpn/biblio/ddj/Website/articles/CUJ/2003/0312/0312casado/cuj0312casado.htm][Static Packet Construction with C++ Templates]] is an article about how to do it.
 <2018-07-03 Tue>
