@@ -1697,6 +1697,10 @@ _Saving Observable state_
 :END:
 [[http://stackoverflow.com/a/7561847/1346426][Variable name from macro argument's answer]] has a solution.
 <2015-01-04 Sun>
+*** Various Topics
+**** Calling Java functions through JNI
+[[http://w01fe.com/blog/2009/05/c-callbacks-into-java-via-jni-made-easyier/][C++ callbacks into Java via JNI made easy(ier) – w01fe]]
+<2018-07-30 Mon>
 ** Design Patterns
 *** MVVM
 **** Deciding whether an object should be in the View or ViewModel
@@ -5584,6 +5588,34 @@ Full error message:
 :END:
 [[http://askubuntu.com/a/423321][How to install WhatsApp?'s answer]] has a good explanation.
 <2015-02-17 Tue>
+** Networking
+*** ipv6 addresses
+[[https://en.wikipedia.org/wiki/IPv6_address#Local_addresses][IPv6 address - Wikipedia]]
+<2018-07-18 Wed>
+*** Linux structs documentation
+[[https://www.freebsd.org/cgi/man.cgi?query=ip6&sektion=4&manpath=FreeBSD+6.1-RELEASE][ip6(4)]]
+<2018-07-17 Tue>
+*** Solutions
+**** Accepting both ipv4 and ipv6
+[[https://stackoverflow.com/a/38065467/1346426][IPv6: Is `::' equivalent to `0.0.0.0' when listening for connections?'s answer]] has an explanation.
+<2018-07-18 Wed>
+**** Get routing table on Android
+[[https://github.com/schwabe/ics-openvpn/issues/427#issuecomment-169612804][ipv6 routes not added · Issue #427 · schwabe/ics-openvpn's comment]] show how to get the info,
+and [[https://networkengineering.stackexchange.com/a/19575][How to understand the IPv6 route table (closed)'s answer]] explains how to understand it.
+<2018-07-18 Wed>
+*** Various Topics
+**** Gracefully shutting down TCP connection
+1. [[https://www.winsocketdotnetworkprogramming.com/clientserversocketnetworkcommunication8d.html][A complete tutorial on how to create socket, bind, connect, transfer/send data, receive data and close the connection for the windows socket/socket/winsock]]
+2. [[http://vadmyst.blogspot.com/2008/04/proper-way-to-close-tcp-socket.html][Software Development: Proper way to close TCP socket]]
+3. [[https://stackoverflow.com/a/9682704/1346426][Graceful Shutdown Server Socket in Linux's answer]]
+4. [[https://stackoverflow.com/a/41863900/1346426][Why should I use shutdown() before closing a socket? (duplicate)'s answer]]
+5. [[https://stackoverflow.com/a/39823756/1346426][Boost.Asio socket destructor closes connection?'s answer]]
+6. [[https://stackoverflow.com/a/14206150/1346426][boost::asio cleanly disconnecting's answer]]
+7. [[https://blogs.technet.microsoft.com/janelewis/2010/03/09/explaining-close_wait/][Explaining Close_Wait – Jane Lewis's Weblog]]
+8. [[http://www.cs.northwestern.edu/~agupta/cs340/project2/TCPIP_State_Transition_Diagram.pdf][TCPIP_State_Transition_Diagram.pdf]]
+9. [[https://docs.microsoft.com/en-us/windows/desktop/WinSock/graceful-shutdown-linger-options-and-socket-closure-2][Graceful Shutdown, Linger Options, and Socket Closure | Microsoft Docs]]
+10. [[https://universalflowuniversity.com/Books/Computer Programming/CPlusPlus and C Programming/Boost.Asio C++ Network Programming Cookbook_ Over 25 hands-on recipes to create robust and highly-efficient cross-platform distributed applications with the Boost.Asio library.pdf][Boost.Asio C++ Network Programming Cookbook: Over 25 hands-on recipes to create robust and highly-efficient cross-platform distributed applications with the Boost.Asio library]]
+<2018-07-30 Mon>
 ** NixOS
 *** Contributions
 **** TaskJuggler                                                  :ATTACH:
