@@ -4,65 +4,6 @@
 :PROPERTIES:
 :ID:       3908e762-5db3-4580-8bbd-de600632b580
 :END:
-** .net
-*** C#.net
-**** Sending an HTTP POST request
-:PROPERTIES:
-:ID:       ef2660cf-e50b-4b57-b646-0fac859eb768
-:END:
-These are several sites that give code that does it:
-- [[http://stackoverflow.com/q/11431261/1346426][Unauthorized when calling Google GCM]]
-- [[http://www.codeproject.com/Tips/434338/Android-GCM-Push-Notification][Android GCM Push Notification - CodeProject]]
-- [[http://distriqt.com/post/1223][distriqt Google Cloud Messaging using C#]]
-- [[http://www.basic4ppc.com/android/forum/threads/google-cloud-messaging-server-in-visual-basic.28948/][Google Cloud Messaging Server in Visual Basic | Basic4android Community]]
-- [[http://steveloper.com/android-google-cloud-messaging-and-asp-net/][Android Google Cloud Messaging and ASP.NET | Steve Loper]]
-
-[[http://www.jayway.com/2012/03/13/httpclient-makes-get-and-post-very-simple/][HttpClient makes GET and POST very simple | Jayway]] seems like a good solution, but it was unlisted by the author.
-
-<2014-09-18 Thu>
-**** Errors
-***** System.Net.Security not recognized
-Error message:
-#+begin_example
-The type or namespace name 'Security' does not exist in the namespace 'System.Net' (are you missing an assembly reference?)
-#+end_example
-According to [[http://social.msdn.microsoft.com/Forums/windowsapps/en-US/5ec17748-8980-4714-b25a-c3c9192bbefc/how-to-discard-certificate-validation-in-httpwebrequest][How to discard certificate validation in HttpWebRequest]] ~System.Net.Security~ is deprecated (search for "This code is not working in Windows 8 Metro"). One of the responders there says to use [[http://msdn.microsoft.com/en-us/library/windows/apps/windows.web.http.aspx][Windows.Web.Http namespace - Windows app development]] on Windows 8.1.
-<2014-09-18 Thu>
-*** VB.net
-**** Sending an HTTP POST request
-[[http://msdn.microsoft.com/en-us/library/debx8sh9(v=vs.110).aspx][How to: Send Data Using the WebRequest Class]] is the official documentation.
-I tried to convert [[id:ef2660cf-e50b-4b57-b646-0fac859eb768][Sending an HTTP POST request]] in C# to VB.
-At first I got the [[id:4d90a3b8-99b6-468a-a4b4-7a6a53325a94][WebHeaderCollection missing ADD method]] error but solved it (see link).
-But then I got [[id:deff6a79-b924-4d60-a104-fe3f95186eb6]['GetRequestStream' is not a member of 'System.Net.HttpWebRequest']], and the solution was too complicated.
-[[http://www.androidsnippets.com/vbnet-server-side-code-to-send-c2dm-messages][VB.NET Server side code to send C2DM messages - Android Snippets]] has a solution, but it requires installing Google Data APIs, which looks kind of complicated, so I didn't try it. I installed [[https://code.google.com/p/google-gdata/downloads/list][Downloads - google-gdata - .NET library for the Google Data API - Google Project Hosting]] but couldn't find an easy way to import it to my project.
-
-I finally realized that the sample for using GCM are for Windows 7 and VS 2012, so I installed them and translated [[http://stackoverflow.com/q/11431261/1346426][Unauthorized when calling Google GCM]] to vb. 
-<2014-09-18 Thu>
-**** Defining Constructors
-[[http://www.vkinfotek.com/constructor.html][constructors in Visual Basic.Net]] has an explanation on the subject.
-<2014-09-18 Thu>
-**** Errors
-***** 'GetRequestStream' is not a member of 'System.Net.HttpWebRequest'
-:PROPERTIES:
-:ID:       deff6a79-b924-4d60-a104-fe3f95186eb6
-:END:
-Error message:
-#+begin_example
-'GetRequestStream' is not a member of 'System.Net.HttpWebRequest'.
-#+end_example
-[[http://stackoverflow.com/q/14344029/1346426]['System.Net.HttpWebRequest' does not contain a definition for 'GetRequestStream']] has a discussion on the subject.
-<2014-09-18 Thu>
-***** WebHeaderCollection missing ADD method
-:PROPERTIES:
-:ID:       4d90a3b8-99b6-468a-a4b4-7a6a53325a94
-:END:
-Error message: 
-#+begin_example
-'Add' is not a member of 'System.Net.WebHeaderCollection'
-#+end_example
-
-[[http://www.geekchamp.com/forums/windows-phone-development/webheadercollection-missing-add-method][WebHeaderCollection missing ADD method | GeekChamp Forums]] has a discussion on the subject.
-<2014-09-18 Thu>
 ** Android
 *** Control from PC
 | Link                                                                      | USB Debugging | Platform | Comment |
@@ -1673,34 +1614,6 @@ _Saving Observable state_
 **** org-mode integration
  [[http://www.emacswiki.org/emacs/OrgJiraMode][EmacsWiki: Org Jira Mode]]
 <2015-12-16 Wed>
-** C++
-*** Networking
-**** Calculating Checksums
-[[http://www.roman10.net/2011/11/27/how-to-calculate-iptcpudp-checksumpart-2-implementation/][How to Calculate IP/TCP/UDP Checksum–Part 2 Implementation – roman10]] has explanations and a code that works!!
-<2018-07-10 Tue>
-*** Packet generation libraries
-[[https://en.wikipedia.org/wiki/Packet_crafting][Packet crafting - Wikipedia]] is a nice article.
-
-| Name                        | Link                                           | Conclusion                                                |
-|-----------------------------+------------------------------------------------+-----------------------------------------------------------|
-| libtins                     | [[http://libtins.github.io/][C++ packet sniffing and crafting library]]       | Sends packets through a high level function, not suitable |
-| PcapPlusPlus                | [[http://seladb.github.io/PcapPlusPlus-Doc/][PcapPlusPlus: Welcome to PcapPlusPlus web-site]] |                                                           |
-| packet-manipulation-library | [[https://github.com/scap1784/packet-manipulation-library/tree/master/Packet][packet-manipulation-library]]                    |                                                           |
-| libcrafter                  | [[https://github.com/pellegre/libcrafter][pellegre/libcrafter]]                            |                                                           |
-| Ostinato                    | [[https://github.com/pstavirs/ostinato][pstavirs/ostinato: Ostinato]]                    |                                                           |
-
-[[http://collaboration.cmc.ec.gc.ca/science/rpn/biblio/ddj/Website/articles/CUJ/2003/0312/0312casado/cuj0312casado.htm][Static Packet Construction with C++ Templates]] is an article about how to do it.
-<2018-07-03 Tue>
-*** Variable name from macro argument
-:PROPERTIES:
-:ID:       5df75ca8-8b5b-4900-a078-3448009e3e1a
-:END:
-[[http://stackoverflow.com/a/7561847/1346426][Variable name from macro argument's answer]] has a solution.
-<2015-01-04 Sun>
-*** Various Topics
-**** Calling Java functions through JNI
-[[http://w01fe.com/blog/2009/05/c-callbacks-into-java-via-jni-made-easyier/][C++ callbacks into Java via JNI made easy(ier) – w01fe]]
-<2018-07-30 Mon>
 ** Design Patterns
 *** MVVM
 **** Deciding whether an object should be in the View or ViewModel
@@ -5588,34 +5501,65 @@ Full error message:
 :END:
 [[http://askubuntu.com/a/423321][How to install WhatsApp?'s answer]] has a good explanation.
 <2015-02-17 Tue>
-** Networking
-*** ipv6 addresses
-[[https://en.wikipedia.org/wiki/IPv6_address#Local_addresses][IPv6 address - Wikipedia]]
-<2018-07-18 Wed>
-*** Linux structs documentation
-[[https://www.freebsd.org/cgi/man.cgi?query=ip6&sektion=4&manpath=FreeBSD+6.1-RELEASE][ip6(4)]]
-<2018-07-17 Tue>
-*** Solutions
-**** Accepting both ipv4 and ipv6
-[[https://stackoverflow.com/a/38065467/1346426][IPv6: Is `::' equivalent to `0.0.0.0' when listening for connections?'s answer]] has an explanation.
-<2018-07-18 Wed>
-**** Get routing table on Android
-[[https://github.com/schwabe/ics-openvpn/issues/427#issuecomment-169612804][ipv6 routes not added · Issue #427 · schwabe/ics-openvpn's comment]] show how to get the info,
-and [[https://networkengineering.stackexchange.com/a/19575][How to understand the IPv6 route table (closed)'s answer]] explains how to understand it.
-<2018-07-18 Wed>
-*** Various Topics
-**** Gracefully shutting down TCP connection
-1. [[https://www.winsocketdotnetworkprogramming.com/clientserversocketnetworkcommunication8d.html][A complete tutorial on how to create socket, bind, connect, transfer/send data, receive data and close the connection for the windows socket/socket/winsock]]
-2. [[http://vadmyst.blogspot.com/2008/04/proper-way-to-close-tcp-socket.html][Software Development: Proper way to close TCP socket]]
-3. [[https://stackoverflow.com/a/9682704/1346426][Graceful Shutdown Server Socket in Linux's answer]]
-4. [[https://stackoverflow.com/a/41863900/1346426][Why should I use shutdown() before closing a socket? (duplicate)'s answer]]
-5. [[https://stackoverflow.com/a/39823756/1346426][Boost.Asio socket destructor closes connection?'s answer]]
-6. [[https://stackoverflow.com/a/14206150/1346426][boost::asio cleanly disconnecting's answer]]
-7. [[https://blogs.technet.microsoft.com/janelewis/2010/03/09/explaining-close_wait/][Explaining Close_Wait – Jane Lewis's Weblog]]
-8. [[http://www.cs.northwestern.edu/~agupta/cs340/project2/TCPIP_State_Transition_Diagram.pdf][TCPIP_State_Transition_Diagram.pdf]]
-9. [[https://docs.microsoft.com/en-us/windows/desktop/WinSock/graceful-shutdown-linger-options-and-socket-closure-2][Graceful Shutdown, Linger Options, and Socket Closure | Microsoft Docs]]
-10. [[https://universalflowuniversity.com/Books/Computer Programming/CPlusPlus and C Programming/Boost.Asio C++ Network Programming Cookbook_ Over 25 hands-on recipes to create robust and highly-efficient cross-platform distributed applications with the Boost.Asio library.pdf][Boost.Asio C++ Network Programming Cookbook: Over 25 hands-on recipes to create robust and highly-efficient cross-platform distributed applications with the Boost.Asio library]]
-<2018-07-30 Mon>
+** .net
+*** C#.net
+**** Sending an HTTP POST request
+:PROPERTIES:
+:ID:       ef2660cf-e50b-4b57-b646-0fac859eb768
+:END:
+These are several sites that give code that does it:
+- [[http://stackoverflow.com/q/11431261/1346426][Unauthorized when calling Google GCM]]
+- [[http://www.codeproject.com/Tips/434338/Android-GCM-Push-Notification][Android GCM Push Notification - CodeProject]]
+- [[http://distriqt.com/post/1223][distriqt Google Cloud Messaging using C#]]
+- [[http://www.basic4ppc.com/android/forum/threads/google-cloud-messaging-server-in-visual-basic.28948/][Google Cloud Messaging Server in Visual Basic | Basic4android Community]]
+- [[http://steveloper.com/android-google-cloud-messaging-and-asp-net/][Android Google Cloud Messaging and ASP.NET | Steve Loper]]
+
+[[http://www.jayway.com/2012/03/13/httpclient-makes-get-and-post-very-simple/][HttpClient makes GET and POST very simple | Jayway]] seems like a good solution, but it was unlisted by the author.
+
+<2014-09-18 Thu>
+**** Errors
+***** System.Net.Security not recognized
+Error message:
+#+begin_example
+The type or namespace name 'Security' does not exist in the namespace 'System.Net' (are you missing an assembly reference?)
+#+end_example
+According to [[http://social.msdn.microsoft.com/Forums/windowsapps/en-US/5ec17748-8980-4714-b25a-c3c9192bbefc/how-to-discard-certificate-validation-in-httpwebrequest][How to discard certificate validation in HttpWebRequest]] ~System.Net.Security~ is deprecated (search for "This code is not working in Windows 8 Metro"). One of the responders there says to use [[http://msdn.microsoft.com/en-us/library/windows/apps/windows.web.http.aspx][Windows.Web.Http namespace - Windows app development]] on Windows 8.1.
+<2014-09-18 Thu>
+*** VB.net
+**** Sending an HTTP POST request
+[[http://msdn.microsoft.com/en-us/library/debx8sh9(v=vs.110).aspx][How to: Send Data Using the WebRequest Class]] is the official documentation.
+I tried to convert [[id:ef2660cf-e50b-4b57-b646-0fac859eb768][Sending an HTTP POST request]] in C# to VB.
+At first I got the [[id:4d90a3b8-99b6-468a-a4b4-7a6a53325a94][WebHeaderCollection missing ADD method]] error but solved it (see link).
+But then I got [[id:deff6a79-b924-4d60-a104-fe3f95186eb6]['GetRequestStream' is not a member of 'System.Net.HttpWebRequest']], and the solution was too complicated.
+[[http://www.androidsnippets.com/vbnet-server-side-code-to-send-c2dm-messages][VB.NET Server side code to send C2DM messages - Android Snippets]] has a solution, but it requires installing Google Data APIs, which looks kind of complicated, so I didn't try it. I installed [[https://code.google.com/p/google-gdata/downloads/list][Downloads - google-gdata - .NET library for the Google Data API - Google Project Hosting]] but couldn't find an easy way to import it to my project.
+
+I finally realized that the sample for using GCM are for Windows 7 and VS 2012, so I installed them and translated [[http://stackoverflow.com/q/11431261/1346426][Unauthorized when calling Google GCM]] to vb. 
+<2014-09-18 Thu>
+**** Defining Constructors
+[[http://www.vkinfotek.com/constructor.html][constructors in Visual Basic.Net]] has an explanation on the subject.
+<2014-09-18 Thu>
+**** Errors
+***** 'GetRequestStream' is not a member of 'System.Net.HttpWebRequest'
+:PROPERTIES:
+:ID:       deff6a79-b924-4d60-a104-fe3f95186eb6
+:END:
+Error message:
+#+begin_example
+'GetRequestStream' is not a member of 'System.Net.HttpWebRequest'.
+#+end_example
+[[http://stackoverflow.com/q/14344029/1346426]['System.Net.HttpWebRequest' does not contain a definition for 'GetRequestStream']] has a discussion on the subject.
+<2014-09-18 Thu>
+***** WebHeaderCollection missing ADD method
+:PROPERTIES:
+:ID:       4d90a3b8-99b6-468a-a4b4-7a6a53325a94
+:END:
+Error message: 
+#+begin_example
+'Add' is not a member of 'System.Net.WebHeaderCollection'
+#+end_example
+
+[[http://www.geekchamp.com/forums/windows-phone-development/webheadercollection-missing-add-method][WebHeaderCollection missing ADD method | GeekChamp Forums]] has a discussion on the subject.
+<2014-09-18 Thu>
 ** NixOS
 *** Contributions
 **** TaskJuggler                                                  :ATTACH:
@@ -9123,15 +9067,18 @@ afp_client unmount ~/mac
 [[https://wiki.ubuntu.com/Keybindings][Keybindings - Ubuntu Wiki]] show only an example of *getting* a custom keyboard shortcut.
 [[http://askubuntu.com/a/575358][Custom Keyboard Shortcuts Lost After 12.04 to 14.04 Upgrade's answer]] has a script, which I adapted to my needs at [[file:scripts/ubuntu/set_org_custom_keyboard_shortcuts.sh]].
 I'm in the middle of testing it now.
+**** Changing the alt+shift shortcut for switching languages
+[[https://askubuntu.com/a/1029605/252848][18.04 ctrl+shift to change language's answer]] has a solution.
+<2018-10-08 Mon>
+**** Disabling the Super key
+[[http://askubuntu.com/a/105585/252848][How do I disable the Super key?'s answer]]
+<2015-09-08 Tue>
 **** Disabling the ~Super + P~ shortcut
 :PROPERTIES:
 :ID:       91d03896-007d-4a2b-ac9e-c6630b9ea683
 :END:
 this shortcut messes up the rendering. [[http://askubuntu.com/a/68487][How to disable global <Super>-p shortcut?'s answer]] has a solution.
 <2015-03-20 Fri>
-**** Disabling the Super key
-[[http://askubuntu.com/a/105585/252848][How do I disable the Super key?'s answer]]
-<2015-09-08 Tue>
 **** Dual booting with Mint
 [[http://unix.stackexchange.com/a/155406][How to have triple boot Linux Mint 17 Cinnamon/Ubuntu 14.04/Windows 8?'s answer]] has a solution.
 <2015-07-02 Thu>
